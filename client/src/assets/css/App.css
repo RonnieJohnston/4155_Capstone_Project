@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #262626;
+    font-family: "JetBrains Mono";
+    font-size: large;
+}
+
+.logo-image img {
+    vertical-align: middle;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-links li {
+    margin: 0 10px;
+}
+
+
+a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a:visited{
+    color: #FFFFFF;
+}
+a:hover{
+    color: aqua;
+}
