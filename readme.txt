@@ -21,4 +21,3 @@ To start App:
 - In the second terminal, run the command 'npm start', to start up the client.
 - I find it helpful to have api open in one window completely, and client in a separate window.
 - Finally, navigate to http://localhost:3000 in your browser
-- Under the React logo, you should see a message saying the API call worked. If you don't see this message make sure you have run the 'npm start' command for the api before the client in terminal
