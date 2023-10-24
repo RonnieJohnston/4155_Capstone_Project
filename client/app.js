@@ -1,5 +1,5 @@
 const express = require("express")
-const collection = require("./mango")
+const collection = require("./server")
 const cors = require("cors")
 
 const app = express()
