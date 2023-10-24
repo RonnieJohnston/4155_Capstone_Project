@@ -5,6 +5,7 @@ const NewReview = () => {
     const url = ""
     const [data, setData] = useState({
         course: "",
+        rating: "",
         comments: ""
     })
 
@@ -30,8 +31,14 @@ const NewReview = () => {
                 <option value="itsc1100">ITSC 1100</option>
                 <option value="itsc3200">ITSC 3200</option>
             </select>
+            <br></br>
+            <label for="rating">Rate out of five stars: </label>
+            <input type="number" name="rating" value={data.rating} id="rating" onChange={(event)=> handle(event)} min="0" max="5" required></input>
+            <br></br>
             <label for="comments">Enter Comments:</label>
+            <br></br>
             <textarea id="comments" value={data.comments} name="comments" onChange={(event)=> handle(event)} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
+            <br></br>
             <input type="submit" value="Submit"></input>
         </form>
     </div>;
