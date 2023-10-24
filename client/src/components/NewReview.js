@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const NewReview = () => {
 
-    const url = ""
+    const url = "" //mongo url
     const [data, setData] = useState({
         course: "",
         rating: "",
