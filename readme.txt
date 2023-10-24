@@ -17,7 +17,7 @@ To set up app:
 - run 'npm install' on the client folder to install dependencies
 
 To start App:
-- Starting with the first terminal, run the command 'npm start', to start up the api.
+- Starting with the first terminal, run the command 'nodemon app.js', to start up the api.
 - In the second terminal, run the command 'npm start', to start up the client.
 - I find it helpful to have api open in one window completely, and client in a separate window.
 - Finally, navigate to http://localhost:3000 in your browser
