@@ -4,39 +4,25 @@ import { useNavigate, Link } from "react-router-dom";
 
 const NewReview = () => {
 
-    const url = "" //mongo url
-    const [data, setData] = useState({
-        subject: "",
-        course: "",
-        rating: "",
-        interest: ""
-    })
+    const [subject, setSubject] = useState('')
+    const [course, setCourse] = useState('')
+    const [rating, setRating] = useState('')
+    const [interest, setInterest] = useState('')
+    const [comments, setComments] = useState('')
+    const history = useNavigate()
 
-    function handle(event) {
-        const newData = {...data}
-        newData[event.target.id] = event.target.value
-        setData(newData)
-        console.log(newData)
-    }
+    async function submitReview(e) {
+        e.preventDefault()
 
-    async function submit(event) {
-        event.preventDefault()
-        
         try {
-            await axios.post("http://localhost:8000/",
+            await axios.post("http://localhost:8000/register", //update url
                 {
-                    data
+                    subject, course, rating, interest, comments
                 })
                 .then(res => {
-                    if (res.data === "Not exist") {
-                        res.redirect("/")
-                        console.log("success!!!")
-                    }
-                    else if (res.data === "Exist") {
-                        alert("Error posting review")
-                    }
+                    history("/")
                 })
-                .catch(e => {
+                .catch(res => {
                     alert("Wrong details")
                     console.log(e)
                 })
@@ -48,14 +34,14 @@ const NewReview = () => {
 
     return <div>
         <h2>Create a new Review</h2>
-        <form onSubmit={(event)=> submit(event)}>
+        <form onSubmit={(event)=> submitReview(event)}>
             <label for="subject">Subject: </label>
-            <select id="subject" value={data.subject} onChange={(event)=> handle(event)} name="subject" required>
+            <select id="subject" value={data.subject} onChange={(event)=> {setSubject(event.target.value)}} name="subject" required>
                 <option value="itis">ITIS</option>
                 <option value="itsc">ITSC</option>
             </select>
             <label for="course">Course:</label>
-            <select id="course" value={data.course} onChange={(event)=> handle(event)} name="course" required>
+            <select id="course" value={data.course} onChange={(event)=> {setCourse(event)}} name="course" required>
                 <option value="3135">3135</option>
                 <option value="3300">3300</option>
                 <option value="1100">1100</option>
@@ -63,14 +49,14 @@ const NewReview = () => {
             </select>
             <br></br>
             <label for="rating">Rate out of five stars: </label>
-            <input type="number" name="rating" value={data.rating} id="rating" onChange={(event)=> handle(event)} min="0" max="5" required></input>
+            <input type="number" name="rating" value={data.rating} id="rating" onChange={(event)=> {setRating(event)}} min="0" max="5" required></input>
             <br></br>
             <label for="interest">Interest from 0 to 5:</label>
-            <input type="number" name="interest" value={data.interest} id="interest" onChange={(event)=> handle(event)} min="0" max="5" required></input>
+            <input type="number" name="interest" value={data.interest} id="interest" onChange={(event)=> {setInterest(event)}} min="0" max="5" required></input>
             <br></br>
             <label for="comments">Enter Comments:</label>
             <br></br>
-            <textarea id="comments" value={data.comments} name="comments" onChange={(event)=> handle(event)} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
+            <textarea id="comments" value={data.comments} name="comments" onChange={(event)=> {setComments(event)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
             <br></br>
             <input type="submit" value="Submit"></input>
         </form>

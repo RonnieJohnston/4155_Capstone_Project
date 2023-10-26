@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const UserPostsSchema = new mongoose.Schema
 ({
+    subject:
+    {
+        type: String,
+        required: true,
+        ref: 'UserClassesSchema'
+    },
     course:
     {
         type: String,
