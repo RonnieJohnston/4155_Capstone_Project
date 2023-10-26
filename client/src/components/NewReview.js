@@ -66,7 +66,7 @@ const NewReview = () => {
                 <option value="itis3135">ITIS 3135</option>
             </select>
             <br></br>
-            <div className='col'
+            <div className='col'>
             <label for="professor" className='form-label'>Professor Name:</label>
             <input type="text" name="professor" id="professor" className='form-control' onChange={(event)=> {setProfessor(event.target.value)}} required></input>
             </div>
