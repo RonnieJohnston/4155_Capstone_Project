@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const reviewRoutes  = require('./routes/reviewRoutes');
 
 const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/reviews', reviewRoutes);
 
 app.get('/', cors(), (req, res) => {
 

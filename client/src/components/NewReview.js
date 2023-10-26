@@ -46,6 +46,7 @@ const NewReview = () => {
         return arr
     }
 
+
     return <div>
         <h2>Create a new Review</h2>
         <form action="POST">
@@ -61,7 +62,6 @@ const NewReview = () => {
                 <option value="itis4221">ITIS 4221</option>
                 <option value="itis3135">ITIS 3135</option>
             </select>
-            <br></br>
             <label for="rating">Rate out of five stars: </label>
             <input type="number" name="rating" id="rating" onChange={(event)=> {setRating(event.target.value)}} min="0" max="5" required></input>
             <br></br>
@@ -74,7 +74,8 @@ const NewReview = () => {
             <br></br>
             <input type="submit" value="Submit" onClick={submitReview}></input>
         </form>
-    </div>;
+    </div>
+    )
 };
 
 export default NewReview;

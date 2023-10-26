@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
+import '../assets/css/App.css'
 
 function Login() {
     const [username, setUsername] = useState('')
@@ -17,7 +18,8 @@ function Login() {
                 })
                 .then(res => {
                     if (res.data === "Exist") {
-                        history("/", {state:{id:username}})
+                        localStorage.setItem('username', username);
+                        history("/") //{state:{id:username}}
                     }
                     else if (res.data === "Not exist") {
                         alert("User hasn't signed in")
@@ -34,18 +36,20 @@ function Login() {
     }
 
     return(
-        <div className="Login">
-            <h1> Login </h1>
+        <body className='page'>
+        <div className="Login container-xl border mt-5">
+            <h1 className="mt-3"> Login </h1>
 
             <form action="POST">
-                <input type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
-                <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
-                <input type="submit" onClick={Authorization} />
+                <input className="form-control mb-4" type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
+                <input className="form-control mb-4" type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
+                <button type="submit" className="btn btn-dark" onClick={Authorization}>Submit</button>
             </form>
 
             <br />
             <Link to="/register"> Register Here </Link>
         </div>
+        </body>
     )
 }
 
