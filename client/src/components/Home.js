@@ -19,7 +19,11 @@ function Home() {
     return (
         <body className='page'>
         <div>
-            {username ? `Welcome, ${username}!` : 'Welcome!'} 
+            {username ? (
+                <p>Welcome {username} </p>
+            ) : (
+                <p>Welcome!</p>
+            )} 
         </div>
         <a className ='charlotte-logo' href='/'>
             <img
