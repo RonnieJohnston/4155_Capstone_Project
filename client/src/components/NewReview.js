@@ -75,7 +75,6 @@ const NewReview = () => {
             <input type="submit" value="Submit" onClick={submitReview}></input>
         </form>
     </div>
-    )
 };
 
 export default NewReview;
