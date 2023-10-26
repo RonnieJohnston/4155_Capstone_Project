@@ -35,14 +35,21 @@ function Register() {
 
     return(
         <div className="Register">
-            <h1> Register </h1>
 
+        <div className="container-xl border mt-5">
+            <h1 className="mt-3"> Register </h1>
             <form action="POST">
-                <input type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
-                <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
-                <input type="submit" onClick={Authorization} />
+                <div className="mb-3"> 
+                <input type="text"className="form-control mb-4" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
+                </div>
+                <div className="mb-3"> 
+                <input type="password" className="form-control" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
+                </div>
+                <button type="submit" className="btn btn-dark mb-4" onClick={Authorization}>Submit</button>
             </form>
         </div>
+        </div>
+        
     )
 }
 

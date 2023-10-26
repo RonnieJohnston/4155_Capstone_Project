@@ -34,13 +34,13 @@ function Login() {
     }
 
     return(
-        <div className="Login">
-            <h1> Login </h1>
+        <div className="Login container-xl border mt-5">
+            <h1 className="mt-3"> Login </h1>
 
             <form action="POST">
-                <input type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
-                <input type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
-                <input type="submit" onClick={Authorization} />
+                <input className="form-control mb-4" type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
+                <input className="form-control mb-4" type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
+                <button type="submit" className="btn btn-dark" onClick={Authorization}>Submit</button>
             </form>
 
             <br />
