@@ -20,9 +20,9 @@ const NewReview = () => {
         const date = "2023-10-25T19:00"
         const likes = 0
         const dislikes = 0
-        console.log(subject, course, username, date, likes, dislikes, rating, interest, review)
 
         try {
+            console.log(subject, course, username, date, likes, dislikes, rating, interest, review)
             await axios.post("http://localhost:8000/newReview",
                 {
                     subject, course, username, date, likes, dislikes, rating, interest, review

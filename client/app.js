@@ -2,6 +2,8 @@ const express = require("express")
 const collection = require("./server")
 const cors = require("cors")
 
+const model = require("../api/models/UserPostsModel")
+
 const app = express()
 
 app.use(express.json())
@@ -55,7 +57,8 @@ app.post("/register", async (req, res) => {
   }
 })
 
-app.post("/newReview"), async (req, res) =>{
+app.post("/newReview"), async (req, res, next) =>{
+  console.log("!!!!!")
   const { subject, course, username, date, likes, dislikes, rating, interest, review } = req.body
   const data = {
     subject: subject,
@@ -69,11 +72,20 @@ app.post("/newReview"), async (req, res) =>{
     review: review
   }
   try {
-    console.log("!!!!!")
     await collection.postsCollection.insertMany([data])
   } catch(e) {
     res.json("Fail")
   }
+  /*
+  let review = new model(req.body)
+  review.save()
+  .then((review) => {
+    res.redirect('/')
+  })
+  .catch(err => {
+    alert("Failed to save")
+    next(err)
+  }) */
 }
 
 app.listen(8000, () => {
