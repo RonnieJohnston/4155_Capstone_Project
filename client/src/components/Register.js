@@ -21,6 +21,7 @@ function Register() {
                         alert("User already exists")
                     }
                     else if (res.data == "Not exist") {
+                        localStorage.setItem('username', username);
                         history("/")
                     }
                 })
