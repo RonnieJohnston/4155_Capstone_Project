@@ -1,5 +1,6 @@
 import React from 'react';
 import '../assets/css/App.css';
+import { Link } from 'react-router-dom';
 
 const WelcomePage = () => {
 
@@ -18,7 +19,7 @@ const WelcomePage = () => {
                         <h2>Review</h2>
                         <h2>Respond</h2>
                         <h2>...</h2>
-                        <p>Click to get started</p>
+                        <Link to='/home'>Click to get started!</Link>
                     </div>
                 </div>
             </div>
