@@ -2,11 +2,11 @@ import React from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const DeleteBook = () => {
+const DeleteReview = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const handleDeleteBook = () => {
+  const handleDeleteReview = () => {
     axios
       .delete(`http://localhost:3000/reviews/${id}`)
       .then(() => {
@@ -27,7 +27,7 @@ const DeleteBook = () => {
           Are you sure you want to delete this review?
         </h3>
         <div className="d-grid gap-2">
-          <button className="btn btn-danger btn-lg mb-4" onClick={handleDeleteBook}>
+          <button className="btn btn-danger btn-lg mb-4" onClick={handleDeleteReview}>
             Yes, delete it
           </button>
         </div>
@@ -36,4 +36,4 @@ const DeleteBook = () => {
   );
 };
 
-export default DeleteBook;
+export default DeleteReview;

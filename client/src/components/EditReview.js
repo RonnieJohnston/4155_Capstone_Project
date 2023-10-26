@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 
-const EditBook = () => {
+const EditReview = () => {
   const [course, setCourse] = useState("");
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
@@ -32,7 +32,7 @@ const EditBook = () => {
     axios
       .put(`http://localhost:3000/reviews/${id}`, data)
       .then(() => {
-        alert("Book edited successfully");
+        alert("Review edited successfully");
         navigate("/");
       })
       .catch((error) => {
@@ -78,4 +78,4 @@ const EditBook = () => {
   );
 };
 
-export default EditBook;
+export default EditReview;

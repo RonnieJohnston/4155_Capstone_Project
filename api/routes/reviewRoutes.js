@@ -3,7 +3,7 @@ const Review = require('../models/reviewModel');
 
 const router = express.Router();
 
-//Route to update a book      
+//Route to update a review      
 router.put("/:id", async (request, response) => {
         try {
           if (
@@ -30,7 +30,7 @@ router.put("/:id", async (request, response) => {
           response.status(500).send({ message: error.message });
         }
       });
-//Route to delete a book
+//Route to delete a review
 router.delete("/:id", async (request, response) => {
         try {
           const { id } = request.params;
