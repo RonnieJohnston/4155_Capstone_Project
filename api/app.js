@@ -47,9 +47,10 @@ app.post('/', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const check = await UserCredentialModel.findOne({ username: username });
+    const isUsername = await UserCredentialModel.findOne({ username: username });
+    const isPassword = await UserCredentialModel.findOne({ password: password });
 
-    if (check) {
+    if (isUsername && isPassword) {
       res.json('Exist');
     } else {
       res.json('Not exist');

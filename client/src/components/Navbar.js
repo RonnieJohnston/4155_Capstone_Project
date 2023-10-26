@@ -5,6 +5,8 @@ import '../assets/css/App.css';
 const Navbar = () => {
     const username=sessionStorage.getItem('username')
 
+    console.log(username)
+
     return (
         <nav className='navbar'>
             <a className ='logo-image' href='/'>
@@ -18,12 +20,12 @@ const Navbar = () => {
             <ul className='navbar-links'>
                 {username ? (
                     <ul className='navbar-links'>
-                        <li><Link to='/logout'>Logout</Link></li>,
+                        <li><Link to='/logout'>Logout</Link></li>
                         <li><Link to='/account'>Account</Link></li>
                     </ul>
                 ) : (
                     <ul className='navbar-links'>
-                        <li><Link to='/register'>Register</Link></li>,
+                        <li><Link to='/register'>Register</Link></li>
                         <li><Link to='/login'>Login</Link></li>
                     </ul>
                 )}
