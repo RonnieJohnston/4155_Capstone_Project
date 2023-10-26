@@ -26,7 +26,7 @@
 
 
 a:link {
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
     text-decoration: none;
 }
 a:visited{
@@ -34,4 +34,10 @@ a:visited{
 }
 a:hover{
     color: aqua;
+}
+
+.page {
+    min-height: 100%;
+    background-color: black;
+    color:#FFFFFF;
 }
