@@ -7,7 +7,7 @@ const NewReview = () => {
     const [coursesubject, setCourseSubject] = useState('')
     const [rating, setRating] = useState('')
     const [interest, setInterest] = useState('')
-    const [comments, setComments] = useState('')
+    const [review, setReview] = useState('')
     const history = useNavigate()
 
     async function submitReview(e) {
@@ -16,14 +16,19 @@ const NewReview = () => {
         var stuff = parseCourseSubject(coursesubject)
         var subject = stuff[0]
         var course = stuff[1]
-        console.log(subject, course, rating, interest, comments)
+        const username = "TESTUSER"
+        const date = "2023-10-25T19:00"
+        const likes = 0
+        const dislikes = 0
+        console.log(subject, course, username, date, likes, dislikes, rating, interest, review)
 
         try {
-            await axios.post("http://localhost:8000/register", //update url
+            await axios.post("http://localhost:8000/newReview",
                 {
-                    subject, course, rating, interest, comments
+                    subject, course, username, date, likes, dislikes, rating, interest, review
                 })
                 .then(res => {
+                    console.log("!!!")
                     history("/")
                 })
                 .catch(res => {
@@ -45,7 +50,7 @@ const NewReview = () => {
 
     return <div>
         <h2>Create a new Review</h2>
-        <form onSubmit={(event)=> submitReview(event)}>
+        <form action="POST">
             <label for="coursesubject">Course and Subject:</label>
             <select id="coursesubject" onChange={(event)=> {setCourseSubject(event.target.value)}} name="coursesubject" required>
                 <option value="itis3300">ITIS 3300</option>
@@ -65,11 +70,11 @@ const NewReview = () => {
             <label for="interest">Interest from 0 to 5:</label>
             <input type="number" name="interest" id="interest" onChange={(event)=> {setInterest(event.target.value)}} min="0" max="5" required></input>
             <br></br>
-            <label for="comments">Enter Comments:</label>
+            <label for="review">Enter Comments:</label>
             <br></br>
-            <textarea id="comments" name="comments" onChange={(event)=> {setComments(event.target.value)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
+            <textarea id="review" name="review" onChange={(event)=> {setReview(event.target.value)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
             <br></br>
-            <input type="submit" value="Submit"></input>
+            <input type="submit" value="Submit" onClick={submitReview}></input>
         </form>
     </div>;
 };

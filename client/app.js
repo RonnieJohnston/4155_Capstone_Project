@@ -55,6 +55,27 @@ app.post("/register", async (req, res) => {
   }
 })
 
+app.post("/newReview"), async (req, res) =>{
+  const { subject, course, username, date, likes, dislikes, rating, interest, review } = req.body
+  const data = {
+    subject: subject,
+    course: course,
+    username: username,
+    date: date,
+    likes: likes,
+    dislikes: dislikes,
+    rating: rating,
+    interest: interest,
+    review: review
+  }
+  try {
+    console.log("!!!!!")
+    await collection.postsCollection.insertMany([data])
+  } catch(e) {
+    res.json("Fail")
+  }
+}
+
 app.listen(8000, () => {
   console.log("Port connected");
 })
