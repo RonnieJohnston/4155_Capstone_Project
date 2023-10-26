@@ -19,7 +19,7 @@ const WelcomePage = () => {
                         <h2>Review</h2>
                         <h2>Respond</h2>
                         <h2>...</h2>
-                        <Link to='/home'>Click to get started!</Link>
+                        <Link to='/home'>Click to get started</Link>
                     </div>
                 </div>
             </div>
