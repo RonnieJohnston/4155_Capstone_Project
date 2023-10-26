@@ -10,7 +10,11 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-const UserCredentialModel = require('./models/UserCredentialModel')
+const UserCredentialModel = require('./models/UserCredentialModel');
+
+
+// jdew8
+const User = require("./userModel");
 
 mongoose.connect('mongodb://127.0.0.1:27017/UserData', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -96,4 +100,18 @@ app.use(function(err, req, res, next) {
 
 app.listen(8000, () => {
   console.log('Port connected');
+});
+
+//jdew
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching users" });
+  }
+});
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
 });
