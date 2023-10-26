@@ -14,26 +14,31 @@ const UserPostsSchema = new mongoose.Schema
         required: true,
         ref: 'UserClassesSchema',
     },
+    professor:
+    {
+        type: String,
+        required: true,
+    },
     username:
     {
         type: String,
-        //required: true,
+        required: true,
         ref: 'UserCredentialSchema'
     },
     date:
     {
         type: String,
-        //required: true
+        required: true
     },
     likes:
     {
         type: Number,
-        //required: true
+        required: true
     },
     dislikes:
     {
         type: Number,
-        //required: true
+        required: true
     },
     rating:
     {
@@ -45,10 +50,20 @@ const UserPostsSchema = new mongoose.Schema
         type: Number,
         required: true
     },
+    difficulty:
+    {
+        type: Number,
+        required: true
+    },
     review:
     {
         type: String,
-        //required: true
+        required: true
+    },
+    textbook:
+    {
+        type: String,
+        required: true
     }
 });
 

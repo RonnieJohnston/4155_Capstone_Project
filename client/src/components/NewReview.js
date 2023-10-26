@@ -8,7 +8,10 @@ const NewReview = () => {
     const [coursesubject, setCourseSubject] = useState('')
     const [rating, setRating] = useState('')
     const [interest, setInterest] = useState('')
+    const [difficulty, setDifficulty] = useState('')
     const [review, setReview] = useState('')
+    const [professor, setProfessor] = useState('')
+    const [textbook, setTextbook] = useState('')
     const history = useNavigate()
 
     async function submitReview(e) {
@@ -23,10 +26,10 @@ const NewReview = () => {
         var dislikes = 0
 
         try {
-            console.log(subject, course, username, date, likes, dislikes, rating, interest, review)
+            console.log(subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook)
             await axios.post("http://localhost:8000/newReview",
                 {
-                    subject, course, username, date, likes, dislikes, rating, interest, review
+                    subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook
                 })
                 .then(history('/'))
                 .catch(res => {
@@ -40,7 +43,7 @@ const NewReview = () => {
     }
 
     function parseCourseSubject(data) {
-        const subject = data.substring(0, 4)
+        const subject = data.substring(0, 3)
         const course = data.substring(4, 8)
         const arr = [subject, course]
         return arr
@@ -62,16 +65,25 @@ const NewReview = () => {
                 <option value="itis4221">ITIS 4221</option>
                 <option value="itis3135">ITIS 3135</option>
             </select>
+            <br></br>
+            <label for="professor">Professor Name:</label>
+            <input type="text" name="professor" id="professor" onChange={(event)=> {setProfessor(event.target.value)}} required></input>
+            <br></br>
             <label for="rating">Rate out of five stars: </label>
             <input type="number" name="rating" id="rating" onChange={(event)=> {setRating(event.target.value)}} min="0" max="5" required></input>
             <br></br>
             <label for="interest">Interest from 0 to 5:</label>
             <input type="number" name="interest" id="interest" onChange={(event)=> {setInterest(event.target.value)}} min="0" max="5" required></input>
             <br></br>
+            <label for="difficulty">Difficulty from 0 (Easy) to 10 (Hard)</label>
+            <input type="number" name="difficulty" id="difficulty" onChange={(event)=> {setDifficulty(event.target.value)}} min="0" max="10" required></input>
+            <br></br>
             <label for="review">Enter Comments:</label>
             <br></br>
             <textarea id="review" name="review" onChange={(event)=> {setReview(event.target.value)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
             <br></br>
+            <label for="texbook">Textbook(s):</label>
+            <textarea id="textbook" name="textbook" onChange={(event) => {setTextbook(event.target.value)}} rows="5" cols="30" placeholder="Textbook(s)..." required></textarea>
             <input type="submit" value="Submit" onClick={submitReview}></input>
         </form>
     </div>
