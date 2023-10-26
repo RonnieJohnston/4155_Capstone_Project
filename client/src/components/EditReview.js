@@ -64,7 +64,7 @@ const EditReview = () => {
         <div>
           <label className="form-label">Comment</label>
           <textarea
-          className="form-control mb-4"
+          className="form-control mb-3"
             type="number"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
