@@ -18,7 +18,7 @@ function Login() {
                 })
                 .then(res => {
                     if (res.data === "Exist") {
-                        sessionStorage.setItem('username', username);
+                        sessionStorage.setItem('username', username)
                         history("/") //{state:{id:username}}
                     }
                     else if (res.data === "Not exist") {

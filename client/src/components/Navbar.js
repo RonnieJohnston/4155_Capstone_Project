@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/css/App.css';
 
 const Navbar = () => {
-    const username=sessionStorage.getItem('username')
-
-    console.log(username)
+    const username = sessionStorage.getItem('username')
 
     return (
         <nav className='navbar'>

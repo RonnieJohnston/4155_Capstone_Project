@@ -8,7 +8,7 @@ const Logout = () => {
     useEffect(() => {
         // Wait for 2 seconds (2000 milliseconds) before redirecting to home
         const timeoutId = setTimeout(() => {
-            navigate('/');
+            navigate('/'); 
         }, 2000);
 
         sessionStorage.removeItem('username')
