@@ -66,6 +66,7 @@ a:hover{
 .table-responsive {
     height: 800px;
     overflow-y: auto;
+
 }
 
 .charlotte-logo {
@@ -75,6 +76,35 @@ a:hover{
     z-index:1;
 }
 
+.welcome-page-contents {
+    width: 100vw;
+    height: 100vh;
+    /* Aligns the children items in a row direction */
+    display: flex;
+}
+
+.welcome-page-text {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left; /* Keeps text aligned to the left */
+    padding: 0 20px; /* Add padding to create space and keep text aligned left */
+}
+
+.welcome-page-icon {
+    width: 60%;
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+}
+
+.DC-icon {
+    width: 80%;
+    padding-left: 20px;
+}
+
 .user-greeting {
     display: flex;
     justify-content: center;
@@ -82,6 +112,3 @@ a:hover{
     padding-top: 20px;
     font-size: 24px;
 }
-
-
-
