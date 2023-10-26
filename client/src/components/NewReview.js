@@ -40,7 +40,7 @@ const NewReview = () => {
     }
 
     function parseCourseSubject(data) {
-        const subject = data.substring(0, 3)
+        const subject = data.substring(0, 4)
         const course = data.substring(4, 8)
         const arr = [subject, course]
         return arr
@@ -75,7 +75,6 @@ const NewReview = () => {
             <input type="submit" value="Submit" onClick={submitReview}></input>
         </form>
     </div>
-    )
 };
 
 export default NewReview;
