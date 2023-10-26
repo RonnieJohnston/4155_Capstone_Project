@@ -14,16 +14,25 @@ function Home() {
 
     return (
         <body className='page'>
-        <div>
-            <table>
+        <a className ='charlotte-logo' href='/'>
+            <img
+                src='images/charlotte_logo_white.png'
+                width='350'
+                height='75'
+                alt='declassified logo'
+            />
+        </a>
+        <div className='table-responsive'>
+        <div className='vertical-center '>
+            <table className='table table-dark table-striped table-hover container-lg'>
                 <thead>
                     <tr>
                         <th>CRN #</th>
-                        <th>Subject</th>
-                        <th>Course</th>
-                        <th>Rating</th>
-                        <th>Interest</th>
-                        <th>Usefulness</th>
+                        <th>SUBJECT</th>
+                        <th>COURSE</th>
+                        <th>RATING</th>
+                        <th>INTEREST</th>
+                        <th>USEFULNESS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,6 +89,8 @@ function Home() {
                 </tbody>
             </table>
         </div>
+        </div>
+
         </body>
     );
 }
