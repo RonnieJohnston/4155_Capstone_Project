@@ -11,6 +11,8 @@ const Logout = () => {
             navigate('/');
         }, 2000);
 
+        sessionStorage.removeItem('username')
+
         // Cleanup the timeout to avoid memory leaks
         return () => clearTimeout(timeoutId);
     }, []); // Empty dependency array ensures this effect runs once after the initial render
