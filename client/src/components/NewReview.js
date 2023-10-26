@@ -16,10 +16,10 @@ const NewReview = () => {
         var stuff = parseCourseSubject(coursesubject)
         var subject = stuff[0]
         var course = stuff[1]
-        const username = "TESTUSER"
-        const date = "2023-10-25T19:00"
-        const likes = 0
-        const dislikes = 0
+        var username = "TESTUSER"
+        var date = "2023-10-25T19:00"
+        var likes = 0
+        var dislikes = 0
 
         try {
             console.log(subject, course, username, date, likes, dislikes, rating, interest, review)
