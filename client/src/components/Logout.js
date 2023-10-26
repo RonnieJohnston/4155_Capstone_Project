@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 
 const Logout = () => {
@@ -8,8 +8,10 @@ const Logout = () => {
     useEffect(() => {
         // Wait for 2 seconds (2000 milliseconds) before redirecting to home
         const timeoutId = setTimeout(() => {
-            navigate('/');
+            navigate('/'); 
         }, 2000);
+
+        sessionStorage.removeItem('username')
 
         // Cleanup the timeout to avoid memory leaks
         return () => clearTimeout(timeoutId);

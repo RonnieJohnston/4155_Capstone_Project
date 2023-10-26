@@ -18,7 +18,7 @@ function Login() {
                 })
                 .then(res => {
                     if (res.data === "Exist") {
-                        localStorage.setItem('username', username);
+                        sessionStorage.setItem('username', username)
                         history("/") //{state:{id:username}}
                     }
                     else if (res.data === "Not exist") {
@@ -45,9 +45,6 @@ function Login() {
                 <input className="form-control mb-4" type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
                 <button type="submit" className="btn btn-dark" onClick={Authorization}>Submit</button>
             </form>
-
-            <br />
-            <Link to="/register"> Register Here </Link>
         </div>
         </body>
     )

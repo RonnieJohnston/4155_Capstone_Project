@@ -5,18 +5,25 @@ import '../assets/css/App.css';
 
 function Home() {
     const [classes, setClasses] = useState([]);
-    const username = localStorage.getItem('username')
+    const username = sessionStorage.getItem('username')
 
-    useEffect(() => {
+   /* useEffect(() => {
        axios.get('http://localhost:8000/getClasses')
        .then(response => setClasses(response.data))
        .catch(err => console.log(err))
+
+       setLoading(false)
     }, []);
+8*/
 
     return (
         <body className='page'>
-        <div className='user-greeting'>
-            {username ? `Welcome, ${username}!` : 'Welcome!'}
+        <div>
+            {username ? (
+                <p>Welcome {username} </p>
+            ) : (
+                <p>Welcome!</p>
+            )} 
         </div>
         <a className ='charlotte-logo' href='/'>
             <img
