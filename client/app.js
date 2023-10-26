@@ -56,8 +56,8 @@ app.post("/register", async (req, res) => {
     res.json("Fail")
   }
 })
-
-app.post("/newReview"), async (req, res, next) =>{
+/* this function made me cry ;-;
+app.post("/neweview"), async (req, res, next) =>{
   console.log("!!!!!")
   const { subject, course, username, date, likes, dislikes, rating, interest, review } = req.body
   const data = {
@@ -72,6 +72,7 @@ app.post("/newReview"), async (req, res, next) =>{
     review: review
   }
   try {
+    res.json("Posted")
     await collection.postsCollection.insertMany([data])
   } catch(e) {
     res.json("Fail")
@@ -86,7 +87,17 @@ app.post("/newReview"), async (req, res, next) =>{
     alert("Failed to save")
     next(err)
   }) */
-}
+
+  /*
+  let review = new model(req.body)
+  review.save()
+  .then((review) => {
+    res.redirect('/')
+  })
+  .catch(err => {
+    alert("Failed to save")
+    next(err)
+  }) */
 
 app.listen(8000, () => {
   console.log("Port connected");

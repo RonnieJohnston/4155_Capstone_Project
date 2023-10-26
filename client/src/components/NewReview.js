@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+const cors = require("cors");
 
 const NewReview = () => {
 
@@ -27,10 +28,7 @@ const NewReview = () => {
                 {
                     subject, course, username, date, likes, dislikes, rating, interest, review
                 })
-                .then(res => {
-                    console.log("!!!")
-                    history("/")
-                })
+                .then(history('/'))
                 .catch(res => {
                     alert("Wrong details")
                     console.log(e)
