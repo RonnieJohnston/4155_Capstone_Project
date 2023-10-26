@@ -18,7 +18,8 @@ function Login() {
                 })
                 .then(res => {
                     if (res.data === "Exist") {
-                        history("/", {state:{id:username}})
+                        localStorage.setItem('username', username);
+                        history("/") //{state:{id:username}}
                     }
                     else if (res.data === "Not exist") {
                         alert("User hasn't signed in")

@@ -5,6 +5,7 @@ import '../assets/css/App.css';
 
 function Home() {
     const [classes, setClasses] = useState([]);
+    const username = localStorage.getItem('username')
 
     useEffect(() => {
        axios.get('http://localhost:8000/getClasses')
@@ -14,6 +15,9 @@ function Home() {
 
     return (
         <body className='page'>
+        <div className='user-greeting'>
+            {username ? `Welcome, ${username}!` : 'Welcome!'}
+        </div>
         <a className ='charlotte-logo' href='/'>
             <img
                 src='images/charlotte_logo_white.png'

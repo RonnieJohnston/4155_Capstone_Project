@@ -66,6 +66,7 @@ a:hover{
 .table-responsive {
     height: 800px;
     overflow-y: auto;
+
 }
 
 .charlotte-logo {
@@ -104,4 +105,10 @@ a:hover{
     padding-left: 20px;
 }
 
-
+.user-greeting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    font-size: 24px;
+}

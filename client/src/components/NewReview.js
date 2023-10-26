@@ -1,46 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+const cors = require("cors");
 
 const NewReview = () => {
 
-    const url = "" //mongo url
-    const [data, setData] = useState({
-        course: "",
-        rating: "",
-        comments: ""
-    })
+    const [coursesubject, setCourseSubject] = useState('')
+    const [rating, setRating] = useState('')
+    const [interest, setInterest] = useState('')
+    const [review, setReview] = useState('')
+    const history = useNavigate()
 
-    function handle(event) {
-        const newData = {...data}
-        newData[event.target.id] = event.target.value
-        setData(newData)
-        console.log(newData)
+    async function submitReview(e) {
+        e.preventDefault()
+
+        var stuff = parseCourseSubject(coursesubject)
+        var subject = stuff[0]
+        var course = stuff[1]
+        var username = "TESTUSER"
+        var date = "2023-10-25T19:00"
+        var likes = 0
+        var dislikes = 0
+
+        try {
+            console.log(subject, course, username, date, likes, dislikes, rating, interest, review)
+            await axios.post("http://localhost:8000/newReview",
+                {
+                    subject, course, username, date, likes, dislikes, rating, interest, review
+                })
+                .then(history('/'))
+                .catch(res => {
+                    alert("Wrong details")
+                    console.log(e)
+                })
+        }
+        catch (e) {
+            console.log(e)
+        }
     }
 
-    function submit(event) {
-        event.preventDefault()
-        // need mongodb information to post form submission
+    function parseCourseSubject(data) {
+        const subject = data.substring(0, 3)
+        const course = data.substring(4, 8)
+        const arr = [subject, course]
+        return arr
     }
 
-    return (
-    <div className='container-xl border mt-5'>
-        <h2 className='mt-3'>Create a New Review</h2>
-        <form onSubmit={(event)=> submit(event)}>
-            <label for="course">Course:</label>
-            <select className="form-select mb-4" id="course" value={data.course} onChange={(event)=> handle(event)} name="course" required>
-                <option value="itis3135">ITIS 3135</option>
+
+    return <div>
+        <h2>Create a new Review</h2>
+        <form action="POST">
+            <label for="coursesubject">Course and Subject:</label>
+            <select id="coursesubject" onChange={(event)=> {setCourseSubject(event.target.value)}} name="coursesubject" required>
                 <option value="itis3300">ITIS 3300</option>
                 <option value="itsc1100">ITSC 1100</option>
                 <option value="itsc3200">ITSC 3200</option>
+                <option value="itcs4155">ITCS 4155</option>
+                <option value="itis4166">ITIS 4166</option>
+                <option value="itcs1212">ITCS 1212</option>
+                <option value="itcs1213">ITCS 1213</option>
+                <option value="itis4221">ITIS 4221</option>
+                <option value="itis3135">ITIS 3135</option>
             </select>
             <label for="rating">Rate out of five stars: </label>
-            <input className="form-control mb-4" type="number" name="rating" value={data.rating} id="rating" onChange={(event)=> handle(event)} min="0" max="5" required></input>
-            <label for="comments">Enter Comments:</label>
-            <textarea className="form-control mb-4" id="comments" value={data.comments} name="comments" onChange={(event)=> handle(event)} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
-            <button type="submit" className="btn btn-dark mb-4">Submit</button>
-
+            <input type="number" name="rating" id="rating" onChange={(event)=> {setRating(event.target.value)}} min="0" max="5" required></input>
+            <br></br>
+            <label for="interest">Interest from 0 to 5:</label>
+            <input type="number" name="interest" id="interest" onChange={(event)=> {setInterest(event.target.value)}} min="0" max="5" required></input>
+            <br></br>
+            <label for="review">Enter Comments:</label>
+            <br></br>
+            <textarea id="review" name="review" onChange={(event)=> {setReview(event.target.value)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
+            <br></br>
+            <input type="submit" value="Submit" onClick={submitReview}></input>
         </form>
     </div>
-    )
 };
 
 export default NewReview;

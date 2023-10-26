@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const UserPostsSchema = new mongoose.Schema
 ({
+    subject:
+    {
+        type: String,
+        required: true,
+        ref: 'UserClassesSchema'
+    },
     course:
     {
         type: String,
@@ -11,20 +17,30 @@ const UserPostsSchema = new mongoose.Schema
     username:
     {
         type: String,
-        required: true,
+        //required: true,
         ref: 'UserCredentialSchema'
     },
     date:
     {
         type: String,
-        required: true
+        //required: true
     },
     likes:
     {
         type: Number,
-        required: true
+        //required: true
     },
     dislikes:
+    {
+        type: Number,
+        //required: true
+    },
+    rating:
+    {
+        type: Number,
+        required: true
+    },
+    interest:
     {
         type: Number,
         required: true
@@ -32,7 +48,7 @@ const UserPostsSchema = new mongoose.Schema
     review:
     {
         type: String,
-        required: true
+        //required: true
     }
 });
 
