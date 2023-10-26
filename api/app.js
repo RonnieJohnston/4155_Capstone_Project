@@ -12,6 +12,7 @@ const usersRouter = require('./routes/users');
 const reviewRoutes  = require('./routes/reviewRoutes');
 
 const UserCredentialModel = require('./models/UserCredentialModel')
+const UserPostsModel = require('./models/UserPostsModel')
 
 mongoose.connect('mongodb://127.0.0.1:27017/UserData', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -80,6 +81,28 @@ app.post('/register', async (req, res) => {
     res.json('Fail');
   }
 });
+
+app.post('/newReview', async (req, res) => {
+  console.log('!!!!')
+  const { subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
+  const data = {
+    subject: subject,
+    course: course,
+    professor: professor,
+    username: username,
+    date: date,
+    likes: likes,
+    dislikes: dislikes,
+    rating: rating,
+    interest: interest,
+    difficulty: difficulty,
+    review: review,
+    textbook: textbook
+  };
+  await UserPostsModel.insertMany([data]);
+  console.log("wowie zowie")
+})
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
