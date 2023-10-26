@@ -50,11 +50,11 @@ const NewReview = () => {
     }
 
 
-    return <div>
+    return <div className='container-xl border mt-5'>
         <h2>Create a new Review</h2>
-        <form action="POST">
-            <label for="coursesubject">Course and Subject:</label>
-            <select id="coursesubject" onChange={(event)=> {setCourseSubject(event.target.value)}} name="coursesubject" required>
+        <form action="POST" className='row g-2'>
+            <label for="coursesubject" className='form-label'>Course and Subject:</label>
+            <select id="coursesubject" className='form-select' onChange={(event)=> {setCourseSubject(event.target.value)}} name="coursesubject" required>
                 <option value="itis3300">ITIS 3300</option>
                 <option value="itsc1100">ITSC 1100</option>
                 <option value="itsc3200">ITSC 3200</option>
@@ -66,25 +66,38 @@ const NewReview = () => {
                 <option value="itis3135">ITIS 3135</option>
             </select>
             <br></br>
-            <label for="professor">Professor Name:</label>
-            <input type="text" name="professor" id="professor" onChange={(event)=> {setProfessor(event.target.value)}} required></input>
+            <div className='col'
+            <label for="professor" className='form-label'>Professor Name:</label>
+            <input type="text" name="professor" id="professor" className='form-control' onChange={(event)=> {setProfessor(event.target.value)}} required></input>
+            </div>
+            <br></br>   
+            <div className='col'>
+            <label for="rating" className='form-label'>Rate out of five stars: </label>
+            <input type="number" name="rating" id="rating" className='form-control' onChange={(event)=> {setRating(event.target.value)}} min="0" max="5" required></input>
+            </div>
             <br></br>
-            <label for="rating">Rate out of five stars: </label>
-            <input type="number" name="rating" id="rating" onChange={(event)=> {setRating(event.target.value)}} min="0" max="5" required></input>
+            <div className='col'>
+            <label for="interest" className='form-label'>Interest from 0 to 5:</label>
+            <input type="number" name="interest" id="interest" className='form-control' onChange={(event)=> {setInterest(event.target.value)}} min="0" max="5" required></input>
+            </div>
             <br></br>
-            <label for="interest">Interest from 0 to 5:</label>
-            <input type="number" name="interest" id="interest" onChange={(event)=> {setInterest(event.target.value)}} min="0" max="5" required></input>
+            <div className='col'>
+            <label for="difficulty" className='form-label'>Difficulty from 0 (Easy) to 10 (Hard)</label>
+            <input type="number" name="difficulty" id="difficulty" className='form-control' onChange={(event)=> {setDifficulty(event.target.value)}} min="0" max="10" required></input>
+            </div>
             <br></br>
-            <label for="difficulty">Difficulty from 0 (Easy) to 10 (Hard)</label>
-            <input type="number" name="difficulty" id="difficulty" onChange={(event)=> {setDifficulty(event.target.value)}} min="0" max="10" required></input>
+            <div className='col'>
+            <label for="review" className='form-label'>Enter Comments:</label>
+            <textarea id="review" name="review" className='form-control' onChange={(event)=> {setReview(event.target.value)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
+            </div>
             <br></br>
-            <label for="review">Enter Comments:</label>
-            <br></br>
-            <textarea id="review" name="review" onChange={(event)=> {setReview(event.target.value)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
-            <br></br>
-            <label for="texbook">Textbook(s):</label>
-            <textarea id="textbook" name="textbook" onChange={(event) => {setTextbook(event.target.value)}} rows="5" cols="30" placeholder="Textbook(s)..." required></textarea>
+            <div className='col'>
+            <label for="texbook" className='form-label'>Textbook(s):</label>
+            <textarea id="textbook" name="textbook" className='form-control' onChange={(event) => {setTextbook(event.target.value)}} rows="5" cols="30" placeholder="Textbook(s)..." required></textarea>
+            </div>
+            <div className='col-auto'>
             <input type="submit" value="Submit" onClick={submitReview}></input>
+            </div>
         </form>
     </div>
 };
