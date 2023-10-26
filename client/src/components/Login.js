@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
+import '../assets/css/App.css'
 
 function Login() {
     const [username, setUsername] = useState('')
@@ -34,6 +35,7 @@ function Login() {
     }
 
     return(
+        <body className='page'>
         <div className="Login container-xl border mt-5">
             <h1 className="mt-3"> Login </h1>
 
@@ -46,6 +48,7 @@ function Login() {
             <br />
             <Link to="/register"> Register Here </Link>
         </div>
+        </body>
     )
 }
 
