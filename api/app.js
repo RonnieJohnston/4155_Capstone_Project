@@ -83,17 +83,20 @@ app.post('/register', async (req, res) => {
 
 app.post('/newReview', async (req, res) => {
   console.log('!!!!')
-  const { subject, course, username, date, likes, dislikes, rating, interest, review } = req.body;
+  const { subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
   const data = {
     subject: subject,
     course: course,
+    professor: professor,
     username: username,
     date: date,
     likes: likes,
     dislikes: dislikes,
     rating: rating,
     interest: interest,
-    review: review
+    difficulty: difficulty,
+    review: review,
+    textbook: textbook
   };
   await UserPostsModel.insertMany([data]);
   console.log("wowie zowie")

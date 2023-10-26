@@ -8,7 +8,10 @@ const NewReview = () => {
     const [coursesubject, setCourseSubject] = useState('')
     const [rating, setRating] = useState('')
     const [interest, setInterest] = useState('')
+    const [difficulty, setDifficulty] = useState('')
     const [review, setReview] = useState('')
+    const [professor, setProfessor] = useState('')
+    const [textbook, setTextbook] = useState('')
     const history = useNavigate()
 
     async function submitReview(e) {
@@ -23,10 +26,10 @@ const NewReview = () => {
         var dislikes = 0
 
         try {
-            console.log(subject, course, username, date, likes, dislikes, rating, interest, review)
+            console.log(subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook)
             await axios.post("http://localhost:8000/newReview",
                 {
-                    subject, course, username, date, likes, dislikes, rating, interest, review
+                    subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook
                 })
                 .then(history('/'))
                 .catch(res => {
@@ -62,22 +65,38 @@ const NewReview = () => {
                 <option value="itis4221">ITIS 4221</option>
                 <option value="itis3135">ITIS 3135</option>
             </select>
+            <br></br>
+            <div className='col'
+            <label for="professor" className='form-label'>Professor Name:</label>
+            <input type="text" name="professor" id="professor" className='form-control' onChange={(event)=> {setProfessor(event.target.value)}} required></input>
+            </div>
+            <br></br>   
             <div className='col'>
             <label for="rating" className='form-label'>Rate out of five stars: </label>
             <input type="number" name="rating" id="rating" className='form-control' onChange={(event)=> {setRating(event.target.value)}} min="0" max="5" required></input>
-
             </div>
+            <br></br>
             <div className='col'>
             <label for="interest" className='form-label'>Interest from 0 to 5:</label>
             <input type="number" name="interest" id="interest" className='form-control' onChange={(event)=> {setInterest(event.target.value)}} min="0" max="5" required></input>
             </div>
-
+            <br></br>
+            <div className='col'>
+            <label for="difficulty" className='form-label'>Difficulty from 0 (Easy) to 10 (Hard)</label>
+            <input type="number" name="difficulty" id="difficulty" className='form-control' onChange={(event)=> {setDifficulty(event.target.value)}} min="0" max="10" required></input>
+            </div>
+            <br></br>
+            <div className='col'>
             <label for="review" className='form-label'>Enter Comments:</label>
-            <br></br>
             <textarea id="review" name="review" className='form-control' onChange={(event)=> {setReview(event.target.value)}} rows="10" cols="30" placeholder="Enter comments..." required minLength="10"></textarea>
+            </div>
             <br></br>
+            <div className='col'>
+            <label for="texbook" className='form-label'>Textbook(s):</label>
+            <textarea id="textbook" name="textbook" className='form-control' onChange={(event) => {setTextbook(event.target.value)}} rows="5" cols="30" placeholder="Textbook(s)..." required></textarea>
+            </div>
             <div className='col-auto'>
-            <button type="submit" value="Submit" className="btn btn-dark mb-3" onClick={submitReview}>Submit</button>
+            <input type="submit" value="Submit" onClick={submitReview}></input>
             </div>
         </form>
     </div>
