@@ -50,7 +50,7 @@ const NewReview = () => {
     }
 
 
-    return <div className='container-xl border mt-5'>
+    return <body className='page'><div className='container-xl border mt-5'>
         <h2>Create a new Review</h2>
         <form action="POST" className='row g-2'>
             <label for="coursesubject" className='form-label'>Course and Subject:</label>
@@ -99,7 +99,7 @@ const NewReview = () => {
             <input type="submit" value="Submit" onClick={submitReview}></input>
             </div>
         </form>
-    </div>
+    </div></body>
 };
 
 export default NewReview;
