@@ -22,7 +22,7 @@ function Register() {
                     }
                     else if (res.data == "Not exist") {
                         sessionStorage.setItem('username', username)
-                        history("/")
+                        history("/home")
                     }
                 })
                 .catch(res => {
