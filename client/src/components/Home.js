@@ -33,14 +33,17 @@ function Home() {
                 <p>Welcome!</p>
             )} 
         </div>
-        <a className ='charlotte-logo' href='/'>
-            <img
-                src='images/charlotte_logo_white.png'
-                width='350'
-                height='75'
-                alt='declassified logo'
-            />
-        </a>
+        <div className = 'logo-overlay'>
+            <a className ='charlotte-logo' href='/'>
+                <img
+                    src='images/charlotte_logo_white.png'
+                    width='350'
+                    height='75'
+                    alt='declassified logo'
+                />
+            </a>
+        </div>
+        <div className='table-responsive'>
         <div className='table-container'>
             <table className='table table-dark table-striped table-hover container-lg'>
                 <thead>

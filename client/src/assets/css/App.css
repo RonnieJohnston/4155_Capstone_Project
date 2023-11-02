@@ -13,6 +13,17 @@
     padding-left: 10px;
 }
 
+.logo-overlay {
+    background-color:#262626;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.charlotte-logo a{
+    position: relative;
+}
+
 .navbar-links {
     list-style: none;
     display: flex;
@@ -62,8 +73,8 @@ a:hover{
 
 .charlotte-logo {
     position: absolute;
-    top: 150px;
-    left:180px;
+    top: 70px;
+    left:40px;
     z-index:1;
 }
 
