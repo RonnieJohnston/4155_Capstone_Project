@@ -13,6 +13,13 @@
     padding-left: 10px;
 }
 
+.logo-overlay {
+    background-color:#262626;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
 .charlotte-logo a{
     position: relative;
 }
@@ -28,7 +35,6 @@
 .navbar-links li {
     margin: 0 10px;
 }
-
 
 a:link {
     color: #FFFFFF;
@@ -46,33 +52,29 @@ a:hover{
     background-color: black;
     color:#FFFFFF;
     margin: 0;
-    padding:0px;
+    padding:0;
     position: relative;
     font-family: "JetBrains Mono";
     font-size: large;
-}
-
-.vertical-center {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    max-height: 100px;
+}
+
+.table-container {
+    max-height: 400px;
     overflow-y: auto;
-    padding-top: 200px;
+    width: 80%;
+    margin: 180px auto 0;
 }
 
 .table-responsive {
-    height: 800px;
     overflow-y: auto;
-
 }
 
 .charlotte-logo {
     position: absolute;
-    top: 150px;
-    left:180px;
+    top: 70px;
+    left:40px;
     z-index:1;
 }
 

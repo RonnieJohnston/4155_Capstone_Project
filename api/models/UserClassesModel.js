@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 
 const UserClassesSchema = new mongoose.Schema
 ({
-    crnNumber:
-    {
-        type: String,
-        required: true,
-    },
     subject:
     {
         type: String,
@@ -17,20 +12,9 @@ const UserClassesSchema = new mongoose.Schema
         type: String,
         require: true,
     },
-    rating:
-    {
+    courseName: {
         type: String,
-        require: true,
-    },
-    interest:
-    {
-        type: String,
-        require: true,
-    },
-    usefulness:
-    {
-        type: String,
-        require: true,
+        required: true,
     },
 });
 

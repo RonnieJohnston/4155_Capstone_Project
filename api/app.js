@@ -13,6 +13,7 @@ const reviewRoutes  = require('./routes/reviewRoutes');
 
 const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
+const UserClassesModel = require('./models/UserClassesModel')
 
 mongoose.connect('mongodb://127.0.0.1:27017/UserData', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -42,6 +43,25 @@ app.use('/reviews', reviewRoutes);
 
 app.get('/', cors(), (req, res) => {
 
+});
+
+app.get('/home', async (req, res) => {
+  try {
+    const { subject, course, courseName } = req.body;
+
+    const query = {};
+
+    if (subject) query.subject = subject;
+    if (course) query.course = course;
+    if (courseName) query.courseName = courseName;
+
+    const classes = await UserClassesModel.find(query);
+
+    res.json(classes);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({error: 'Internal server error'});
+  }
 });
 
 app.post('/', async (req, res) => {
