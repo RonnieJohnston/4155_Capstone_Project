@@ -3,7 +3,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 
 const Logout = () => {
     const navigate=useNavigate()
-    const username=sessionStorage.getItem('username')
+    const email=sessionStorage.getItem('email')
 
     useEffect(() => {
         // Wait for 2 seconds (2000 milliseconds) before redirecting to home
@@ -11,7 +11,7 @@ const Logout = () => {
             navigate('/'); 
         }, 2000);
 
-        sessionStorage.removeItem('username')
+        sessionStorage.removeItem('email')
 
         // Cleanup the timeout to avoid memory leaks
         return () => clearTimeout(timeoutId);
@@ -19,7 +19,7 @@ const Logout = () => {
 
     return (
         <div>
-            <p> Logging {username} out, returning to home... </p>
+            <p> Logging {email} out, returning to home... </p>
         </div>
       );
 };

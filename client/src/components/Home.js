@@ -5,7 +5,7 @@ import '../assets/css/App.css';
 
 function Home() {
     const [classes, setClasses] = useState([]);
-    const username = sessionStorage.getItem('username')
+    const email = sessionStorage.getItem('email');
 
     useEffect(() => {
         axios.get('http://localhost:8000/home', {
@@ -27,8 +27,8 @@ function Home() {
     return (
         <body className='page'>
         <div>
-            {username ? (
-                <p>Welcome {username} </p>
+            {email ? (
+                <p>Welcome {email} </p>
             ) : (
                 <p>Welcome!</p>
             )} 

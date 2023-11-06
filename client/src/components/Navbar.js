@@ -4,7 +4,7 @@ import '../assets/css/App.css';
 import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-    const username = sessionStorage.getItem('username')
+    const email = sessionStorage.getItem('email')
     const location=useLocation()
 
     return (
@@ -18,7 +18,7 @@ const Navbar = () => {
                 />
             </a>
             <ul className='navbar-links'>
-                {location.state && location.state.id || username ? (
+                {location.state && location.state.id || email ? (
                     <ul className='navbar-links'>
                         <li><Link to='/logout'>Logout</Link></li>
                         <li><Link to='/account'>Account</Link></li>
