@@ -4,7 +4,9 @@ import { useNavigate, Link } from "react-router-dom"
 import '../assets/css/App.css'
 
 function Register() {
-    const [username, setUsername] = useState('')
+    const [first, setFirst] = useState('')
+    const [last, setLast] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const history = useNavigate()
 
@@ -14,14 +16,14 @@ function Register() {
         try {
             await axios.post("http://localhost:8000/register",
                 {
-                    username, password
+                    first, last, email, password
                 })
                 .then(res => {
                     if (res.data == "Exist") {
                         alert("User already exists")
                     }
                     else if (res.data == "Not exist") {
-                        sessionStorage.setItem('username', username)
+                        sessionStorage.setItem('email', email)
                         history("/home")
                     }
                 })
@@ -43,7 +45,13 @@ function Register() {
             <h1 className="mt-3"> Register </h1>
             <form action="POST">
                 <div className="mb-3"> 
-                <input type="text"className="form-control mb-4" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
+                <input type="text"className="form-control mb-4" onChange={(e) => {setFirst(e.target.value)}} placeholder="First Name"/>
+                </div>
+                <div className="mb-3"> 
+                <input type="text"className="form-control mb-4" onChange={(e) => {setLast(e.target.value)}} placeholder="Last Name"/>
+                </div>
+                <div className="mb-3"> 
+                <input type="email"className="form-control mb-4" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
                 </div>
                 <div className="mb-3"> 
                 <input type="password" className="form-control" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>

@@ -65,13 +65,13 @@ app.get('/home', async (req, res) => {
 });
 
 app.post('/', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const isUsername = await UserCredentialModel.findOne({ username: username });
+    const isEmail = await UserCredentialModel.findOne({ email: email });
     const isPassword = await UserCredentialModel.findOne({ password: password });
 
-    if (isUsername && isPassword) {
+    if (isEmail && isPassword) {
       res.json('Exist');
     } else {
       res.json('Not exist');
@@ -82,13 +82,15 @@ app.post('/', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
+  const { first, last, email, password } = req.body;
   const data = {
-    username: username,
+    first: first,
+    last: last,
+    email: email,
     password: password,
   };
   try {
-    const check = await UserCredentialModel.findOne({ username: username });
+    const check = await UserCredentialModel.findOne({ email: email });
 
     if (check) {
       res.json('Exist');

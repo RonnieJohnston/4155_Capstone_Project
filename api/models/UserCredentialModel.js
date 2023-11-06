@@ -1,7 +1,15 @@
 const mongoose = require("mongoose");
 
 const UserCredentialSchema = new mongoose.Schema({
-    username: {
+    first: {
+        type: String,
+        required: true
+    },
+    last: {
+        type: String,
+        required: true
+    },
+    email: {
         type: String,
         required: true
     },

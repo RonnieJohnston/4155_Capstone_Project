@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom"
 import '../assets/css/App.css'
 
 function Login() {
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const history = useNavigate()
 
@@ -14,11 +14,11 @@ function Login() {
         try {
             await axios.post("http://localhost:8000/",
                 {
-                    username, password
+                    email, password
                 })
                 .then(res => {
                     if (res.data === "Exist") {
-                        sessionStorage.setItem('username', username)
+                        sessionStorage.setItem('email', email)
                         history("/home") //{state:{id:username}}
                     }
                     else if (res.data === "Not exist") {
@@ -41,7 +41,7 @@ function Login() {
             <h1 className="mt-3"> Login </h1>
 
             <form action="POST">
-                <input className="form-control mb-4" type="text" onChange={(e) => {setUsername(e.target.value)}} placeholder="Username"/>
+                <input className="form-control mb-4" type="email" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
                 <input className="form-control mb-4" type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
                 <button type="submit" className="btn btn-dark" onClick={Authorization}>Submit</button>
             </form>
