@@ -118,8 +118,19 @@ app.post('/newReview', async (req, res) => {
     review: review,
     textbook: textbook
   };
-  await UserPostsModel.insertMany([data]);
-})
+  try{
+    const check = await UserClassesModel.findOne({subject: subject, course: course});
+
+    if (check) {
+      res.json('Exist');
+      await UserPostsModel.insertMany([data]);
+    } else {
+      res.json('Not Exist');
+    }
+  } catch (e) {
+    res.json('Fail');
+  }
+});
 
 
 // catch 404 and forward to error handler
