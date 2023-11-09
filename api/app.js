@@ -104,6 +104,24 @@ app.post('/register', async (req, res) => {
   }
 });
 
+app.get('/course/:id', async (req, res) => {
+  const courseId = req.params.id;
+
+  try {
+    // Find the course details based on the provided course ID
+    const courseDetails = await UserClassesModel.findById(courseId);
+
+    if (courseDetails) {
+      res.json(courseDetails);
+    } else {
+      res.status(404).json({ error: 'Course not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.post('/newReview', async (req, res) => {
   const { subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
   const data = {
