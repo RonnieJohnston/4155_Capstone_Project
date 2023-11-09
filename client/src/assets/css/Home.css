@@ -4,32 +4,35 @@
 *
  */
 
-.logo-overlay {
-    background-color:#262626;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.charlotte-logo a{
-    position: relative;
-}
-
-.table-container {
+.table-container{
     max-height: 500px;
     overflow-y: auto;
     width: 80%;
-    margin: 180px auto 0;
+    margin: 10px auto;
 }
 
 .table-responsive {
     overflow-y: auto;
 }
 
+.above-table {
+    display: inline-flex;
+}
+
+.welcome-message {
+    text-align: center;
+    padding-top: 40px;
+
+}
+
 .charlotte-logo {
-    padding-top: 50px;
-    position: absolute;
-    top: 70px;
-    left:40px;
-    z-index:1;
+    margin-top: 70px;
+    margin-left: 185px;
+    margin-right: 800px;
+    align-content: center;
+}
+
+/*search bar styling*/
+.search-bar {
+    margin-top: 120px;
 }
