@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes} from 'react-router-dom'
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import Account from './components/Account';
 import Login from './components/Login';
@@ -9,13 +10,10 @@ import NewReview from './components/NewReview';
 import Logout from './components/Logout';
 import Welcome from './components/Welcome';
 
-
-import './App.css';
-
 function App() {
 
     return (
-        <div>
+        <div className='page-body'>
             <Navbar />
             <Routes>
                 <Route path='/home' element={<Home />} />
@@ -26,6 +24,7 @@ function App() {
                 <Route path='/register' element={<Register />} />
                 <Route path='/newReview' element={<NewReview />} />
             </Routes>
+            <Footer/>
         </div>
 
     );

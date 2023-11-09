@@ -4,21 +4,21 @@ import '../assets/css/App.css';
 
 const Footer = () => {
     return (
-        <nav className='navbar'>
-            <a className ='logo-image' href='/'>
+        <nav className='footer'>
+            <a className ='footer-logo' href='/home'>
                 <img
-                    src='images/Logo.png'
-                    width='794'
-                    height='32'
+                    src='images/DC-icon.png'
+                    width='60'
                     alt='declassified logo'
                 />
             </a>
-            <ul className='navbar-links'>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/account'>Account</Link></li>
-                <li><Link to='/login'>Login</Link></li>
-                <li><Link to='/register'>Register</Link></li>
-                <li><Link to='/newReview'>Review Course</Link></li>
+
+            <ul className='footer-links'>
+                <li><Link to='/About'>About Declassified</Link></li>
+                <li><Link to='/Devs'>Meet the Developers</Link></li>
+                <li><Link to='/Privacy'>Privacy Policy</Link></li>
+                <li><Link to='/Ethics'>Code of Ethics</Link></li>
+                <li><Link to='/Contact'>Contact Us</Link></li>
             </ul>
         </nav>
     );

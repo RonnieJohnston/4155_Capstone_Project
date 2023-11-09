@@ -1,116 +1,118 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+/* body page styling - consistent across all pages */
+html, body {
     background-color: #262626;
-    font-family: "JetBrains Mono";
+}
+
+.page-body {
+    height: 100vh;
+    background-color: #262626;
+}
+
+.page {
+    height: auto;
+    background-color: #262626;
+    color:#FFFFFF;
+    margin: 0;
+    padding:0;
+    font-family: "Lantinghei SC", serif;
     font-size: large;
+    overflow-x: hidden;
 }
 
-.logo-image img {
-    vertical-align: middle;
-    padding-left: 10px;
+/*
+*
+* NAVBAR STYLING BELOW - Consistent across all pages
+*
+ */
+
+/* Navbar Styling - Consistent across all pages */
+.navbar {
+    background-color: #262626;
+    font-family: "Lantinghei SC", serif;
+    font-size: medium;
+    top: 0;
+    z-index: 100;
+    position: sticky !important;
+    box-shadow: 0 3px 30px 5px #FFFFFF;
 }
 
-.logo-overlay {
-    background-color:#262626;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
+/* Navbar Styling - Consistent across all pages */
+/* Declassified Logo Styling - Welcome Page */
+.DC-logo {
+    width: 375px;
+    padding: 8px 0 8px 25px;
 }
 
-.charlotte-logo a{
-    position: relative;
-}
-
+/* Navbar Styling - Consistent across all pages */
 .navbar-links {
     list-style: none;
-    display: flex;
     align-items: center;
-    margin: 0px;
-    padding: 0px;
+    display: flex;
+    margin: 0;
+    padding-right: 40px;
 }
 
+/* Navbar Styling - Consistent across all pages */
+.navbar-links ul {
+    padding: 0;
+}
+
+/* Navbar Styling - Consistent across all pages */
 .navbar-links li {
-    margin: 0 10px;
+    display: inline-block;
+    padding-left: 25px;
 }
 
 a:link {
     color: #FFFFFF;
     text-decoration: none;
 }
+
 a:visited{
     color: #FFFFFF;
 }
+
 a:hover{
-    color: aqua;
+    color: #22c700;
 }
 
-.page {
-    min-height: 100vh;
-    background-color: black;
-    color:#FFFFFF;
+
+/*
+*
+* FOOTER STYLING BELOW - Consistent across all pages
+*
+ */
+
+.footer {
+    display: flex;
+    align-items: center;
+    background-color: #262626;
+    font-family: "Lantinghei SC", serif;
+    font-size: small;
+    height: 60px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -1px 20px 2px #FFFFFF;
+}
+
+.footer-logo {
+    flex: 1; /* Make the logo flex to the left */
+    padding-left: 30px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
     margin: 0;
-    padding:0;
-    position: relative;
-    font-family: "JetBrains Mono";
-    font-size: large;
-    display: flex;
-    flex-direction: column;
+    padding-right: 40px;
 }
 
-.table-container {
-    max-height: 400px;
-    overflow-y: auto;
-    width: 80%;
-    margin: 180px auto 0;
+.footer-links ul {
+    padding: 0;
 }
 
-.table-responsive {
-    overflow-y: auto;
-}
-
-.charlotte-logo {
-    position: absolute;
-    top: 70px;
-    left:40px;
-    z-index:1;
-}
-
-.welcome-page-contents {
-    width: 100vw;
-    height: 100vh;
-    /* Aligns the children items in a row direction */
-    display: flex;
-}
-
-.welcome-page-text {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: left; /* Keeps text aligned to the left */
-    padding: 0 20px; /* Add padding to create space and keep text aligned left */
-}
-
-.welcome-page-icon {
-    width: 60%;
-    display: flex;
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
-}
-
-.DC-icon {
-    width: 80%;
-    padding-left: 20px;
-}
-
-.user-greeting {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    font-size: 24px;
+.footer-links li {
+    padding-left: 25px; /* Add some spacing between links */
 }
