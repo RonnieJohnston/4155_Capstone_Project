@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../assets/css/App.css';
+import '../assets/css/Home.css';
 
 function Home() {
     const [classes, setClasses] = useState([]);
