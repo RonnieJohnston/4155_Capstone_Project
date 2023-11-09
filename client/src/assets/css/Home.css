@@ -1,0 +1,35 @@
+/*
+*
+* HOME PAGE STYLING BELOW
+*
+ */
+
+.logo-overlay {
+    background-color:#262626;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.charlotte-logo a{
+    position: relative;
+}
+
+.table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 80%;
+    margin: 180px auto 0;
+}
+
+.table-responsive {
+    overflow-y: auto;
+}
+
+.charlotte-logo {
+    padding-top: 50px;
+    position: absolute;
+    top: 70px;
+    left:40px;
+    z-index:1;
+}
