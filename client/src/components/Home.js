@@ -56,7 +56,12 @@ function Home() {
                 <tbody>
                      {classes.map(classItem => (
                         <tr key={classItem._id}>
-                            <td><Link to='/CoursePage'>{classItem.subject}</Link></td>
+                            <td>
+                                <Link to={`/course/${classItem._id}`}>
+                                    {classItem.subject}
+                                </Link>
+                            </td>
+                            {/*<td><Link to='/CoursePage'>{classItem.subject}</Link></td>*/}
                             <td>{classItem.course}</td>
                             <td>{classItem.courseName}</td>
                         </tr>
