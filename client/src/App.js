@@ -11,6 +11,7 @@ import Logout from './components/Logout';
 import Welcome from './components/Welcome';
 import EditReview from './components/EditReview';
 import DeleteReview from './components/DeleteReview';
+import CoursePage from "./components/CoursePage";
 
 function App() {
 
@@ -25,8 +26,9 @@ function App() {
                 <Route path='/logout' element={<Logout />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/newReview' element={<NewReview />} />
-                <Route path='/reviews/edit/:id'element={<EditReview />}/>
-                <Route path='/reviews/delete/:id'element={<DeleteReview />}/>
+                <Route path='/reviews/edit/:id' element={<EditReview />}/>
+                <Route path='/reviews/delete/:id' element={<DeleteReview />}/>
+                <Route path="/course/:id" element={<CoursePage />} />
             </Routes>
             <Footer/>
         </div>
