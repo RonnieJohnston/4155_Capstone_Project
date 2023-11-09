@@ -16,7 +16,7 @@
 }
 
 .table-container {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
     width: 80%;
     margin: 180px auto 0;
