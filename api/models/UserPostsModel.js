@@ -64,6 +64,14 @@ const UserPostsSchema = new mongoose.Schema
     {
         type: String,
         required: true
+    },
+    liked:
+    {
+        type: Array
+    },
+    disliked:
+    {
+        type: Array
     }
 });
 
