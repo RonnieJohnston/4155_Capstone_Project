@@ -5,5 +5,11 @@
 .course-page {
     color: #FFFFFF;
     font-family: "Lantinghei SC", serif;
+    margin: 100px 100px 100px 100px;
 }
+
+.course-page-title, .course-page-rating {
+    padding-bottom: 50px;
+}
+
 
