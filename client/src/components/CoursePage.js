@@ -4,62 +4,50 @@ import { useParams } from 'react-router-dom';
 import '../assets/css/CoursePage.css';
 
 const CoursePage = () => {
-    const [courseDetails, setCourseDetails] = useState({});
-    const [averageRating, setAverageRating] = useState(0);
-    const [reviews, setReviews] = useState([]);
 
     const { id } = useParams();
+    const [courseDetails, setCourseDetails] = useState({});
+    const [courseReviews, setCourseReviews] = useState([]);
+    const [averageRating, setAverageRating] = useState(0);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/course/${id}`)
             .then(response => {
-                console.log(response.data);
-
-                // Check if response.data has courseDetails property
-                if (response.data.courseDetails) {
-                    setCourseDetails(response.data.courseDetails);
-                }
-
-                // Check if response.data has averageRating property
-                if (response.data.averageRating) {
-                    setAverageRating(response.data.averageRating);
-                }
-
-                // Check if response.data has reviews property and it is an array
-                if (response.data.reviews && Array.isArray(response.data.reviews)) {
-                    setReviews(response.data.reviews);
-                }
+                setCourseDetails(response.data.courseDetails);
+                setCourseReviews(response.data.courseReviews);
+                setAverageRating(response.data.averageRating);
             })
             .catch(error => {
-                alert(`An error occurred. Please try again. Error details: ${error.message}`);
                 console.error(error);
             });
     }, [id]);
 
     return (
         <div className='course-page'>
-            {/* Display course details */}
-            {courseDetails && (
-                <>
-                    <h1>{courseDetails.subject} {courseDetails.course}</h1>
-                    <p>Course Name: {courseDetails.courseName}</p>
-                </>
-            )}
+            <div className='course-page-title'>
+                <h1>{courseDetails.subject} {courseDetails.course}</h1>
+                <h2>{courseDetails.courseName}</h2>
+            </div>
 
-            {/* Display average rating */}
-            <p>Average Rating: {averageRating}</p>
+            <div className='course-page-rating'>
+                <h3>Average Rating: {typeof averageRating === 'number' ? averageRating.toFixed(2) : 'N/A'}</h3>
+            </div>
 
-            {/* Display list of reviews */}
-            <h2>Reviews</h2>
-            <ul>
-                {reviews.map(review => (
-                    <li key={review._id.$oid}>
-                        <p>Rating: {review.rating}</p>
-                        <p>Interest: {review.interest}</p>
-                        {/* Add more review details as needed */}
-                    </li>
-                ))}
-            </ul>
+            <div className='course-page-reviews'>
+                <h4>Reviews:</h4>
+                {courseReviews.length > 0 ? (
+                    <div>
+                        {courseReviews.map(review => (
+                            <div key={review._id}>
+                                <p>Rating: {review.rating}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p>No reviews available for this course.</p>
+                )}
+            </div>
+
         </div>
     );
 };
