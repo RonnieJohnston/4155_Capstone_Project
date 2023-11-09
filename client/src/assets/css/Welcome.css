@@ -1,0 +1,40 @@
+/*
+*  WELCOME PAGE STYLING
+ */
+
+.page-body {
+    overflow: hidden !important;
+}
+
+.welcome-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.welcome-page-contents {
+    display: flex;
+    align-items: center;
+    max-width: 100%; /* Ensure the contents don't exceed the screen width */
+    padding-bottom: 80px;
+    text-align: left;
+}
+
+.welcome-page-text {
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    font-size: 4vw;
+    margin: 0;
+}
+
+.welcome-page-icon {
+    display: flex;
+    align-items: center;
+}
+
+.DC-icon {
+    max-width: 90%;
+    height: auto;
+    max-height: 70%;
+}
