@@ -14,6 +14,7 @@ const reviewRoutes  = require('./routes/reviewRoutes');
 const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
+const Review = require("./models/UserPostsModel");
 
 mongoose.connect('mongodb://127.0.0.1:27017/UserData', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -40,6 +41,37 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/reviews', reviewRoutes);
+
+app.get('/course/:id', async (req, res) => {
+
+  try {
+    // getting request parameter (course ID)
+    const { id } = req.params;
+
+    // Fetch the course details from the database using the provided ID
+    const courseDetails = await UserClassesModel.findById(id);
+
+    // Find reviews based on both course and subject
+    const courseReviews = await UserPostsModel.find({
+      course: courseDetails.course,
+      subject: courseDetails.subject,
+    });
+
+    // calculate average rating
+    const totalRatings = courseReviews.reduce((sum, review) => sum + review.rating, 0);
+    const averageRating = courseReviews.length > 0 ? totalRatings / courseReviews.length : 0;
+
+    // Respond with the fetched course details and reviews in JSON format
+    res.status(200).json({ courseDetails, courseReviews, averageRating });
+
+  } catch (error) {
+    // If an error occurs in the try block, log the error
+    console.log(error.message);
+
+    // Respond with a 500 Internal Server Error along with an error message
+    res.status(500).send({ message: error.message });
+  }
+});
 
 app.get('/', cors(), (req, res) => {
 
@@ -103,6 +135,7 @@ app.post('/register', async (req, res) => {
     res.json('Fail');
   }
 });
+
 
 app.post('/newReview', async (req, res) => {
   const { subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
