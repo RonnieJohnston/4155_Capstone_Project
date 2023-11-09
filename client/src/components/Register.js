@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
-import '../assets/css/App.css'
+import '../assets/css/Welcome.css'
 
 function Register() {
     const [first, setFirst] = useState('')
@@ -39,25 +39,29 @@ function Register() {
 
     return(
         <body className='page'>
-        <div className="Register">
-
-        <div className="container-xl border mt-5">
+        <div className="welcome-page">
+            <div className='welcome-page-contents'>
+                <div className='welcome-page-icon'>
+                    <img className='DC-icon' src='images/DC-icon.png' alt='declassified icon' />
+                </div>
+                <div className="welcome-page-text-container">
             <h1 className="mt-3"> Register </h1>
             <form action="POST">
                 <div className="mb-3"> 
-                <input type="text"className="form-control mb-4" onChange={(e) => {setFirst(e.target.value)}} placeholder="First Name"/>
+                    <input type="text"className="form-control mb-4" onChange={(e) => {setFirst(e.target.value)}} placeholder="First Name"/>
                 </div>
                 <div className="mb-3"> 
-                <input type="text"className="form-control mb-4" onChange={(e) => {setLast(e.target.value)}} placeholder="Last Name"/>
+                    <input type="text"className="form-control mb-4" onChange={(e) => {setLast(e.target.value)}} placeholder="Last Name"/>
                 </div>
                 <div className="mb-3"> 
-                <input type="email"className="form-control mb-4" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
+                    <input type="email"className="form-control mb-4" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
                 </div>
                 <div className="mb-3"> 
-                <input type="password" className="form-control" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
+                    <input type="password" className="form-control" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
                 </div>
                 <button type="submit" className="btn btn-dark mb-4" onClick={Authorization}>Submit</button>
             </form>
+        </div>
         </div>
         </div>
     </body>
