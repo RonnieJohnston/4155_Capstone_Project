@@ -59,10 +59,24 @@ app.get('/course/:id', async (req, res) => {
 
     // calculate average rating
     const totalRatings = courseReviews.reduce((sum, review) => sum + review.rating, 0);
-    const averageRating = courseReviews.length > 0 ? totalRatings / courseReviews.length : 0;
+    const averageOverallRating = courseReviews.length > 0 ? totalRatings / courseReviews.length : 0;
+
+    // Calculate average difficulty
+    const totalDifficulties = courseReviews.reduce((sum, review) => sum + review.difficulty, 0);
+    const averageDifficulty = courseReviews.length > 0 ? totalDifficulties / courseReviews.length : 0;
+
+    // Calculate average interest
+    const totalInterests = courseReviews.reduce((sum, review) => sum + review.interest, 0);
+    const averageInterest = courseReviews.length > 0 ? totalInterests / courseReviews.length : 0;
 
     // Respond with the fetched course details and reviews in JSON format
-    res.status(200).json({ courseDetails, courseReviews, averageRating });
+    res.status(200).json({
+      courseDetails,
+      courseReviews,
+      averageOverallRating,
+      averageDifficulty,
+      averageInterest
+    });
 
   } catch (error) {
     // If an error occurs in the try block, log the error

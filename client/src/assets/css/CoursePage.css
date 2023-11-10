@@ -2,14 +2,31 @@
 *  COURSE PAGE STYLING
  */
 
+.page-body {
+    overflow-y: scroll !important;
+}
+
 .course-page {
     color: #FFFFFF;
     font-family: "Lantinghei SC", serif;
-    margin: 100px 100px 100px 100px;
+    margin: 75px 75px 150px 75px;
 }
 
-.course-page-title, .course-page-rating {
+.course-page-rating {
+    padding-top: 15px;
     padding-bottom: 50px;
 }
 
+.course-page-title {
+    padding-bottom: 10px;
+}
 
+.review {
+    padding: 10px;
+    border: 1px solid white;
+    margin-top: 10px;
+}
+
+p {
+    margin-bottom: 4px !important;
+}

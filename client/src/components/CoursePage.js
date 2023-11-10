@@ -8,14 +8,18 @@ const CoursePage = () => {
     const { id } = useParams();
     const [courseDetails, setCourseDetails] = useState({});
     const [courseReviews, setCourseReviews] = useState([]);
-    const [averageRating, setAverageRating] = useState(0);
+    const [averageOverallRating, setAverageOverallRating] = useState(0);
+    const [averageDifficulty, setAverageDifficulty] = useState(0);
+    const [averageInterest, setAverageInterest] = useState(0);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/course/${id}`)
             .then(response => {
                 setCourseDetails(response.data.courseDetails);
                 setCourseReviews(response.data.courseReviews);
-                setAverageRating(response.data.averageRating);
+                setAverageOverallRating(response.data.averageOverallRating);
+                setAverageDifficulty(response.data.averageDifficulty);
+                setAverageInterest(response.data.averageInterest)
             })
             .catch(error => {
                 console.error(error);
@@ -29,8 +33,12 @@ const CoursePage = () => {
                 <h2>{courseDetails.courseName}</h2>
             </div>
 
+            <hr/>
+
             <div className='course-page-rating'>
-                <h3>Average Rating: {typeof averageRating === 'number' ? averageRating.toFixed(2) : 'N/A'}</h3>
+                <h4>Average Overall Rating: {typeof averageOverallRating === 'number' ? averageOverallRating.toFixed(2) : 'N/A'}</h4>
+                <h4>Average Difficulty Rating: {typeof averageDifficulty === 'number' ? averageDifficulty.toFixed(2) : 'N/A'}</h4>
+                <h4>Average Interest Rating: {typeof averageInterest === 'number' ? averageInterest.toFixed(2) : 'N/A'}</h4>
             </div>
 
             <div className='course-page-reviews'>
@@ -38,8 +46,13 @@ const CoursePage = () => {
                 {courseReviews.length > 0 ? (
                     <div>
                         {courseReviews.map(review => (
-                            <div key={review._id}>
-                                <p>Rating: {review.rating}</p>
+                            <div key={review._id} className='review'>
+                                <p>Overall Rating: {review.rating}</p>
+                                <p>Difficulty Rating: {review.difficulty}</p>
+                                <p>Interest Rating: {review.interest}</p>
+                                <p>Professor: {review.professor}</p>
+                                <p>Textbook(s): {review.textbook}</p>
+                                <p>Comments: {review.review}</p>
                             </div>
                         ))}
                     </div>
