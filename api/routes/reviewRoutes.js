@@ -10,7 +10,12 @@ router.get("/:id", async (request, response) => {
 
     const review = await Review.findById(id);
 
+    if (!review) {
+      return response.status(404).json({ message: "Review not found" });
+    }
+
     return response.status(200).json(review);
+
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -21,6 +26,8 @@ router.get("/:id", async (request, response) => {
 router.put("/:id", async (request, response) => {
         try {
           if (
+            !request.body.subject ||
+            !request.body.course ||
             !request.body.professor ||
             !request.body.rating ||
             !request.body.interest ||
