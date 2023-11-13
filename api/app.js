@@ -16,14 +16,17 @@ const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
 const Review = require("./models/UserPostsModel");
 
-mongoose.connect('mongodb://127.0.0.1:27017/UserData', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('MongoDB connected');
-  })
-  .catch((e) => {
-    console.log('Failed to connect', e);
-  });
+// mongodb connection uri - capstone user group and pass
+let uri = 'mongodb+srv://capstoneGroup:O75OvIunEpMljYL4@cluster0.ditslgs.' +
+    'mongodb.net/UserData?retryWrites=true&w=majority'
 
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log('MongoDB connected');
+    })
+    .catch((e) => {
+      console.log('Failed to connect', e);
+    });
 
 const app = express();
 
