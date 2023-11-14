@@ -3,6 +3,11 @@
 * HOME PAGE STYLING BELOW
 *
  */
+.welcome-message {
+    text-align: center;
+    padding-top: 40px;
+
+}
 
 .table-container{
     max-height: 500px;
@@ -15,24 +20,8 @@
     overflow-y: auto;
 }
 
-.above-table {
-    display: inline-flex;
-}
 
-.welcome-message {
-    text-align: center;
-    padding-top: 40px;
 
-}
 
-.charlotte-logo {
-    margin-top: 70px;
-    margin-left: 185px;
-    margin-right: 800px;
-    align-content: center;
-}
 
-/*search bar styling*/
-.search-bar {
-    margin-top: 120px;
-}
+
