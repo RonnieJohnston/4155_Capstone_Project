@@ -47,7 +47,7 @@ const CoursePage = () => {
                     <div>
                         {courseReviews.map(review => (
                             <div key={review._id} className='review'>
-                                <Link to={`/course/${id}/${review._id}`}>Click to View Review</Link>
+                                <Link to={`/course/review/${review._id}`}>Click to View Review</Link>
                                 <p>Overall Rating: {review.rating}</p>
                                 <p>Difficulty Rating: {review.difficulty}</p>
                                 <p>Interest Rating: {review.interest}</p>

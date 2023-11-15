@@ -128,4 +128,6 @@ const viewReview = () => {
             </div>
         )
     }
-}
+};
+
+export default viewReview;

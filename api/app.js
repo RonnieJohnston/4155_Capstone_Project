@@ -91,7 +91,7 @@ app.get('/course/:id', async (req, res) => {
   }
 });
 
-app.get('/course/:courseid/:id', async (req, res) => {
+app.get('/course/review/:id', async (req, res) => {
   try {
     const {id} = req.params.id;
 
