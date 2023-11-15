@@ -1,0 +1,28 @@
+/*
+*  PRIVACY PAGE STYLING
+ */
+
+.privacy-page {
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    font-size: 4vw;
+    align-content: center;
+    padding: 100px 150px 150px 150px;
+    font-weight: lighter;
+}
+
+.text-css {
+    font-weight: lighter;
+    padding-top: 15px;
+}
+
+.privacy-page-title {
+    padding-bottom: 25px;
+    font-weight: lighter;
+}
+
+.privacy-page-text {
+    font-weight: lighter;
+    padding-bottom: 25px;
+    margin-left: 25px;
+}
