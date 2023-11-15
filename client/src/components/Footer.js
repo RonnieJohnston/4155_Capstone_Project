@@ -13,6 +13,8 @@ const Footer = () => {
                 />
             </a>
 
+            <p className='footer-slogan'>Peer-Powered Pathways</p>
+
             <ul className='footer-links'>
                 <li><Link to='/About'>About Declassified</Link></li>
                 <li><Link to='/Devs'>Meet the Developers</Link></li>

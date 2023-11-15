@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import '../assets/css/App.css';
+import toast from "bootstrap/js/src/toast";
 
 const cors = require("cors");
 
@@ -33,8 +34,8 @@ const NewReview = () => {
                 })
                 .then( res=> {
                     if(res.data == 'Exist') {
-                        alert('Review for ' + subject + " " + course + " posted!");
-                        history('/');
+                        toast('Review for ' + subject + " " + course + " posted!", );
+                        history('/home');
                     } else if(res.data == 'Not Exist') {
                         alert('Error: ' + subject + ' ' + course +' does not exist.');
                         history('/newReview');

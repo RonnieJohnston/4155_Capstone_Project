@@ -21,3 +21,11 @@ To start App:
 - In the second terminal, run the command 'npm start', to start up the client.
 - I find it helpful to have api open in one window completely, and client in a separate window.
 - Finally, navigate to http://localhost:3000 in your browser
+
+MongoDB Shared Cloud Database:
+- A new URI connection string has been added to our project (app.js) for our shared cluster
+- To view data using MongoDB Compass app download here: https://www.mongodb.com/try/download/compass
+- Once downloaded, open MongoDB Compass desktop app and make a new connection with the following uri:
+mongodb+srv://capstoneGroup:O75OvIunEpMljYL4@cluster0.ditslgs.mongodb.net/UserData?retryWrites=true&w=majority
+- Once connected you should then be able to see user data and begin to make changes. Don't forget that this
+db is now a shared cloud database so any changes you make to the data the rest of the group will see!

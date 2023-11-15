@@ -97,9 +97,12 @@ a:hover{
     box-shadow: 0 -1px 20px 2px #FFFFFF;
 }
 
-.footer-logo {
-    flex: 1; /* Make the logo flex to the left */
-    padding-left: 30px;
+.footer-slogan {
+    font-family: "Lantinghei SC", serif;
+    color: white;
+    font-style: italic;
+    margin-right: auto; /* Push the slogan to the left */
+    margin-bottom: 0;
 }
 
 .footer-links {
@@ -114,5 +117,10 @@ a:hover{
 }
 
 .footer-links li {
-    padding-left: 25px; /* Add some spacing between links */
+    padding-left: 25px;
+}
+
+.footer-logo {
+    padding-left: 30px;
+    padding-right: 30px;
 }

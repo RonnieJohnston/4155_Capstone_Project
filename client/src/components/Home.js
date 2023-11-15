@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios, { all } from 'axios';
 import { Link } from 'react-router-dom';
 import '../assets/css/Home.css';
 
@@ -44,16 +44,47 @@ function Home() {
                 <p>Welcome!</p>
             )}
         </div>
-        <div className='above-table'>
-            <a className ='charlotte-logo' href='/'>
-                <img
-                    src='images/charlotte_logo_white.png'
-                    width='325'
-                    height='70'
-                    alt='declassified logo'
-                />
-            </a>
-            <div className='search-bar'>
+        <div className='container-lg text-lg-end'>
+            <div className='row align-items-center'>
+            <div className ='col-auto'>
+                <a href='/'>
+                    <img
+                        src='images/charlotte_logo_white.png'
+                        width='350'
+                        height='70'
+                        alt='declassified logo'
+                    />
+                </a>
+            </div>
+            <div className='col-6'>
+                <select onChange={(e) => {
+                    const selectedOption = e.target.value
+                    console.log(selectedOption)
+                    let tempClassArr = [...classes]
+
+                    if(selectedOption == 'Course Name')
+                    {
+                        tempClassArr.sort((a, b) => a.courseName.localeCompare(b.courseName))
+                        setClasses(tempClassArr)
+                    }
+                    else if(selectedOption == 'Course Number')
+                    {
+                        tempClassArr.sort((a, b) => a.course.localeCompare(b.course))
+                        setClasses(tempClassArr)
+                    }
+                    else if(selectedOption == 'Subject')
+                    {
+                        tempClassArr.sort((a, b) => a.subject.localeCompare(b.subject))
+                        setClasses(tempClassArr)
+                    }
+                }}>
+                    <option>Filter By</option>
+                    <option>Course Name</option>
+                    <option>Course Number</option>
+                    <option>Subject</option>
+                </select>
+            </div>
+            <div className='col'>
                 <input
                     type='text'
                     placeholder='search...'
@@ -61,10 +92,11 @@ function Home() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
+            </div>
         </div>
         <div className='table-container'>
             <table className='table table-dark table-striped table-hover container-lg'>
-                <thead>
+                <thead >
                     <tr>
                         <th>SUBJECT</th>
                         <th>COURSE</th>

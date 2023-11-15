@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import '../assets/css/App.css';
 
 
 const EditReview = () => {
+    const [subject, setSubject] = useState('')
+    const [course, setCourse] = useState('')
     const [rating, setRating] = useState('')
     const [interest, setInterest] = useState('')
     const [difficulty, setDifficulty] = useState('')
     const [review, setReview] = useState('')
     const [professor, setProfessor] = useState('')
     const [textbook, setTextbook] = useState('')
-  const navigate = useNavigate();
-  const { id } = useParams();
+    const navigate = useNavigate();
+    const { id } = useParams();
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/reviews/${id}`)
       .then((response) => {
+        setSubject(response.data.subject);
+        setCourse(response.data.course);
         setRating(response.data.rating);
         setInterest(response.data.interest);
         setDifficulty(response.data.difficulty);
@@ -24,14 +29,21 @@ const EditReview = () => {
         setProfessor(response.data.professor);
         setTextbook(response.data.textbook);
       })
-      .catch((error) => {
-        alert("An error occurred. Please check console");
-        console.log(error);
-      });
-  }, []);
+       .catch((error) => {
+        if (error.response && error.response.status === 404) {
+          alert("Review not found");
+          navigate("/");
+        } else {
+          alert("An error occurred. Please check console");
+          console.log(error);
+        }
+       });
+  }, [id, navigate]);
 
   const handleEditReview = () => {
     const data = {
+      subject,
+      course,
       rating,
       interest,
       difficulty,
@@ -51,8 +63,9 @@ const EditReview = () => {
   };
 
   return (
+    <div className='page'>
     <div className="container border mt-5">
-      <h1 className="text-white">Edit Review</h1>
+      <h1 className="text-white">Editing review for {subject} {course}</h1>
       <div>
         <div>
           <label className="text-white mb-2">Rating</label>
@@ -115,6 +128,7 @@ const EditReview = () => {
           Save
         </button>
       </div>
+    </div>
     </div>
   );
 };

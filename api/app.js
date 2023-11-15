@@ -16,14 +16,17 @@ const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
 const Review = require("./models/UserPostsModel");
 
-mongoose.connect('mongodb://127.0.0.1:27017/UserData', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('MongoDB connected');
-  })
-  .catch((e) => {
-    console.log('Failed to connect', e);
-  });
+// mongodb connection uri - capstone user group and pass
+let uri = 'mongodb+srv://capstoneGroup:O75OvIunEpMljYL4@cluster0.ditslgs.' +
+    'mongodb.net/UserData?retryWrites=true&w=majority'
 
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log('MongoDB connected');
+    })
+    .catch((e) => {
+      console.log('Failed to connect', e);
+    });
 
 const app = express();
 
@@ -59,10 +62,24 @@ app.get('/course/:id', async (req, res) => {
 
     // calculate average rating
     const totalRatings = courseReviews.reduce((sum, review) => sum + review.rating, 0);
-    const averageRating = courseReviews.length > 0 ? totalRatings / courseReviews.length : 0;
+    const averageOverallRating = courseReviews.length > 0 ? totalRatings / courseReviews.length : 0;
+
+    // Calculate average difficulty
+    const totalDifficulties = courseReviews.reduce((sum, review) => sum + review.difficulty, 0);
+    const averageDifficulty = courseReviews.length > 0 ? totalDifficulties / courseReviews.length : 0;
+
+    // Calculate average interest
+    const totalInterests = courseReviews.reduce((sum, review) => sum + review.interest, 0);
+    const averageInterest = courseReviews.length > 0 ? totalInterests / courseReviews.length : 0;
 
     // Respond with the fetched course details and reviews in JSON format
-    res.status(200).json({ courseDetails, courseReviews, averageRating });
+    res.status(200).json({
+      courseDetails,
+      courseReviews,
+      averageOverallRating,
+      averageDifficulty,
+      averageInterest
+    });
 
   } catch (error) {
     // If an error occurs in the try block, log the error
