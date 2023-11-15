@@ -17,7 +17,6 @@ const Footer = () => {
 
             <ul className='footer-links'>
                 <li><Link to='/About'>About Declassified</Link></li>
-                <li><Link to='/Devs'>Meet the Developers</Link></li>
                 <li><Link to='/Privacy'>Privacy Policy</Link></li>
                 <li><Link to='/Ethics'>Code of Ethics</Link></li>
                 <li><Link to='/Contact'>Contact Us</Link></li>
