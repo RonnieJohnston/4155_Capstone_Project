@@ -16,10 +16,10 @@ const Footer = () => {
             <p className='footer-slogan'>Peer-Powered Pathways</p>
 
             <ul className='footer-links'>
-                <li><Link to='/About'>About Declassified</Link></li>
-                <li><Link to='/Privacy'>Privacy Policy</Link></li>
-                <li><Link to='/Ethics'>Code of Ethics</Link></li>
-                <li><Link to='/Contact'>Contact Us</Link></li>
+                <li><Link to='/about'>About Declassified</Link></li>
+                <li><Link to='/privacy'>Privacy Policy</Link></li>
+                <li><Link to='/ethics'>Code of Ethics</Link></li>
+                <li><Link to='/contact'>Contact Us</Link></li>
             </ul>
         </nav>
     );
