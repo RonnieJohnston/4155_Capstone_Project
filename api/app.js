@@ -15,6 +15,7 @@ const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
 const Review = require("./models/UserPostsModel");
+const { error } = require('console');
 
 // mongodb connection uri - capstone user group and pass
 let uri = 'mongodb+srv://capstoneGroup:O75OvIunEpMljYL4@cluster0.ditslgs.' +
@@ -89,6 +90,19 @@ app.get('/course/:id', async (req, res) => {
     res.status(500).send({ message: error.message });
   }
 });
+
+app.get('/course/:courseid/:id', async (req, res) => {
+  try {
+    const {id} = req.params.id;
+
+    res.status(200).json({
+      id
+    });
+  } catch (err) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+})
 
 app.get('/', cors(), (req, res) => {
 
