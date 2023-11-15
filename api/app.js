@@ -93,10 +93,12 @@ app.get('/course/:id', async (req, res) => {
 
 app.get('/course/review/:id', async (req, res) => {
   try {
-    const {id} = req.params.id;
+    const {id} = req.params;
+
+    const reviewDetails = await UserPostsModel.findById(id);
 
     res.status(200).json({
-      id
+      reviewDetails
     });
   } catch (err) {
     console.log(error.message);

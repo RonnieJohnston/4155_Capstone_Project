@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
-import { post } from '../../../api/routes';
-const model = require('../../../api/models/UserPostsModel');
-const cors = require("cors");
+import { useParams } from "react-router-dom";
+//const model = require('../../../api/models/UserPostsModel');
 
 const email = sessionStorage.getItem('email');
 
-const viewReview = () => {
+const ViewReview = () => {
     const { id } = useParams();
-    const [subject, setSubject] = useState('')
+    const [reviewDetails, setReviewDetails] = useState('');
+    /*const [subject, setSubject] = useState('')
     const [course, setCourse] = useState('')
     const [rating, setRating] = useState('')
     const [interest, setInterest] = useState('')
@@ -22,14 +21,14 @@ const viewReview = () => {
     const [username, setUsername] = useState('')
     const [date, setDate] = useState('')
     const [liked, setLiked] = useState('')
-    const [disliked, setDisliked] = useState('')
-    const history = useNavigate()
+    const [disliked, setDisliked] = useState('')*/
 
     useEffect(() => {
         axios
           .get(`http://localhost:3000/posts/${id}`)
           .then((response) => {
-            setSubject(response.data.subject);
+            setReviewDetails(response.data.reviewDetails);
+            /*setSubject(response.data.subject);
             setCourse(response.data.course);
             setRating(response.data.rating);
             setInterest(response.data.interest);
@@ -42,7 +41,7 @@ const viewReview = () => {
             setUsername(response.data.username);
             setDate(response.data.date);
             setLiked(response.data.liked);
-            setDisliked(response.data.disliked);
+            setDisliked(response.data.disliked);*/
           })
           .catch((err) => {
             alert("Error fetching review data.");
@@ -50,7 +49,7 @@ const viewReview = () => {
           });
     }, []);
 
-    const updateLikeCount = (e) => {
+    /*const updateLikeCount = (e) => {
         const pst = model.findById(id);
         if(e === 'like') {
             if(!pst.liked.find(email)) {
@@ -85,49 +84,49 @@ const viewReview = () => {
                 )
             }
         }
-    }
+    }*/
 
     if(email !== '' || email !== null) {
         return (
             <div className="container border mt-5">
-                <h1>Review for {subject} {course}</h1>
-                <h2>By: {username}</h2>
+                <h1>Review for {reviewDetails.subject} {reviewDetails.course}</h1>
+                <h2>By: {reviewDetails.username}</h2>
                 <div>
-                    <h3>Rating: {rating} out of 5</h3>
-                    <h3>Interest: {interest} out of 5 (best)</h3>
-                    <h3>Difficulty: {difficulty} out of 10 (hardest)</h3>
-                    <h3>Professor: {professor}</h3>
-                    <h3>Textbook: {textbook}</h3>
+                    <h3>Rating: {reviewDetails.rating} out of 5</h3>
+                    <h3>Interest: {reviewDetails.interest} out of 5 (best)</h3>
+                    <h3>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h3>
+                    <h3>Professor: {reviewDetails.professor}</h3>
+                    <h3>Textbook: {reviewDetails.textbook}</h3>
                     <h3>Comments:</h3>
-                    <p>{review}</p>
+                    <p>{reviewDetails.review}</p>
                     <br></br>
-                    <p>Posted at { date }</p>
+                    <p>Posted at { reviewDetails.date }</p>
                     <br></br>
                     
-                    <button onClick={() => updateLikeCount('like')}>{likes} likes</button>
-                    <button onClick={() => updateLIkeCount('dislike')}>{dislikes} dislikes</button>
+                    <button /*onClick={() => updateLikeCount('like')}*/>{reviewDetails.likes} likes</button>
+                    <button /*onClick={() => updateLIkeCount('dislike')}*/>{reviewDetails.dislikes} dislikes</button>
                 </div>
             </div>
         )
     } else {
         return (
             <div className="container border mt-5">
-                <h1>Review for {subject} {course}</h1>
-                <h2>By: {username}</h2>
+                <h1>Review for {reviewDetails.subject} {reviewDetails.course}</h1>
+                <h2>By: {reviewDetails.username}</h2>
                 <div>
-                    <h3>Rating: {rating} out of 5</h3>
-                    <h3>Interest: {interest} out of 5 (best)</h3>
-                    <h3>Difficulty: {difficulty} out of 10 (hardest)</h3>
-                    <h3>Professor: {professor}</h3>
-                    <h3>Textbook: {textbook}</h3>
+                    <h3>Rating: {reviewDetails.rating} out of 5</h3>
+                    <h3>Interest: {reviewDetails.interest} out of 5 (best)</h3>
+                    <h3>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h3>
+                    <h3>Professor: {reviewDetails.professor}</h3>
+                    <h3>Textbook: {reviewDetails.textbook}</h3>
                     <h3>Comments:</h3>
-                    <p>{review}</p>
+                    <p>{reviewDetails.review}</p>
                     <br></br>
-                    <p>Posted at { date }</p>
+                    <p>Posted at { reviewDetails.date }</p>
                 </div>
             </div>
         )
     }
 };
 
-export default viewReview;
+export default ViewReview;
