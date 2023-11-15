@@ -5,6 +5,8 @@ import { post } from '../../../api/routes';
 const model = require('../../../api/models/UserPostsModel');
 const cors = require("cors");
 
+const email = sessionStorage.getItem('email');
+
 const viewReview = () => {
     const { id } = useParams();
     const [subject, setSubject] = useState('')
@@ -51,41 +53,41 @@ const viewReview = () => {
     const updateLikeCount = (e) => {
         const pst = model.findById(id);
         if(e === 'like') {
-            if(!pst.liked.find(username)) {
+            if(!pst.liked.find(email)) {
                 likes++;
                 model.findByIdAndUpdate(id, { likes: likes });
                 model.updateOne(
                     { _id: id },
-                    { $push: { liked: username } }
+                    { $push: { liked: email } }
                 )
             } else {
                 likes--;
                 model.findByIdAndUpdate(id, { likes: likes });
                 model.updateOne(
                     { _id: id },
-                    { $pull: { liked: username }}
+                    { $pull: { liked: email }}
                 )
             }
         } else if(e === 'dislike') {
-            if(!pst.disliked.find(username)) {
+            if(!pst.disliked.find(email)) {
                 dislikes++;
                 model.findByIdAndUpdate(id, { dislikes: dislikes });
                 model.updateOne(
                     { _id: id },
-                    { $push: { disliked: username }}
+                    { $push: { disliked: email }}
                 )
             } else {
                 dislikes--;
                 model.findByIdAndUpdate(id, { dislikes: dislikes });
                 model.updateOne(
                     { _id: id },
-                    { $pull: { disliked: username }}
+                    { $pull: { disliked: email }}
                 )
             }
         }
     }
 
-    if(username !== '' || username !== null) {
+    if(email !== '' || email !== null) {
         return (
             <div className="container border mt-5">
                 <h1>Review for {subject} {course}</h1>
