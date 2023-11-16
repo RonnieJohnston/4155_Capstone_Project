@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 16 16" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_2" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_3" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_4" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_5" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_6" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_7" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_8" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="25" id="Filter_9" width="25" x="inf" y="inf">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="5"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="9.57922" id="Filter_10" width="16.3425" x="-0.306734" y="3.59989">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="0.260053"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="9.63734" id="Filter_11" width="16.3664" x="0.0124907" y="3.18038">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="0.260053"/>
+</filter>
+<filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="9.57922" id="Filter_12" width="16.3425" x="0.279058" y="2.82711">
+<feGaussianBlur in="SourceGraphic" result="Blur" stdDeviation="0.260053"/>
+</filter>
+</defs>
+<clipPath id="ArtboardFrame">
+<rect height="16" width="16" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Layer-1" vectornator:layerName="Layer 1">
+<g opacity="1" vectornator:layerName="Group 13"/>
+<g filter="url(#Filter)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 67"/>
+<g opacity="1" vectornator:layerName="Group 14"/>
+<g filter="url(#Filter_2)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 68"/>
+<g opacity="1" vectornator:layerName="Group 15"/>
+<g filter="url(#Filter_3)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 69"/>
+<g opacity="1" vectornator:layerName="Group 76"/>
+<g opacity="1" vectornator:layerName="Group 16"/>
+<g filter="url(#Filter_4)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 70"/>
+<g opacity="1" vectornator:layerName="Group 17"/>
+<g filter="url(#Filter_5)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 71"/>
+<g opacity="1" vectornator:layerName="Group 18"/>
+<g filter="url(#Filter_6)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 72"/>
+<g opacity="1" vectornator:layerName="Group 77"/>
+<g opacity="1" vectornator:layerName="Group 19"/>
+<g filter="url(#Filter_7)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 73"/>
+<g opacity="1" vectornator:layerName="Group 20"/>
+<g filter="url(#Filter_8)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 74"/>
+<g opacity="1" vectornator:layerName="Group 21"/>
+<g filter="url(#Filter_9)" opacity="1" vectornator:blur="10" vectornator:layerName="Group 75"/>
+<g opacity="1" vectornator:layerName="Group 78"/>
+<path d="M745.531 824.531C741.598 825.542 737.658 826.267 733.719 827.156C730.465 830.402 726.834 833.306 722.719 835.594C722.482 836.37 722.413 836.571 722.188 837.312C725.526 836.569 728.866 835.866 732.219 835.062C736.898 831.305 741.137 828.006 745.531 824.531ZM578.75 833.625L578.75 835.312C578.895 834.783 578.973 834.247 579.125 833.719C578.998 833.69 578.877 833.654 578.75 833.625Z" fill="#262626" fill-rule="nonzero" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="10.1096" vectornator:layerName="Curve 423"/>
+<g opacity="1" vectornator:layerName="Group 79"/>
+<g opacity="1" vectornator:layerName="Group 80"/>
+<g opacity="1" vectornator:layerName="Group 81"/>
+<g opacity="1" vectornator:layerName="Group 107">
+<g opacity="1" vectornator:layerName="Group 107">
+<g opacity="1" vectornator:layerName="Group 106">
+<g filter="url(#Filter_10)" opacity="1" vectornator:blur="0.520106" vectornator:layerName="Group 100">
+<path d="M0.888394 6.14616L0.887265 12.257" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 424"/>
+<g opacity="1" vectornator:layerName="Group 55">
+<path d="M0.615334 4.84577L4.65007 4.81339" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<g opacity="1" vectornator:layerName="Group 56">
+<path d="M11.6161 4.79778L15.0441 4.79256" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<g opacity="1" vectornator:layerName="Group 57">
+<path d="M11.4931 12.0446L15.014 12.0492" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<path d="M0.728523 11.9869L4.46221 11.9869" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 425"/>
+<path d="M4.47739 4.81339C8.1522 4.81339 7.55317 12.1345 4.44283 11.9846" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 426"/>
+<path d="M11.7503 12.0492C7.15213 12.0591 7.88559 4.65405 11.7778 4.79722" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 427"/>
+<path d="M0.66295 6.41524L3.9754 6.41985" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 428"/>
+<path d="M11.7296 6.44999L15.1137 6.4546" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 429"/>
+<path d="M11.79 10.2033L13.6663 10.1975" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 430"/>
+<path d="M2.64735 7.54998L2.6327 10.5016" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 431"/>
+<path d="M14.7468 9.94031L14.7468 12.1115" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 432"/>
+<path d="M14.8387 4.52196L14.8429 6.68962" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 433"/>
+<path d="M2.59626 10.2303L3.98019 10.2316" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 434"/>
+<path d="M3.95733 6.41525C5.68393 6.40552 5.51741 10.3068 3.89974 10.2292" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 435"/>
+<path d="M11.9179 10.1975C9.85266 10.2069 10.0523 6.37463 11.9872 6.45112" fill="none" opacity="1" stroke="#082a01" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 436"/>
+</g>
+<g filter="url(#Filter_11)" opacity="1" vectornator:blur="0.520106" vectornator:layerName="Group 101">
+<g opacity="1" vectornator:layerName="Group 60">
+<path d="M11.9693 11.5735L15.1554 11.6252" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<path d="M0.934558 4.36618L4.84588 4.36618" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 437"/>
+<path d="M1.21144 5.69046L1.21025 11.8043" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 438"/>
+<g opacity="1" vectornator:layerName="Group 58">
+<path d="M1.16108 11.5347L4.70701 11.5073" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<g opacity="1" vectornator:layerName="Group 59">
+<path d="M11.8209 4.36618L15.367 4.37418" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<path d="M4.58731 4.36618C8.50554 4.36618 7.86684 11.6542 4.55047 11.505" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 439"/>
+<path d="M12.0341 11.5735C7.42266 11.5833 8.15823 4.23412 12.0616 4.37621" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 440"/>
+<path d="M0.981852 5.96164L4.30325 5.96626" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 441"/>
+<path d="M12.2876 5.96626L15.4568 5.97088" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 442"/>
+<path d="M12.2649 9.82607L14.1412 9.82032" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 443"/>
+<path d="M2.98055 7.10914L2.96837 10.0566" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 444"/>
+<path d="M15.1854 4.10244L15.186 6.19629" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 445"/>
+<path d="M15.1854 9.53303L15.1554 11.8957" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 446"/>
+<path d="M3.18587 9.79265L4.30325 9.79494" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 447"/>
+<path d="M4.25847 5.96628C6.01991 5.95652 5.85003 9.8694 4.19971 9.79151" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 448"/>
+<path d="M12.3001 9.8203C10.2717 9.82991 10.4678 5.89347 12.3682 5.97204" fill="none" opacity="1" stroke="#1a8e00" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 449"/>
+</g>
+<g filter="url(#Filter_12)" opacity="1" vectornator:blur="0.520106" vectornator:layerName="Group 102">
+<g opacity="1" vectornator:layerName="Group 62">
+<path d="M12.2402 11.2127L15.5214 11.2093" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<path d="M1.65122 11.2127L5.35788 11.2093" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 451"/>
+<g opacity="1" vectornator:layerName="Group 97">
+<path d="M1.48822 5.37222L1.48257 11.4843" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 450"/>
+<g opacity="1" vectornator:layerName="Group 61">
+<path d="M1.20113 4.07494L5.13551 4.04255" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<g opacity="1" vectornator:layerName="Group 63">
+<path d="M12.2402 3.99122L15.6995 3.95342" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<path d="M5.11559 4.04255C8.77884 4.04255 8.1817 11.3568 5.08114 11.207" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 452"/>
+<path d="M12.3516 11.2127C7.74015 11.2226 8.47572 3.85074 12.3791 3.99327" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 453"/>
+<path d="M1.68971 5.6471L4.52157 5.65136" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 454"/>
+<path d="M12.47 5.65136L15.6487 5.65597" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 455"/>
+<path d="M12.3185 9.36119L13.476 9.35764L14.1948 9.35544" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 456"/>
+<path d="M3.26015 6.77912L3.23581 9.57051" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 457"/>
+<path d="M15.428 3.74918L15.4303 5.9236" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 458"/>
+<path d="M15.3605 9.11387L15.3647 11.4843" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 459"/>
+<path d="M4.45681 5.64712C6.30087 5.63736 6.12303 9.54805 4.39529 9.4702" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 461"/>
+<path d="M12.5211 9.35542C10.3615 9.36466 10.5702 5.57688 12.5936 5.65247" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 462"/>
+<path d="M2.9633 9.44936L4.51078 9.47135" fill="none" opacity="1" stroke="#a1ff9f" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 460"/>
+</g>
+</g>
+</g>
+<g opacity="1" vectornator:layerName="Group 99">
+<path d="M1.49981 5.46148L1.50016 11.5767" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 463"/>
+<g opacity="1" vectornator:layerName="Group 64">
+<path d="M1.22976 4.16932L5.05662 4.13012" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<g opacity="1" vectornator:layerName="Group 65">
+<path d="M12.1742 4.13012L15.7036 4.14071" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<g opacity="1" vectornator:layerName="Group 66">
+<path d="M12.5908 5.80046L15.7281 5.80259" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 1"/>
+</g>
+<path d="M1.73585 11.3078L5.03907 11.3078" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 464"/>
+<path d="M5.04232 4.13012C8.77568 4.13012 8.16711 11.4555 5.00721 11.3055" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 465"/>
+<path d="M12.2966 11.3707C7.80323 11.3806 8.51997 3.98927 12.3234 4.13217" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 466"/>
+<path d="M1.7502 5.73613L4.68005 5.74038" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 467"/>
+<path d="M12.1862 11.3707L15.3649 11.3753" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 468"/>
+<path d="M12.499 9.54891L14.1595 9.53979" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 469"/>
+<path d="M3.2547 6.87078L3.24237 9.82048" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 470"/>
+<path d="M15.4407 3.86823L15.443 6.07319" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 471"/>
+<path d="M15.337 9.2698L15.3649 11.648" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 472"/>
+<path d="M3.36732 9.54891L4.67063 9.53642" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 473"/>
+<path d="M4.63654 5.7404C6.26951 5.73072 6.11203 9.61256 4.58207 9.53529" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 474"/>
+<path d="M12.5601 9.54265C10.4774 9.55198 10.6787 5.72738 12.63 5.80372" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="0.543871" vectornator:layerName="Curve 475"/>
+</g>
+</g>
+</g>
+</g>
+</svg>
