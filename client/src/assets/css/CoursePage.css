@@ -39,7 +39,6 @@ p {
     padding: 25px;
     margin-bottom: 20px;
     border: 1px solid #ccc; /* Border applied to the outer div */
-    transition: border 0.3s; /* Smooth transition for the border */
 }
 
 .review:hover {
