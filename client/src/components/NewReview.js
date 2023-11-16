@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import '../assets/css/App.css';
-import toast from "bootstrap/js/src/toast";
 
 const cors = require("cors");
 
 const NewReview = () => {
-
-    //const [coursesubject, setCourseSubject] = useState('')
     const [subject, setSubject] = useState('')
     const [course, setCourse] = useState('')
     const [rating, setRating] = useState('')
@@ -34,7 +31,7 @@ const NewReview = () => {
                 })
                 .then( res=> {
                     if(res.data == 'Exist') {
-                        toast('Review for ' + subject + " " + course + " posted!", );
+                        alert('Review for ' + subject + " " + course + " posted!", );
                         history('/home');
                     } else if(res.data == 'Not Exist') {
                         alert('Error: ' + subject + ' ' + course +' does not exist.');
@@ -51,20 +48,11 @@ const NewReview = () => {
         }
     }
 
-    /*
-    function parseCourseSubject(data) {
-        const subject = data.substring(0, 3)
-        const course = data.substring(4, 8)
-        const arr = [subject, course]
-        return arr
-    }
-    */
-
     return <body className='page'><div className='table-container container-sm border mt-5'>
         <h2>Create a new Review</h2>
         <form action="POST" className='row g-3'>
             <div className='col-md-4'>
-                <label for="subject" className="form-label">Subject: </label>
+                <label for="subject" >Subject: </label>
                 <input type="text" name="subject" id="subject" onChange={(event)=> {setSubject(event.target.value)}} className="form-control" required></input>
             </div>
 

@@ -133,8 +133,8 @@ const ViewReview = () => {
                     <p>Posted at { reviewDetails.date }</p>
                     <br></br>
                     
-                    <button onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
-                    <button onClick={() => updateLikeCount('dislike')}>{reviewDetails.dislikes} dislikes</button>
+                    <button  className='btn btn-outline-light btn-lg'  onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
+                    <button  className='btn btn-outline-light btn-lg' onClick={() => updateLikeCount('dislike')}>{reviewDetails.dislikes} dislikes</button>
                 </div>
             </div>
         )
