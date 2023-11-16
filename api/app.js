@@ -296,7 +296,7 @@ app.post('/course/review/:id', async (req, res) => {
         if(check) {
           try {
             check = await UserPostsModel.updateOne(
-              { _id: id },
+              { _id: reviewid },
               { $pull: { disliked: email } }
             )
             if(check) {
