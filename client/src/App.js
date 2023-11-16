@@ -12,10 +12,7 @@ import Welcome from './components/Welcome';
 import EditReview from './components/EditReview';
 import DeleteReview from './components/DeleteReview';
 import CoursePage from "./components/CoursePage";
-import About from "./components/About";
-import Privacy from "./components/Privacy"
-import Ethics from "./components/Ethics"
-import Contact from "./components/Contact"
+import ViewReview from "./components/ViewReview";
 
 function App() {
 
@@ -30,13 +27,10 @@ function App() {
                 <Route path='/logout' element={<Logout />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/newReview' element={<NewReview />} />
-                <Route path='/about' element={<About />} />
-                <Route path='/ethics' element={<Ethics />} />
-                <Route path='/privacy' element={<Privacy />} />
-                <Route path='/contact' element={<Contact />} />
                 <Route path='/reviews/edit/:id' element={<EditReview />}/>
                 <Route path='/reviews/delete/:id' element={<DeleteReview />}/>
                 <Route path="/course/:id" element={<CoursePage />} />
+                <Route path='/course/review/:id' element={<ViewReview />} />
             </Routes>
             <Footer/>
         </div>
