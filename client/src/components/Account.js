@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Account() {
+
     // used to navigate 
     const navigate = useNavigate();
     //  used to indicate whether the user is in edit mode
