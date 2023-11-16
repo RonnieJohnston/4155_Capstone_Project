@@ -14,15 +14,19 @@ const reviewRoutes = require('./routes/reviewRoutes');
 const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
+const Review = require("./models/UserPostsModel");
 
-mongoose.connect('mongodb://127.0.0.1:27017/UserData', { useNewUrlParser: true, useUnifiedTopology: true })
+// mongodb connection uri - capstone user group and pass
+let uri = 'mongodb+srv://capstoneGroup:O75OvIunEpMljYL4@cluster0.ditslgs.' +
+  'mongodb.net/UserData?retryWrites=true&w=majority'
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB connected');
   })
   .catch((e) => {
     console.log('Failed to connect', e);
   });
-
 
 const app = express();
 
@@ -40,6 +44,51 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/reviews', reviewRoutes);
+
+app.get('/course/:id', async (req, res) => {
+
+  try {
+    // getting request parameter (course ID)
+    const { id } = req.params;
+
+    // Fetch the course details from the database using the provided ID
+    const courseDetails = await UserClassesModel.findById(id);
+
+    // Find reviews based on both course and subject
+    const courseReviews = await UserPostsModel.find({
+      course: courseDetails.course,
+      subject: courseDetails.subject,
+    });
+
+    // calculate average rating
+    const totalRatings = courseReviews.reduce((sum, review) => sum + review.rating, 0);
+    const averageOverallRating = courseReviews.length > 0 ? totalRatings / courseReviews.length : 0;
+
+    // Calculate average difficulty
+    const totalDifficulties = courseReviews.reduce((sum, review) => sum + review.difficulty, 0);
+    const averageDifficulty = courseReviews.length > 0 ? totalDifficulties / courseReviews.length : 0;
+
+    // Calculate average interest
+    const totalInterests = courseReviews.reduce((sum, review) => sum + review.interest, 0);
+    const averageInterest = courseReviews.length > 0 ? totalInterests / courseReviews.length : 0;
+
+    // Respond with the fetched course details and reviews in JSON format
+    res.status(200).json({
+      courseDetails,
+      courseReviews,
+      averageOverallRating,
+      averageDifficulty,
+      averageInterest
+    });
+
+  } catch (error) {
+    // If an error occurs in the try block, log the error
+    console.log(error.message);
+
+    // Respond with a 500 Internal Server Error along with an error message
+    res.status(500).send({ message: error.message });
+  }
+});
 
 app.get('/', cors(), (req, res) => {
 
@@ -65,13 +114,13 @@ app.get('/home', async (req, res) => {
 });
 
 app.post('/', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const isUsername = await UserCredentialModel.findOne({ username: username });
+    const isEmail = await UserCredentialModel.findOne({ email: email });
     const isPassword = await UserCredentialModel.findOne({ password: password });
 
-    if (isUsername && isPassword) {
+    if (isEmail && isPassword) {
       res.json('Exist');
     } else {
       res.json('Not exist');
@@ -82,13 +131,15 @@ app.post('/', async (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
+  const { first, last, email, password } = req.body;
   const data = {
-    username: username,
+    first: first,
+    last: last,
+    email: email,
     password: password,
   };
   try {
-    const check = await UserCredentialModel.findOne({ username: username });
+    const check = await UserCredentialModel.findOne({ email: email });
 
     if (check) {
       res.json('Exist');
@@ -102,13 +153,14 @@ app.post('/register', async (req, res) => {
   }
 });
 
+
 app.post('/newReview', async (req, res) => {
-  const { subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
+  const { subject, course, professor, email, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
   const data = {
     subject: subject,
     course: course,
     professor: professor,
-    username: username,
+    email: email,
     date: date,
     likes: likes,
     dislikes: dislikes,
@@ -118,10 +170,108 @@ app.post('/newReview', async (req, res) => {
     review: review,
     textbook: textbook
   };
-  await UserPostsModel.insertMany([data]);
-})
+  try {
+    const check = await UserClassesModel.findOne({ subject: subject, course: course });
+    console.log("--------");
+    if (check) {
+      res.json('Exist');
+      await UserPostsModel.insertMany([data]);
+    } else {
+      res.json('Not Exist');
+    }
+  } catch (e) {
+    console.log(e);
+    res.json('Fail');
+  }
+});
 
+// Fetching the user by the email 
+app.get('/users/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
 
+    // Fetch user data based on the provided email
+    const userData = await UserCredentialModel.findOne({ email });
+
+    if (userData) {
+      // Respond with the fetched user data in JSON format
+      res.status(200).json(userData);
+    } else {
+      // If the user does not exist, respond with a 404 Not Found status
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    // If an error log the error and 500 Internal Server Error
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// route to handle user data update
+app.put('/users/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    const { first, last, password } = req.body;
+
+    // Update user data based on the provided email
+    const updatedUserData = await UserCredentialModel.findOneAndUpdate(
+      { email },
+      { first, last, password },
+      { new: true } // Return the updated document
+    );
+
+    if (updatedUserData) {
+      // Respond with the updated user data in JSON format
+      res.status(200).json(updatedUserData);
+
+    } else {
+      // does not exist,  404 Not Found status
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    // If an error occurs, log the error and respond with a 500 Internal Server Error
+    console.error('Error updating user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// route to handle user data deletion
+app.delete('/users/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Delete the user data based on the provided email
+    const deletedUserData = await UserCredentialModel.findOneAndDelete({ email });
+
+    if (deletedUserData) {
+      //success message in JSON format
+      res.status(200).json({ message: 'User deleted successfully' });
+    } else {
+      // user does not exist, respond with a 404 Not Found status
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    // If an error occurs, log the error and respond with a 500 Internal Server Error
+    console.error('Error deleting user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// This is for the review "email"
+app.get('/newReview/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    // Fetch reviews based on the provided email
+    const userReviews = await Review.find({ email });
+
+    // Respond with the fetched reviews in JSON format
+    res.status(200).json(userReviews);
+  } catch (error) {
+    // If an error occurs, log the error
+    console.error('Error fetching user reviews:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
 // catch 404 and forward to error handler
@@ -142,18 +292,4 @@ app.use(function (err, req, res, next) {
 
 app.listen(8000, () => {
   console.log('Port connected');
-});
-
-//jdew
-app.get("/users", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: "Error fetching users" });
-  }
-});
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
 });
