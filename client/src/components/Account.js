@@ -48,7 +48,7 @@ function Account() {
             const email = sessionStorage.getItem("email");
             await axios.delete(`http://localhost:8000/users/${email}`);
             // After successful deletion, navigate to the logout page
-            navigate("/Logout");
+            navigate("/");
         } catch (error) {
             console.error("Error deleting user:", error);
         }
