@@ -1,0 +1,30 @@
+/*
+*  CONTACT US PAGE STYLING
+ */
+
+.contact-page {
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    font-size: 4vw;
+    align-content: center;
+    padding: 100px 150px 150px 150px;
+    font-weight: lighter;
+}
+
+.contact-page-text {
+    font-weight: lighter;
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    padding-bottom: 25px;
+}
+
+input,
+textarea,
+button,
+form,
+label{
+    font-size: 4vw;
+    font-weight: lighter;
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+}

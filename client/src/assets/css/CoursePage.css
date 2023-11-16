@@ -1,7 +1,4 @@
-/*
-*  COURSE PAGE STYLING
- */
-
+/* CoursePage.css */
 .page-body {
     overflow-y: scroll !important;
 }
@@ -21,12 +18,29 @@
     padding-bottom: 10px;
 }
 
-.review {
-    padding: 10px;
-    border: 1px solid white;
-    margin-top: 10px;
+.user-info-name, .user-info-date {
+    display: inline;
+    padding-right: 10px;
+}
+
+.user-info-date {
+    font-weight: lighter;
+}
+
+.user-info {
+    padding-bottom: 15px;
 }
 
 p {
     margin-bottom: 4px !important;
+}
+
+.review {
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Border applied to the outer div */
+}
+
+.review:hover {
+    border: 2px solid white;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import '../assets/css/ViewReview.css';
 //const model = require('../../../api/models/UserPostsModel');
 
 const ViewReview = () => {
@@ -118,15 +119,15 @@ const ViewReview = () => {
     if(email !== '' || email !== null) {
         return (
             <div className="container border mt-5">
-                <h1>Review for {reviewDetails.subject} {reviewDetails.course}</h1>
-                <h2>By: {reviewDetails.username}</h2>
-                <div>
-                    <h3>Rating: {reviewDetails.rating} out of 5</h3>
-                    <h3>Interest: {reviewDetails.interest} out of 5 (best)</h3>
-                    <h3>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h3>
-                    <h3>Professor: {reviewDetails.professor}</h3>
-                    <h3>Textbook: {reviewDetails.textbook}</h3>
-                    <h3>Comments:</h3>
+                <h3 className='review-text-title'>Review for {reviewDetails.subject} {reviewDetails.course}</h3>
+                <h5 className='review-text-title'>By: {reviewDetails.username}</h5>
+                <div className='review-text'>
+                    <h6>Rating: {reviewDetails.rating} out of 5</h6>
+                    <h6>Interest: {reviewDetails.interest} out of 5 (best)</h6>
+                    <h6>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h6>
+                    <h6>Professor: {reviewDetails.professor}</h6>
+                    <h6>Textbook: {reviewDetails.textbook}</h6>
+                    <h6>Comments:</h6>
                     <p>{reviewDetails.review}</p>
                     <br></br>
                     <p>Posted at { reviewDetails.date }</p>
@@ -140,15 +141,15 @@ const ViewReview = () => {
     } else {
         return (
             <div className="container border mt-5">
-                <h1>Review for {reviewDetails.subject} {reviewDetails.course}</h1>
-                <h2>By: {reviewDetails.username}</h2>
-                <div>
-                    <h3>Rating: {reviewDetails.rating} out of 5</h3>
-                    <h3>Interest: {reviewDetails.interest} out of 5 (best)</h3>
-                    <h3>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h3>
-                    <h3>Professor: {reviewDetails.professor}</h3>
-                    <h3>Textbook: {reviewDetails.textbook}</h3>
-                    <h3>Comments:</h3>
+                <h3 className='review-text-title'>Review for {reviewDetails.subject} {reviewDetails.course}</h3>
+                <h5 className='review-text-title'>By: {reviewDetails.username}</h5>
+                <div className='review-text'>
+                    <h6>Rating: {reviewDetails.rating} out of 5</h6>
+                    <h6>Interest: {reviewDetails.interest} out of 5 (best)</h6>
+                    <h6>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h6>
+                    <h6>Professor: {reviewDetails.professor}</h6>
+                    <h6>Textbook: {reviewDetails.textbook}</h6>
+                    <h6>Comments:</h6>
                     <p>{reviewDetails.review}</p>
                     <br></br>
                     <p>Posted at { reviewDetails.date }</p>
