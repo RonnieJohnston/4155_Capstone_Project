@@ -15,6 +15,7 @@ const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
 const Review = require("./models/UserPostsModel");
+const { error } = require('console');
 
 // mongodb connection uri - capstone user group and pass
 let uri = 'mongodb+srv://capstoneGroup:O75OvIunEpMljYL4@cluster0.ditslgs.' +
@@ -89,6 +90,21 @@ app.get('/course/:id', async (req, res) => {
     res.status(500).send({ message: error.message });
   }
 });
+
+app.get('/course/review/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+
+    const reviewDetails = await UserPostsModel.findById(id);
+
+    res.status(200).json({
+      reviewDetails
+    });
+  } catch (err) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
+})
 
 app.get('/', cors(), (req, res) => {
 
@@ -183,6 +199,124 @@ app.post('/newReview', async (req, res) => {
     res.json('Fail');
   }
 });
+
+app.post('/course/review/:id', async (req, res) => {
+  const id = req.params;
+  const { likes, dislikes, liked, disliked, state, email } = req.body;
+  const data = {
+    likes: likes,
+    dislikes: dislikes,
+    liked: liked,
+    disliked: disliked,
+    state: state,
+    email: email
+  };
+
+  reviewid = new mongoose.Types.ObjectId(id);
+
+  if(data.state == 'like') {
+    if(!data.liked.find((element) => element == data.email)) {
+      data.likes++;
+      try {
+        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: reviewid },
+              { $push: { liked: email } }
+            )
+            if(check) {
+              res.json('Successfully added like');
+            }
+          } catch(e) {
+            console.log(e);
+            res.json('Fail to update liked array');
+          }
+        } else {
+          res.json('Failure to add like');
+        }
+      } catch(e) {
+        console.log(e);
+        res.json('Fail to update likes');
+      }
+    } else if(data.liked.find((element) => element == data.email)) {
+      data.likes--;
+      try {
+        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: reviewid },
+              { $pull: { liked: email } }
+            )
+            if(check) {
+              res.json('Successfully removed like');
+            }
+          } catch(e) {
+            console.log(e);
+            res.json('Fail to update liked array');
+          }
+        } else {
+          res.json('Failure to remove like'); 
+        }
+      } catch(e) {
+        console.log(e);
+        res.json('Fail to update likes');
+      }
+    }
+  } else if(data.state == 'dislike') {
+    if(!data.disliked.find((element) => element == data.email)) {
+      data.dislikes++;
+      try {
+        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: reviewid },
+              { $push: { disliked: email } }
+            )
+            if(check) {
+              res.json('Successfully added dislike');
+            }
+          } catch(e) {
+            console.log(e);
+            res.json('Fail to update disliked array');
+          }
+        } else {
+          res.json('Failure to remove dislike');
+        }
+      } catch(e) {
+        console.log(e);
+        res.json('Fail to update dislikes');
+      }
+    } else if(data.disliked.find((element) => element == data.email)) {
+      data.dislikes--;
+      try {
+        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: reviewid },
+              { $pull: { disliked: email } }
+            )
+            if(check) {
+              res.json('Successfully removed dislike');
+            }
+          } catch(e) {
+            console.log(e);
+            res.json('Fail to update disliked array');
+          }
+        } else {
+          res.json('Failure to remove dislike');
+        }
+      } catch(e) {
+        console.log(e);
+        res.json('Fail to update dislikes');
+      }
+    }
+  }
+
+})
 
 
 // catch 404 and forward to error handler

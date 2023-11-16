@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import '../assets/css/CoursePage.css';
 
 const CoursePage = () => {
@@ -47,6 +47,7 @@ const CoursePage = () => {
                     <div>
                         {courseReviews.map(review => (
                             <div key={review._id} className='review'>
+                                <Link to={`/course/review/${review._id}`}>Click to View Review</Link>
                                 <p>Overall Rating: {review.rating}</p>
                                 <p>Difficulty Rating: {review.difficulty}</p>
                                 <p>Interest Rating: {review.interest}</p>

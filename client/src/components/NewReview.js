@@ -22,7 +22,7 @@ const NewReview = () => {
     async function submitReview(e) {
         e.preventDefault()
 
-        var username = "TESTUSER"
+        var username = sessionStorage.getItem(username);
         var date = new Date()
         var likes = 0
         var dislikes = 0
