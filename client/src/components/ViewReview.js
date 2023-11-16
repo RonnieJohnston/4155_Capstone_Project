@@ -50,8 +50,6 @@ const ViewReview = () => {
 
     async function updateLikeCount(e) {
 
-        console.log('STARTING FUNCTION');
-
         var likes = reviewDetails.likes;
         var dislikes = reviewDetails.dislikes;
         var liked = reviewDetails.liked;
@@ -120,7 +118,6 @@ const ViewReview = () => {
     if(email !== '' || email !== null) {
         return (
             <div className="container border mt-5">
-                <h1>USER EMAIL IS: {email}</h1>
                 <h1>Review for {reviewDetails.subject} {reviewDetails.course}</h1>
                 <h2>By: {reviewDetails.username}</h2>
                 <div>
