@@ -22,7 +22,7 @@ const NewReview = () => {
     async function submitReview(e) {
         e.preventDefault()
 
-        var username = sessionStorage.getItem(username);
+        const email = sessionStorage.getItem('email');
         var date = new Date()
         var likes = 0
         var dislikes = 0
@@ -30,7 +30,7 @@ const NewReview = () => {
         try {
             await axios.post("http://localhost:8000/newReview",
                 {
-                    subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook
+                    subject, course, professor, email, date, likes, dislikes, rating, interest, difficulty, review, textbook
                 })
                 .then( res=> {
                     if(res.data == 'Exist') {
@@ -42,7 +42,7 @@ const NewReview = () => {
                     }
                 })
                 .catch(res => {
-                    alert("Wrong details")
+                    // need to fix this alert("Wrong details")
                     console.log(e)
                 })
         }
