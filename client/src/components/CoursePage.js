@@ -46,15 +46,23 @@ const CoursePage = () => {
                 {courseReviews.length > 0 ? (
                     <div>
                         {courseReviews.map(review => (
-                            <div key={review._id} className='review'>
-                                <Link to={`/course/review/${review._id}`}>Click to View Review</Link>
-                                <p>Overall Rating: {review.rating}</p>
-                                <p>Difficulty Rating: {review.difficulty}</p>
-                                <p>Interest Rating: {review.interest}</p>
-                                <p>Professor: {review.professor}</p>
-                                <p>Textbook(s): {review.textbook}</p>
-                                <p>Comments: {review.review}</p>
-                            </div>
+                            <Link to={`/course/review/${review._id}`} key={review._id} className='review-link'>
+                                <div className='review'>
+
+                                    <div className='user-info'>
+                                        <h4 className='user-info-name'>Anonymous</h4>
+                                        <h6 className='user-info-date'><i>Posted 3 min ago</i></h6>
+                                    </div>
+
+                                    <p>Overall Rating: {review.rating}</p>
+                                    <p>Difficulty Rating: {review.difficulty}</p>
+                                    <p>Interest Rating: {review.interest}</p>
+                                    <p>Textbook(s): {review.textbook}</p>
+                                    <p>Professor: {review.professor}</p>
+                                    <p>Comments: {review.review}</p>
+
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 ) : (
