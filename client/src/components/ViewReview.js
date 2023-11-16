@@ -3,11 +3,10 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 //const model = require('../../../api/models/UserPostsModel');
 
-const email = sessionStorage.getItem('email');
-
 const ViewReview = () => {
     const { id } = useParams();
     const [reviewDetails, setReviewDetails] = useState('');
+    const email = sessionStorage.getItem('email');
     const history = useNavigate()
     /*const [subject, setSubject] = useState('')
     const [course, setCourse] = useState('')
@@ -51,6 +50,8 @@ const ViewReview = () => {
 
     async function updateLikeCount(e) {
 
+        console.log('STARTING FUNCTION');
+
         var likes = reviewDetails.likes;
         var dislikes = reviewDetails.dislikes;
         var liked = reviewDetails.liked;
@@ -58,8 +59,10 @@ const ViewReview = () => {
         var state = '';
 
         if(e === 'like') {
-            state = 'like'
-            console.log(email);
+            state = 'like';
+        } else if (e === 'dislike') {
+            state = 'dislike';
+        }
             try {
                 await axios.post(`http://localhost:8000/course/review/${id}`, {
                     likes, dislikes, liked, disliked, state, email
@@ -79,7 +82,6 @@ const ViewReview = () => {
             } catch (e) {
                 console.log(e);
             }
-        }
         /*if(e === 'like') {
             if(!pst.liked.find(email)) {
                 likes++;
@@ -118,6 +120,7 @@ const ViewReview = () => {
     if(email !== '' || email !== null) {
         return (
             <div className="container border mt-5">
+                <h1>USER EMAIL IS: {email}</h1>
                 <h1>Review for {reviewDetails.subject} {reviewDetails.course}</h1>
                 <h2>By: {reviewDetails.username}</h2>
                 <div>
