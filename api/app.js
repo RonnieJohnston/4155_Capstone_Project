@@ -200,6 +200,115 @@ app.post('/newReview', async (req, res) => {
   }
 });
 
+app.post('/course/review/:id', async (req, res) => {
+  const id = req.params;
+  const { likes, dislikes, liked, disliked, state, email } = req.body;
+  const data = {
+    likes: likes,
+    dislikes: dislikes,
+    liked: liked,
+    disliked: disliked,
+    state: state,
+    email: email,
+    id: id
+  };
+
+  if(data.state == 'like') {
+    if(!liked.find(email)) {
+      data.likes++;
+      try {
+        const check = await UserPostsModel.findByIdAndUpdate(id, { likes: data.likes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: id },
+              { $push: { liked: email } }
+            )
+            if(check) {
+              res.json('Successfully added like');
+            }
+          } catch(e) {
+            res.json('Fail to update liked array');
+          }
+        } else {
+          res.json('Failure to add like');
+        }
+      } catch(e) {
+        res.json('Fail to update likes');
+      }
+    } else if(liked.find(email)) {
+      data.likes--;
+      try {
+        const check = await UserPostsModel.findByIdAndUpdate(id, { likes: data.likes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: id },
+              { $pull: { liked: email } }
+            )
+            if(check) {
+              res.json('Successfully removed like');
+            }
+          } catch(e) {
+            res.json('Fail to update liked array');
+          }
+        } else {
+          res.json('Failure to remove like'); 
+        }
+      } catch(e) {
+        res.json('Fail to update likes');
+      }
+    }
+  } else if(data.state == 'dislike') {
+    if(!disliked.find(email)) {
+      data.dislikes++;
+      try {
+        const check = await UserPostsModel.findByIdAndUpdate(id, { dislikes: data.dislikes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: id },
+              { $push: { disliked: email } }
+            )
+            if(check) {
+              res.json('Successfully added dislike');
+            }
+          } catch(e) {
+            res.json('Fail to update disliked array');
+          }
+        } else {
+          res.json('Failure to remove dislike');
+        }
+      } catch(e) {
+        res.json('Fail to update dislikes');
+      }
+    } else if(disliked.find(email)) {
+      data.dislikes--;
+      try {
+        const check = await UserPostsModel.findByIdAndUpdate(id, { dislikes: data.dislikes });
+        if(check) {
+          try {
+            check = await UserPostsModel.updateOne(
+              { _id: id },
+              { $pull: { disliked: email } }
+            )
+            if(check) {
+              res.json('Successfully removed dislike');
+            }
+          } catch(e) {
+            res.json('Fail to update disliked array');
+          }
+        } else {
+          res.json('Failure to remove dislike');
+        }
+      } catch(e) {
+        res.json('Fail to update dislikes');
+      }
+    }
+  }
+
+})
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

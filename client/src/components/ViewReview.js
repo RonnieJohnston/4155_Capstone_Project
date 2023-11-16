@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 //const model = require('../../../api/models/UserPostsModel');
 
 const email = sessionStorage.getItem('email');
@@ -8,6 +8,7 @@ const email = sessionStorage.getItem('email');
 const ViewReview = () => {
     const { id } = useParams();
     const [reviewDetails, setReviewDetails] = useState('');
+    const history = useNavigate()
     /*const [subject, setSubject] = useState('')
     const [course, setCourse] = useState('')
     const [rating, setRating] = useState('')
@@ -24,8 +25,7 @@ const ViewReview = () => {
     const [disliked, setDisliked] = useState('')*/
 
     useEffect(() => {
-        axios
-          .get(`http://localhost:3000/posts/${id}`)
+        axios.get(`http://localhost:8000/course/review/${id}`)
           .then((response) => {
             setReviewDetails(response.data.reviewDetails);
             /*setSubject(response.data.subject);
@@ -49,9 +49,38 @@ const ViewReview = () => {
           });
     }, []);
 
-    /*const updateLikeCount = (e) => {
-        const pst = model.findById(id);
+    async function updateLikeCount(e) {
+
+        var likes = reviewDetails.likes;
+        var dislikes = reviewDetails.dislikes;
+        var liked = reviewDetails.liked;
+        var disliked = reviewDetails.disliked;
+        var state = '';
+
         if(e === 'like') {
+            state = 'like'
+            console.log(email);
+            try {
+                await axios.post(`http://localhost:8000/course/review/${id}`, {
+                    likes, dislikes, liked, disliked, state, email
+                })
+                .then(res => {
+                    if(res.data == 'Successfully added like' || 'Successfully removed like' || 'Successfully added dislike' || 'Successfully removed dislike') {
+                        window.location.reload(false);
+                        alert(res.data);
+                    } else {
+                        alert(res.data);
+                    }
+                })
+                .catch(err => {
+                    alert("Wrong Details");
+                    console.log(err);
+                })
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        /*if(e === 'like') {
             if(!pst.liked.find(email)) {
                 likes++;
                 model.findByIdAndUpdate(id, { likes: likes });
@@ -83,8 +112,8 @@ const ViewReview = () => {
                     { $pull: { disliked: email }}
                 )
             }
-        }
-    }*/
+        }*/
+    }
 
     if(email !== '' || email !== null) {
         return (
@@ -103,8 +132,8 @@ const ViewReview = () => {
                     <p>Posted at { reviewDetails.date }</p>
                     <br></br>
                     
-                    <button /*onClick={() => updateLikeCount('like')}*/>{reviewDetails.likes} likes</button>
-                    <button /*onClick={() => updateLIkeCount('dislike')}*/>{reviewDetails.dislikes} dislikes</button>
+                    <button onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
+                    <button onClick={() => updateLikeCount('dislike')}>{reviewDetails.dislikes} dislikes</button>
                 </div>
             </div>
         )
