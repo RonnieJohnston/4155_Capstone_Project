@@ -169,14 +169,13 @@ app.post('/register', async (req, res) => {
   }
 });
 
-
 app.post('/newReview', async (req, res) => {
-  const { subject, course, professor, username, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
+  const { subject, course, professor, email, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
   const data = {
     subject: subject,
     course: course,
     professor: professor,
-    username: username,
+    email: email,
     date: date,
     likes: likes,
     dislikes: dislikes,
@@ -186,9 +185,8 @@ app.post('/newReview', async (req, res) => {
     review: review,
     textbook: textbook
   };
-  try{
-    const check = await UserClassesModel.findOne({subject: subject, course: course});
-
+  try {
+    const check = await UserClassesModel.findOne({ subject: subject, course: course });
     if (check) {
       res.json('Exist');
       await UserPostsModel.insertMany([data]);
@@ -196,9 +194,101 @@ app.post('/newReview', async (req, res) => {
       res.json('Not Exist');
     }
   } catch (e) {
+    console.log(e);
     res.json('Fail');
   }
 });
+
+// Fetching the user by the email 
+app.get('/users/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Fetch user data based on the provided email
+    const userData = await UserCredentialModel.findOne({ email });
+
+    if (userData) {
+      // Respond with the fetched user data in JSON format
+      res.status(200).json(userData);
+    } else {
+      // If the user does not exist, respond with a 404 Not Found status
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    // If an error log the error and 500 Internal Server Error
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// route to handle user data update
+app.put('/users/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    const { first, last, password } = req.body;
+
+    // Update user data based on the provided email
+    const updatedUserData = await UserCredentialModel.findOneAndUpdate(
+      { email },
+      { first, last, password },
+      { new: true } // Return the updated document
+    );
+
+    if (updatedUserData) {
+      // Respond with the updated user data in JSON format
+      res.status(200).json(updatedUserData);
+
+    } else {
+      // does not exist,  404 Not Found status
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    // If an error occurs, log the error and respond with a 500 Internal Server Error
+    console.error('Error updating user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// route to handle user data deletion
+app.delete('/users/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Delete the user data based on the provided email
+    const deletedUserData = await UserCredentialModel.findOneAndDelete({ email });
+
+    if (deletedUserData) {
+      //success message in JSON format
+      res.status(200).json({ message: 'User deleted successfully' });
+    } else {
+      // user does not exist, respond with a 404 Not Found status
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    // If an error occurs, log the error and respond with a 500 Internal Server Error
+    console.error('Error deleting user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// This is for the review "email"
+app.get('/newReview/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    // Fetch reviews based on the provided email
+    const userReviews = await Review.find({ email });
+
+    // Respond with the fetched reviews in JSON format
+    res.status(200).json(userReviews);
+  } catch (error) {
+    // If an error occurs, log the error
+    console.error('Error fetching user reviews:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+// -------------------------------------
 
 app.post('/course/review/:id', async (req, res) => {
   const id = req.params;
