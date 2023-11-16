@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
+import '../assets/css/App.css'
 
 function Register() {
     const [username, setUsername] = useState('')
@@ -20,7 +21,8 @@ function Register() {
                         alert("User already exists")
                     }
                     else if (res.data == "Not exist") {
-                        history("/")
+                        sessionStorage.setItem('username', username)
+                        history("/home")
                     }
                 })
                 .catch(res => {
@@ -34,6 +36,7 @@ function Register() {
     }
 
     return(
+        <body className='page'>
         <div className="Register">
 
         <div className="container-xl border mt-5">
@@ -49,7 +52,7 @@ function Register() {
             </form>
         </div>
         </div>
-        
+    </body>
     )
 }
 
