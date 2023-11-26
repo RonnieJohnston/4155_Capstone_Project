@@ -6,20 +6,18 @@ const logger = require('morgan');
 //cors allows cross-origin requests so the front and back end can run simultaneously 
 const cors = require('cors');
 const mongoose = require('mongoose');
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const reviewRoutes  = require('./routes/reviewRoutes');
-
 const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
 const Review = require("./models/UserPostsModel");
 const { error } = require('console');
+require('dotenv').config()
 
-// mongodb connection uri - capstone user group and pass
-let uri = 'mongodb+srv://capstoneGroup:O75OvIunEpMljYL4@cluster0.ditslgs.' +
-    'mongodb.net/UserData?retryWrites=true&w=majority'
+// mongodb connection uri
+const uri = process.env.DB_URI
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
