@@ -19,7 +19,6 @@ const Footer = () => {
                 <li><Link to='/about'>About Declassified</Link></li>
                 <li><Link to='/privacy'>Privacy Policy</Link></li>
                 <li><Link to='/ethics'>Code of Ethics</Link></li>
-                <li><Link to='/contact'>Contact Us</Link></li>
             </ul>
         </nav>
     );

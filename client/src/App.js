@@ -16,7 +16,6 @@ import ViewReview from "./components/ViewReview";
 import About from "./components/About";
 import Privacy from "./components/Privacy";
 import Ethics from "./components/Ethics";
-import Contact from "./components/Contact";
 
 function App() {
 
@@ -38,7 +37,6 @@ function App() {
                 <Route path='/about' element={<About />} />
                 <Route path='/ethics' element={<Ethics />} />
                 <Route path='/privacy' element={<Privacy />} />
-                <Route path='/contact' element={<Contact />} />
             </Routes>
             <Footer/>
         </div>
