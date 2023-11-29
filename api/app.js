@@ -300,110 +300,160 @@ app.post('/course/review/:id', async (req, res) => {
     email: email
   };
 
-  reviewid = new mongoose.Types.ObjectId(id);
+  if(email) {
+    reviewid = new mongoose.Types.ObjectId(id);
 
-  if(data.state == 'like') {
-    if(!data.liked.find((element) => element == data.email)) {
-      data.likes++;
-      try {
-        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
-        if(check) {
+    // User hit like button
+    if(data.state == 'like') {
+      // See if user isn't in liked array
+      if(!data.liked.find((element) => element == data.email)) {
+        // If user is in disliked array, automatically undo their dislike before adding the like
+        if(data.disliked.find((element) => element == data.email)) {
+          data.dislikes--;
           try {
-            check = await UserPostsModel.updateOne(
-              { _id: reviewid },
-              { $push: { liked: email } }
-            )
+            var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
             if(check) {
-              res.json('Successfully added like');
+              try {
+                check = await UserPostsModel.updateOne(
+                  { _id: reviewid },
+                  { $pull: { disliked: email } }
+                )
+              } catch(e) {
+                console.log(e);
+              }
             }
           } catch(e) {
             console.log(e);
-            res.json('Fail to update liked array');
           }
-        } else {
-          res.json('Failure to add like');
         }
-      } catch(e) {
-        console.log(e);
-        res.json('Fail to update likes');
+        // Add user to likes and liked array
+        data.likes++;
+        try {
+          var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
+          if(check) {
+            try {
+              check = await UserPostsModel.updateOne(
+                { _id: reviewid },
+                { $push: { liked: email } }
+              )
+              if(check) {
+                res.json('Successfully added like');
+              }
+            } catch(e) {
+              console.log(e);
+              res.json('Fail to update liked array');
+            }
+          } else {
+            res.json('Failure to add like');
+          }
+        } catch(e) {
+          console.log(e);
+          res.json('Fail to update likes');
+        }
+        // Else user is trying to unlike
+      } else if(data.liked.find((element) => element == data.email)) {
+        data.likes--;
+        try {
+          var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
+          if(check) {
+            try {
+              check = await UserPostsModel.updateOne(
+                { _id: reviewid },
+                { $pull: { liked: email } }
+              )
+              if(check) {
+                res.json('Successfully removed like');
+              }
+            } catch(e) {
+              console.log(e);
+              res.json('Fail to update liked array');
+            }
+          } else {
+            res.json('Failure to remove like'); 
+          }
+        } catch(e) {
+          console.log(e);
+          res.json('Fail to update likes');
+        }
       }
-    } else if(data.liked.find((element) => element == data.email)) {
-      data.likes--;
-      try {
-        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
-        if(check) {
+      // User hit dislike button
+    } else if(data.state == 'dislike') {
+      // Check for user in disliked array
+      if(!data.disliked.find((element) => element == data.email)) {
+        // If user is in liked array, automatically unlike
+        if(data.liked.find((element) => element == data.email)) {
+          data.likes--;
           try {
-            check = await UserPostsModel.updateOne(
-              { _id: reviewid },
-              { $pull: { liked: email } }
-            )
+            var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
             if(check) {
-              res.json('Successfully removed like');
+              try {
+                check = await UserPostsModel.updateOne(
+                  { _id: reviewid },
+                  { $pull: { liked: email } }
+                )
+              } catch(e) {
+                console.log(e);
+              }
             }
           } catch(e) {
             console.log(e);
-            res.json('Fail to update liked array');
           }
-        } else {
-          res.json('Failure to remove like'); 
         }
-      } catch(e) {
-        console.log(e);
-        res.json('Fail to update likes');
+        // Add user to dislikes and disliked array
+        data.dislikes++;
+        try {
+          var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
+          if(check) {
+            try {
+              check = await UserPostsModel.updateOne(
+                { _id: reviewid },
+                { $push: { disliked: email } }
+              )
+              if(check) {
+                res.json('Successfully added dislike');
+              }
+            } catch(e) {
+              console.log(e);
+              res.json('Fail to update disliked array');
+            }
+          } else {
+            res.json('Failure to remove dislike');
+          }
+        } catch(e) {
+          console.log(e);
+          res.json('Fail to update dislikes');
+        }
+        // User is trying to undo a dislike
+      } else if(data.disliked.find((element) => element == data.email)) {
+        data.dislikes--;
+        try {
+          var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
+          if(check) {
+            try {
+              check = await UserPostsModel.updateOne(
+                { _id: reviewid },
+                { $pull: { disliked: email } }
+              )
+              if(check) {
+                res.json('Successfully removed dislike');
+              }
+            } catch(e) {
+              console.log(e);
+              res.json('Fail to update disliked array');
+            }
+          } else {
+            res.json('Failure to remove dislike');
+          }
+        } catch(e) {
+          console.log(e);
+          res.json('Fail to update dislikes');
+        }
       }
     }
-  } else if(data.state == 'dislike') {
-    if(!data.disliked.find((element) => element == data.email)) {
-      data.dislikes++;
-      try {
-        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
-        if(check) {
-          try {
-            check = await UserPostsModel.updateOne(
-              { _id: reviewid },
-              { $push: { disliked: email } }
-            )
-            if(check) {
-              res.json('Successfully added dislike');
-            }
-          } catch(e) {
-            console.log(e);
-            res.json('Fail to update disliked array');
-          }
-        } else {
-          res.json('Failure to remove dislike');
-        }
-      } catch(e) {
-        console.log(e);
-        res.json('Fail to update dislikes');
-      }
-    } else if(data.disliked.find((element) => element == data.email)) {
-      data.dislikes--;
-      try {
-        var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
-        if(check) {
-          try {
-            check = await UserPostsModel.updateOne(
-              { _id: reviewid },
-              { $pull: { disliked: email } }
-            )
-            if(check) {
-              res.json('Successfully removed dislike');
-            }
-          } catch(e) {
-            console.log(e);
-            res.json('Fail to update disliked array');
-          }
-        } else {
-          res.json('Failure to remove dislike');
-        }
-      } catch(e) {
-        console.log(e);
-        res.json('Fail to update dislikes');
-      }
-    }
+    // User isn't logged in (null email)
+  } else {
+    res.json('Please Login First');
   }
-
 })
 
 
