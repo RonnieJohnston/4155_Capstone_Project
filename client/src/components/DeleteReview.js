@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import '../assets/css/App.css';
 
 const DeleteReview = () => {
   const navigate = useNavigate();
