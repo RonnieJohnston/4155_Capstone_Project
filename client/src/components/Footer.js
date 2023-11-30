@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/css/App.css';
+import '../assets/css/Footer.css';
 
 const Footer = () => {
     return (
@@ -19,7 +19,6 @@ const Footer = () => {
                 <li><Link to='/about'>About Declassified</Link></li>
                 <li><Link to='/privacy'>Privacy Policy</Link></li>
                 <li><Link to='/ethics'>Code of Ethics</Link></li>
-                <li><Link to='/contact'>Contact Us</Link></li>
             </ul>
         </nav>
     );

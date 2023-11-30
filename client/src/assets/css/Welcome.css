@@ -3,38 +3,60 @@
  */
 
 .page-body {
-    overflow: hidden !important;
+    background-color: #262626;
+    height: 100vh;
 }
 
 .welcome-page {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
 }
 
 .welcome-page-contents {
     display: flex;
     align-items: center;
-    max-width: 100%; /* Ensure the contents don't exceed the screen width */
-    padding-bottom: 80px;
-    text-align: left;
 }
 
-.welcome-page-text {
+.welcome-page-text-1 {
     color: #FFFFFF;
     font-family: "Lantinghei SC", serif;
-    font-size: 4vw;
+    font-size: 45px;
     margin: 0;
+    position: absolute;
 }
 
-.welcome-page-icon {
-    display: flex;
-    align-items: center;
+.welcome-page-text-2 {
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    font-size: 45px;
+    margin: 0;
+    position: absolute;
+}
+
+.welcome-page-text-3 {
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    font-size: 45px;
+    margin: 0;
+    position: absolute;
+}
+
+.welcome-page-text-4 {
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    font-size: 25px;
+    margin: 0;
+    position: absolute;
+}
+
+.welcome-page-text-5 {
+    margin: 0;
+    position: absolute;
+    padding-left: 5px;
+    width: 40px;
+    top: 0;
 }
 
 .DC-icon {
-    max-width: 90%;
-    height: auto;
-    max-height: 70%;
+    padding-right: 15px;
 }

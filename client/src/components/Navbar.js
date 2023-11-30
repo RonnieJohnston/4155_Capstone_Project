@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/css/App.css';
 import { useLocation } from 'react-router-dom';
+import '../assets/css/Navbar.css';
 
 const Navbar = () => {
     const email = sessionStorage.getItem('email')

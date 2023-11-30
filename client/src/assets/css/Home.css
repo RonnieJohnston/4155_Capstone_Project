@@ -3,6 +3,18 @@
 * HOME PAGE STYLING BELOW
 *
  */
+
+.page {
+    height: auto;
+    background-color: #262626;
+    color:#FFFFFF;
+    margin: 0;
+    padding:0;
+    font-family: "Lantinghei SC", serif;
+    font-size: large;
+    overflow-x: hidden;
+}
+
 .welcome-message {
     text-align: center;
     padding-top: 40px;

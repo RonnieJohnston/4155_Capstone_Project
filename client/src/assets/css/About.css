@@ -2,6 +2,17 @@
 *  ABOUT PAGE STYLING
  */
 
+.page {
+    height: auto;
+    background-color: #262626;
+    color:#FFFFFF;
+    margin: 0;
+    padding:0;
+    font-family: "Lantinghei SC", serif;
+    font-size: large;
+    overflow-x: hidden;
+}
+
 .about-page-container1 {
     display: flex;
     justify-content: center;

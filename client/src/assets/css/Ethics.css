@@ -1,6 +1,16 @@
 /*
 *  ETHICS PAGE STYLING
  */
+.page {
+    height: auto;
+    background-color: #262626;
+    color:#FFFFFF;
+    margin: 0;
+    padding:0;
+    font-family: "Lantinghei SC", serif;
+    font-size: large;
+    overflow-x: hidden;
+}
 
 .ethics-page {
     color: #FFFFFF;

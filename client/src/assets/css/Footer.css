@@ -1,0 +1,47 @@
+/*
+*
+* FOOTER STYLING BELOW - Consistent across all pages
+*
+ */
+
+.footer {
+    display: flex;
+    align-items: center;
+    background-color: #262626;
+    font-family: "Lantinghei SC", serif;
+    font-size: small;
+    height: 60px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -1px 20px 2px #FFFFFF;
+}
+
+.footer-slogan {
+    font-family: "Lantinghei SC", serif;
+    color: white;
+    font-style: italic;
+    margin-right: auto; /* Push the slogan to the left */
+    margin-bottom: 0;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding-right: 40px;
+}
+
+.footer-links ul {
+    padding: 0;
+}
+
+.footer-links li {
+    padding-left: 25px;
+}
+
+.footer-logo {
+    padding-left: 30px;
+    padding-right: 30px;
+}
