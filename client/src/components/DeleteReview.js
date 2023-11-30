@@ -7,11 +7,15 @@ const DeleteReview = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [reviewExists, setReviewExists] = useState('');
+  const [subject, setSubject] = useState('');
+  const [course, setCourse] = useState('');
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/reviews/${id}`)
-      .then(() => {
+      .then((response) => {
+        setSubject(response.data.subject);
+        setCourse(response.data.course);
         setReviewExists(true);
       })
       .catch((error) => {
@@ -31,7 +35,7 @@ const DeleteReview = () => {
       .delete(`http://localhost:8000/reviews/${id}`)
       .then(() => {
         alert("Review deleted successfully");
-        navigate("/");
+        navigate("/account");
       })
       .catch((error) => {
           alert("An error occurred. Please check console");
@@ -40,7 +44,7 @@ const DeleteReview = () => {
   };
 
   const handleCancel = () => {
-    navigate("/");
+    navigate("/account");
   };
 
   return (
@@ -49,7 +53,7 @@ const DeleteReview = () => {
       <h1 className="text-center mb-5 text-white">Delete Review?</h1>
       <div className="container">
         <h3 className="text-center mb-5 text-white">
-          Are you sure you would like to delete this review? 
+          Are you sure you would like to delete this review for {subject} {course}? 
           This will include deleting the ratings and all likes/dislikes from other students
         </h3>
         <div className="d-grid gap-1">

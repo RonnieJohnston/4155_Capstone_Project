@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AiOutlineEdit } from "react-icons/ai";
+import { MdOutlineDelete } from "react-icons/md";
 
 function Account() {
 
@@ -185,6 +188,14 @@ function Account() {
                                 {reviews.map((review, index) => (
                                     <li key={index} className="list-group-item">
                                         <p className="mb-0">
+                                        <div className="d-flex justify-content-end">
+                                            <Link to={`/reviews/edit/${review._id}`}>
+                                            <AiOutlineEdit className="fs-4 text-primary" />
+                                            </Link>
+                                            <Link to={`/reviews/delete/${review._id}`}>
+                                            <MdOutlineDelete className="fs-4 text-danger" />
+                                            </Link>
+                                            </div>
                                             <strong>Subject:</strong> {review.subject}<br />
                                             <strong>Course:</strong> {review.course}<br />
                                             <strong>Professor:</strong> {review.professor}<br />
