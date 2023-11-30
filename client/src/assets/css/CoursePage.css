@@ -1,15 +1,5 @@
 /* CoursePage.css */
 
-/* body page styling - consistent across all pages */
-html, body {
-    background-color: #262626;
-}
-
-.page-body {
-    height: 100vh;
-    background-color: #262626;
-}
-
 .page {
     height: auto;
     background-color: #262626;
@@ -19,10 +9,6 @@ html, body {
     font-family: "Lantinghei SC", serif;
     font-size: large;
     overflow-x: hidden;
-}
-
-.page-body {
-    overflow-y: scroll !important;
 }
 
 .course-page {

@@ -2,16 +2,6 @@
 *  ABOUT PAGE STYLING
  */
 
-/* body page styling - consistent across all pages */
-html, body {
-    background-color: #262626;
-}
-
-.page-body {
-    height: 100vh;
-    background-color: #262626;
-}
-
 .page {
     height: auto;
     background-color: #262626;
