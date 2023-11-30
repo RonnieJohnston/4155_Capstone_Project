@@ -54,7 +54,7 @@ const EditReview = () => {
       .put(`http://localhost:8000/reviews/${id}`, data)
       .then(() => {
         alert("Review edited successfully");
-        navigate("/");
+        navigate("/account");
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +67,7 @@ const EditReview = () => {
       <h1 className="text-white">Editing review for {subject} {course}</h1>
       <div>
         <div>
-          <label className="text-white mb-2">Rating</label>
+          <label className="text-white mb-2">Rating from 0 to 5</label>
           <input
           className="form-control"
             type="number"
@@ -77,7 +77,7 @@ const EditReview = () => {
           />
         </div>
         <div>
-          <label className="text-white mb-2">Interest</label>
+          <label className="text-white mb-2">Interest from 0 to 5</label>
           <input
             className="form-control"
             type="number"
@@ -87,7 +87,7 @@ const EditReview = () => {
           />
         </div>
         <div>
-          <label className="text-white mb-2">Difficulty</label>
+          <label className="text-white mb-2">Difficulty from 0 (Easy) to 10 (Hard)</label>
           <input
             className="form-control"
             type="number"
@@ -106,7 +106,7 @@ const EditReview = () => {
           />
         </div>
         <div>
-          <label className="text-white mb-2">Textbook</label>
+          <label className="text-white mb-2">Textbook(s)</label>
           <input
             className="form-control"
             type="text"
