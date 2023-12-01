@@ -1,0 +1,36 @@
+/*
+*  REGISTER PAGE STYLING
+ */
+
+.page-body {
+    background-color: #262626;
+    height: 100vh;
+}
+
+.register-page {
+    display: flex;
+    justify-content: center;
+}
+
+
+.register-page-contents {
+    height: 450px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    position: absolute;
+    top: 25%;
+}
+
+.register-page-icon {
+    grid-column: 2;
+    width: 450px;
+}
+
+.register-page-text-container {
+    grid-column: 3;
+    width: 300px;
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    padding-left: 35px;
+}

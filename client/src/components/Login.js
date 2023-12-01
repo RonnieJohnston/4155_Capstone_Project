@@ -40,14 +40,14 @@ function Login() {
         <div className='welcome-page'>
             <div className='welcome-page-contents'>
                 <div className='welcome-page-icon'>
-                    <img className='DC-icon' src='images/DC-icon.png' alt='declassified icon' />
+                    <img className='DC-icon' src='/images/DC-icon.png' alt='declassified icon' />
                 </div>
                 <div className='welcome-page-text-container'>
                     <h1 className="mt-3"> Login </h1>
                     <form action="POST">
                         <input className="form-control mb-4" type="email" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
                         <input className="form-control mb-4" type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
-                        <button type="submit" className="btn btn-dark" onClick={Authorization}>Submit</button>
+                        <button type="submit" className="btn btn-outline-light" onClick={Authorization}>Submit</button>
                     </form>
                 </div>
             </div>

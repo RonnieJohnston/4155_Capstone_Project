@@ -18,7 +18,6 @@ const NewReview = () => {
     async function submitReview(e) {
         e.preventDefault()
 
-
         var first = ''
         const email = sessionStorage.getItem("email");
         const response = await axios.get(`http://localhost:8000/users/${email}`);
