@@ -168,12 +168,13 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/newReview', async (req, res) => {
-  const { subject, course, professor, email, date, likes, dislikes, rating, interest, difficulty, review, textbook } = req.body;
+  const { subject, course, professor, email, first, date, likes, dislikes, rating, interest, difficulty, review, textbook} = req.body;
   const data = {
     subject: subject,
     course: course,
     professor: professor,
     email: email,
+    first: first,
     date: date,
     likes: likes,
     dislikes: dislikes,
@@ -181,7 +182,7 @@ app.post('/newReview', async (req, res) => {
     interest: interest,
     difficulty: difficulty,
     review: review,
-    textbook: textbook
+    textbook: textbook,
   };
   try {
     const check = await UserClassesModel.findOne({ subject: subject, course: course });
@@ -284,7 +285,6 @@ app.get('/newReview/:email', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 
 // -------------------------------------
 
