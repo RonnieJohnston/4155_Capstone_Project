@@ -19,7 +19,7 @@ const CoursePage = () => {
                 setCourseReviews(response.data.courseReviews);
                 setAverageOverallRating(response.data.averageOverallRating);
                 setAverageDifficulty(response.data.averageDifficulty);
-                setAverageInterest(response.data.averageInterest)
+                setAverageInterest(response.data.averageInterest);
             })
             .catch(error => {
                 console.error(error);
