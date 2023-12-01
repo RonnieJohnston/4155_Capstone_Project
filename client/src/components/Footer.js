@@ -6,11 +6,7 @@ const Footer = () => {
     return (
         <nav className='footer'>
             <a className ='footer-logo' href='/home'>
-                <img
-                    src='images/DC-icon.png'
-                    width='60'
-                    alt='declassified logo'
-                />
+                <img src={process.env.PUBLIC_URL + '/images/DC-icon.png'} alt="Footer Logo" width='60'/>
             </a>
 
             <p className='footer-slogan'>Peer-Powered Pathways</p>
