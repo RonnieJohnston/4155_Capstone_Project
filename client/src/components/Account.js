@@ -141,8 +141,8 @@ function Account() {
                             <p className="card-text"><b>Last Name:</b> {formData.last}</p>
                         )}
                     </div>
-                    <div className="d-flex justify-content-between align-items-center mb-3">
-                        {editing ? (
+                    <div className="mb-3">
+                        {editing && (
                             <>
                                 <label htmlFor="email" className="form-label">
                                     <b>Email:</b>
@@ -156,16 +156,13 @@ function Account() {
                                     disabled="disabled"
                                 />
                             </>
-                        ) : (
+                        )}
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                        {!editing && (
                             <p className="card-text"><b>Email:</b> {formData.email}</p>
                         )}
-                        {editing ? (
-                            <div className='text-center'>
-                                <button className=" btn btn-outline-success" onClick={handleSave}>
-                                    Save Changes
-                                </button>
-                            </div>
-                        ) : (
+                        {!editing && (
                             <div className='text-end'>
                                 <button className="btn btn-outline-light btn-sm me-2" onClick={handleEdit}>
                                     Edit
@@ -176,6 +173,13 @@ function Account() {
                             </div>
                         )}
                     </div>
+                    {editing && (
+                        <div className='text-center'>
+                            <button className=" btn btn-outline-success" onClick={handleSave}>
+                                Save Changes
+                            </button>
+                        </div>
+                    )}
                     <br/>
                     <hr/>
                     <br/>
@@ -212,7 +216,7 @@ function Account() {
                         </div>
                     )}
                 </div>
-            </div>
+        </div>
         </div>
     );
 }
