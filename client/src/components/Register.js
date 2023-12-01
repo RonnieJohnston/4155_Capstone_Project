@@ -25,6 +25,10 @@ function Register() {
                     else if (res.data == "Not exist") {
                         sessionStorage.setItem('email', email)
                         history("/home")
+                    } else if (res.data == "Fail") {
+                        alert('Failure to add account');
+                    } else if (res.data == "Invalid") {
+                        alert("Invalid email");
                     }
                 })
                 .catch(res => {
@@ -36,6 +40,12 @@ function Register() {
             console.log(e)
         }
     }
+
+    const validateEmail = (input) => {
+        // Use a regular expression for basic email validation.
+        const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+        return emailRegex.test(input);
+    };
 
     return(
         <body className='page'>
