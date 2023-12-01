@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import '../assets/css/NewReview.css';
 
 const cors = require("cors");
 
@@ -55,8 +56,9 @@ const NewReview = () => {
         }
     }
 
-    return <body className='page'><div className='table-container container-sm border mt-5'>
+    return <body className='page'><div className='new-review-container'>
         <h2>Create a new Review</h2>
+        <hr/>
         <form action="POST" className='row g-3'>
             <div className='col-md-4'>
                 <label for="subject" >Subject: </label>

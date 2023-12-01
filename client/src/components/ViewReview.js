@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import '../assets/css/ViewReview.css';
-import {getFormattedDate} from "../utils/FormatDate";
 
 const ViewReview = () => {
     const { id } = useParams();
