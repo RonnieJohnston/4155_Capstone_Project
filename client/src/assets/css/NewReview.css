@@ -1,0 +1,6 @@
+
+.new-review-container {
+    margin: 75px 75px 150px 75px;
+    padding: 20px;
+    border: 1px solid #ccc; /* Border applied to the outer div */
+}
