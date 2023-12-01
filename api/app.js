@@ -152,19 +152,27 @@ app.post('/register', async (req, res) => {
     email: email,
     password: password,
   };
-  try {
-    const check = await UserCredentialModel.findOne({ email: email });
+  // /^[^\s@]+@[^\s@]+.[^\s@]+$/
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]+(.com)$/i;
 
-    if (check) {
-      res.json('Exist');
-    } else {
-      res.json('Not exist');
-
-      await UserCredentialModel.insertMany([data]);
-    }
-  } catch (e) {
-    res.json('Fail');
+  if(emailRegex.test(email)) {
+      try {
+        const check = await UserCredentialModel.findOne({ email: email });
+    
+        if (check) {
+          res.json('Exist');
+        } else {
+          res.json('Not exist');
+    
+          await UserCredentialModel.insertMany([data]);
+        }
+      } catch (e) {
+        res.json('Fail');
+      }
+  } else {
+      res.json('Invalid');
   }
+  
 });
 
 app.post('/newReview', async (req, res) => {

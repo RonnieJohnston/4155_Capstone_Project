@@ -48,20 +48,18 @@ const DeleteReview = () => {
 
   return (
     <div className='page'>
-    <div className="container border mt-5">
-      <h1 className="text-center mb-5 text-white">Delete Review?</h1>
+    <div className="container mt-5">
+      <h3 className="text-center mb-5 text-white">Delete Review?</h3>
       <div className="container">
-        <h3 className="text-center mb-5 text-white">
+        <h5 className="text-center mb-5 text-white">
           Are you sure you would like to delete this review for {subject} {course}? 
           This will include deleting the ratings and all likes/dislikes from other students
-        </h3>
-        <div className="d-grid gap-1">
-          <button className="btn btn-danger btn-lg mb-4" onClick={handleDeleteReview}>
+        </h5>
+        <div className='text-center'>
+          <button className="btn btn-outline-danger me-2" onClick={handleDeleteReview}>
             Yes, delete it
           </button>
-        </div>
-        <div className="d-grid gap-2">
-          <button className="btn btn-primary btn-lg mb-4" onClick={handleCancel}>
+          <button className="btn btn-outline-secondary" onClick={handleCancel}>
             Cancel
           </button>
         </div>
