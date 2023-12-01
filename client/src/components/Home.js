@@ -44,9 +44,8 @@ function Home() {
                 <p>Welcome!</p>
             )}
         </div>
-        <div className='container-lg text-lg-end'>
-            <div className='row align-items-center'>
-            <div className ='col-auto'>
+        <div className='container-lg d-flex justify-content-between align-items-center'>
+            <div className ='col-7'>
                 <a href='/'>
                     <img
                         src='images/charlotte_logo_white.png'
@@ -56,7 +55,7 @@ function Home() {
                     />
                 </a>
             </div>
-            <div className='col-6'>
+            <div className='col-auto'>
                 <select onChange={(e) => {
                     const selectedOption = e.target.value
                     console.log(selectedOption)
@@ -84,14 +83,13 @@ function Home() {
                     <option>Subject</option>
                 </select>
             </div>
-            <div className='col'>
+            <div className='col-auto'>
                 <input
                     type='text'
                     placeholder='search...'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-            </div>
             </div>
         </div>
         <div className='table-container'>
@@ -114,7 +112,6 @@ function Home() {
                 </tbody>
             </table>
         </div>
-
         </body>
     );
 }
