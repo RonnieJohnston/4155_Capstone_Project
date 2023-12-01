@@ -96,7 +96,7 @@ function Account() {
     return (
         <div className='page'>
         <div className="container mt-5 mb-5">
-                <div className="card-header bg-dark text-white">
+                <div>
                     <h1 className='mb-0'>
                         <b>{formData.first}'s profile</b>
                     </h1>
@@ -200,8 +200,8 @@ function Account() {
                                                 </Link>
                                             </div>
                                         <div className='review-content'>
-                                            <b>Subject:</b> {review.subject}<br />
-                                            <b>Course:</b> {review.course}<br />
+                                            <h4>{review.subject} {review.course} Review</h4>
+                                            <hr/>
                                             <b>Professor:</b> {review.professor}<br />
                                             <b>Likes:</b> {review.likes}<br />
                                             <b>Dislikes:</b> {review.dislikes}<br />
