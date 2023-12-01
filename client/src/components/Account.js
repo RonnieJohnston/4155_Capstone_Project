@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
+import '../assets/css/Account.css';
 
 function Account() {
 
@@ -22,6 +23,7 @@ function Account() {
 
     useEffect(() => {
         fetchData();
+        handleMyReviews()
     }, []);
 
 
@@ -91,21 +93,21 @@ function Account() {
     };
 
     return (
+        <div className='page'>
         <div className="container mt-5 mb-5">
-            <div className="card">
                 <div className="card-header bg-dark text-white">
-                    <h1 className="mb-0">Account Information</h1>
+                    <h1 className='mb-0'>
+                        <b>{formData.first}'s profile</b>
+                    </h1>
+                    <br/>
                 </div>
                 <div className="card-body">
                     <div className="mb-3">
-                        <h2 className="card-title">
-                            {formData.first} {formData.last}
-                        </h2>
                         {/*  input field if editing is enabled, otherwise display the first name as text */}
                         {editing ? (
                             <>
                                 <label htmlFor="firstName" className="form-label">
-                                    First Name:
+                                    <b>First Name:</b>
                                 </label>
                                 <input
                                     type="text"
@@ -117,14 +119,14 @@ function Account() {
                                 />
                             </>
                         ) : (
-                            <p className="card-text">First Name: {formData.first}</p>
+                            <p className="card-text"><b>First Name:</b> {formData.first}</p>
                         )}
                     </div>
                     <div className="mb-3">
                         {editing ? (
                             <>
                                 <label htmlFor="lastName" className="form-label">
-                                    Last Name:
+                                    <b>Last Name:</b>
                                 </label>
                                 <input
                                     type="text"
@@ -136,14 +138,14 @@ function Account() {
                                 />
                             </>
                         ) : (
-                            <p className="card-text">Last Name: {formData.last}</p>
+                            <p className="card-text"><b>Last Name:</b> {formData.last}</p>
                         )}
                     </div>
-                    <div className="mb-3">
+                    <div className="d-flex justify-content-between align-items-center mb-3">
                         {editing ? (
                             <>
                                 <label htmlFor="email" className="form-label">
-                                    Email:
+                                    <b>Email:</b>
                                 </label>
                                 <input
                                     type="email"
@@ -155,61 +157,58 @@ function Account() {
                                 />
                             </>
                         ) : (
-                            <p className="card-text">Email: {formData.email}</p>
+                            <p className="card-text"><b>Email:</b> {formData.email}</p>
                         )}
-                    </div>
-                    <div className="text-center">
                         {editing ? (
-                            <button className="btn btn-success mx-2" onClick={handleSave}>
-                                Save Changes
-                            </button>
-                        ) : (
-                            <>
-                                <button
-                                    className="btn btn-secondary mx-2"
-                                    onClick={handleMyReviews}
-                                >
-                                    My Reviews
+                            <div className='text-center'>
+                                <button className=" btn btn-outline-success" onClick={handleSave}>
+                                    Save Changes
                                 </button>
-                                <button className="btn btn-primary mx-2" onClick={handleEdit}>
+                            </div>
+                        ) : (
+                            <div className='text-end'>
+                                <button className="btn btn-outline-light btn-sm me-2" onClick={handleEdit}>
                                     Edit
                                 </button>
-                                <button className="btn btn-danger mx-2" onClick={handleDelete}>
+                                <button className="btn btn-outline-secondary btn-sm" onClick={handleDelete}>
                                     Delete
                                 </button>
-                            </>
+                            </div>
                         )}
                     </div>
+                    <br/>
+                    <hr/>
+                    <br/>
                     {/* Display reviews */}
                     {reviews.length > 0 && (
                         <div className="mt-3">
                             <h3 className="mb-2">My Reviews:</h3>
-                            <ul className="list-group">
                                 {reviews.map((review, index) => (
+                                    <div className='review-list'>
                                     <li key={index} className="list-group-item">
-                                        <p className="mb-0">
-                                        <div className="d-flex justify-content-end">
-                                            <Link to={`/reviews/edit/${review._id}`}>
-                                            <AiOutlineEdit className="fs-4 text-primary" />
-                                            </Link>
-                                            <Link to={`/reviews/delete/${review._id}`}>
-                                            <MdOutlineDelete className="fs-4 text-danger" />
-                                            </Link>
+                                            <div className="d-flex justify-content-end">
+                                                <Link to={`/reviews/edit/${review._id}`}>
+                                                    <AiOutlineEdit className="fs-4 text-primary" />
+                                                </Link>
+                                                <Link to={`/reviews/delete/${review._id}`}>
+                                                    <MdOutlineDelete className="fs-4 text-danger" />
+                                                </Link>
                                             </div>
-                                            <strong>Subject:</strong> {review.subject}<br />
-                                            <strong>Course:</strong> {review.course}<br />
-                                            <strong>Professor:</strong> {review.professor}<br />
-                                            <strong>Likes:</strong> {review.likes}<br />
-                                            <strong>Dislikes:</strong> {review.dislikes}<br />
-                                            <strong>Rating:</strong> {review.rating}<br />
-                                            <strong>Interest:</strong> {review.interest}<br />
-                                            <strong>Difficulty:</strong> {review.difficulty}<br />
-                                            <strong>Review:</strong> {review.review}<br />
-                                            <strong>Textbook:</strong> {review.textbook}<br />
-                                        </p>
+                                        <div className='review-content'>
+                                            <b>Subject:</b> {review.subject}<br />
+                                            <b>Course:</b> {review.course}<br />
+                                            <b>Professor:</b> {review.professor}<br />
+                                            <b>Likes:</b> {review.likes}<br />
+                                            <b>Dislikes:</b> {review.dislikes}<br />
+                                            <b>Rating:</b> {review.rating}<br />
+                                            <b>Interest:</b> {review.interest}<br />
+                                            <b>Difficulty:</b> {review.difficulty}<br />
+                                            <b>Review:</b> {review.review}<br />
+                                            <b>Textbook:</b> {review.textbook}<br />
+                                        </div>
                                     </li>
+                                    </div>
                                 ))}
-                            </ul>
                         </div>
                     )}
                 </div>

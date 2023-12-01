@@ -2,46 +2,18 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import '../assets/css/ViewReview.css';
-//const model = require('../../../api/models/UserPostsModel');
+import {getFormattedDate} from "../utils/FormatDate";
 
 const ViewReview = () => {
     const { id } = useParams();
     const [reviewDetails, setReviewDetails] = useState('');
     const email = sessionStorage.getItem('email');
     const history = useNavigate()
-    /*const [subject, setSubject] = useState('')
-    const [course, setCourse] = useState('')
-    const [rating, setRating] = useState('')
-    const [interest, setInterest] = useState('')
-    const [difficulty, setDifficulty] = useState('')
-    const [review, setReview] = useState('')
-    const [professor, setProfessor] = useState('')
-    const [textbook, setTextbook] = useState('')
-    const [likes, setLikes] = useState('')
-    const [dislikes, setDislikes] = useState('')
-    const [username, setUsername] = useState('')
-    const [date, setDate] = useState('')
-    const [liked, setLiked] = useState('')
-    const [disliked, setDisliked] = useState('')*/
 
     useEffect(() => {
         axios.get(`http://localhost:8000/course/review/${id}`)
           .then((response) => {
             setReviewDetails(response.data.reviewDetails);
-            /*setSubject(response.data.subject);
-            setCourse(response.data.course);
-            setRating(response.data.rating);
-            setInterest(response.data.interest);
-            setDifficulty(response.data.difficulty);
-            setReview(response.data.review);
-            setProfessor(response.data.professor);
-            setTextbook(response.data.textbook);
-            setLikes(response.data.likes);
-            setDislikes(response.data.dislikes);
-            setUsername(response.data.username);
-            setDate(response.data.date);
-            setLiked(response.data.liked);
-            setDisliked(response.data.disliked);*/
           })
           .catch((err) => {
             alert("Error fetching review data.");
@@ -81,39 +53,6 @@ const ViewReview = () => {
             } catch (e) {
                 console.log(e);
             }
-        /*if(e === 'like') {
-            if(!pst.liked.find(email)) {
-                likes++;
-                model.findByIdAndUpdate(id, { likes: likes });
-                model.updateOne(
-                    { _id: id },
-                    { $push: { liked: email } }
-                )
-            } else {
-                likes--;
-                model.findByIdAndUpdate(id, { likes: likes });
-                model.updateOne(
-                    { _id: id },
-                    { $pull: { liked: email }}
-                )
-            }
-        } else if(e === 'dislike') {
-            if(!pst.disliked.find(email)) {
-                dislikes++;
-                model.findByIdAndUpdate(id, { dislikes: dislikes });
-                model.updateOne(
-                    { _id: id },
-                    { $push: { disliked: email }}
-                )
-            } else {
-                dislikes--;
-                model.findByIdAndUpdate(id, { dislikes: dislikes });
-                model.updateOne(
-                    { _id: id },
-                    { $pull: { disliked: email }}
-                )
-            }
-        }*/
     }
 
     if(email !== '' || email !== null) {
@@ -130,7 +69,7 @@ const ViewReview = () => {
                     <h6>Comments:</h6>
                     <p>{reviewDetails.review}</p>
                     <br></br>
-                    <p>Posted at { reviewDetails.date }</p>
+                    <p>Posted at {getFormattedDate( reviewDetails.date )}</p>
                     <br></br>
                     
                     <button  className='btn btn-outline-light btn-lg'  onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
