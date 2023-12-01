@@ -12,6 +12,25 @@ const CoursePage = () => {
     const [averageDifficulty, setAverageDifficulty] = useState(0);
     const [averageInterest, setAverageInterest] = useState(0);
 
+    const calculateTimeDifference = (postDate) => {
+        const currentDate = new Date();
+        const postDateObj = new Date(postDate);
+        const timeDifference = currentDate - postDateObj;
+
+        // Calculate time in minutes, hours, days, etc.
+        const minutes = Math.floor(timeDifference / (1000 * 60));
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        if (minutes < 60) {
+            return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+        } else if (hours < 24) {
+            return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+        } else {
+            return `${days} day${days !== 1 ? 's' : ''} ago`;
+        }
+    };
+
     useEffect(() => {
         axios.get(`http://localhost:8000/course/${id}`)
             .then(response => {
@@ -45,25 +64,27 @@ const CoursePage = () => {
                 <h4>Reviews:</h4>
                 {courseReviews.length > 0 ? (
                     <div>
-                        {courseReviews.map(review => (
-                            <Link to={`/course/review/${review._id}`} key={review._id} className='review-link'>
-                                <div className='review'>
+                        {courseReviews
+                            .sort((a, b) => new Date(b.date) - new Date(a.date)) // Sort reviews by creation date, newest first
+                            .map(review => (
+                                <Link to={`/course/review/${review._id}`} key={review._id} className='review-link'>
+                                    <div className='review'>
+                                        <div className='user-info'>
+                                            <h4 className='user-info-name'>{review.first}</h4>
+                                            <h6 className='user-info-date'><i>Posted {calculateTimeDifference(review.date)}</i></h6>
+                                        </div>
 
-                                    <div className='user-info'>
-                                        <h4 className='user-info-name'>{review.first}</h4>
-                                        <h6 className='user-info-date'><i>Posted 3 min ago</i></h6>
+                                        <p>Overall Rating: {review.rating}</p>
+                                        <p>Difficulty Rating: {review.difficulty}</p>
+                                        <p>Interest Rating: {review.interest}</p>
+                                        <p>Textbook(s): {review.textbook}</p>
+                                        <p>Professor: {review.professor}</p>
+                                        <p>Comments: {review.review}</p>
+
                                     </div>
-
-                                    <p>Overall Rating: {review.rating}</p>
-                                    <p>Difficulty Rating: {review.difficulty}</p>
-                                    <p>Interest Rating: {review.interest}</p>
-                                    <p>Textbook(s): {review.textbook}</p>
-                                    <p>Professor: {review.professor}</p>
-                                    <p>Comments: {review.review}</p>
-
-                                </div>
-                            </Link>
-                        ))}
+                                </Link>
+                            ))
+                        }
                     </div>
                 ) : (
                     <p>No reviews available for this course.</p>
