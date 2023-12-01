@@ -1,20 +1,10 @@
 /* CoursePage.css */
 
-.page {
-    height: auto;
-    background-color: #262626;
-    color:#FFFFFF;
-    margin: 0;
-    padding:0;
-    font-family: "Lantinghei SC", serif;
-    font-size: large;
-    overflow-x: hidden;
-}
-
 .course-page {
     color: #FFFFFF;
     font-family: "Lantinghei SC", serif;
-    margin: 75px 75px 150px 75px;
+    padding: 75px 75px 100px 75px;
+    background-color: #262626;
 }
 
 .course-page-rating {
