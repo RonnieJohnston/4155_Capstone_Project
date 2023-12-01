@@ -58,13 +58,13 @@ function Register() {
                     <h1 className="mt-3"> Register </h1>
                     <form action="POST">
                         <div className="mb-3">
-                            <input type="text"className="form-control mb-4" onChange={(e) => {setFirst(e.target.value)}} placeholder="First Name"/>
+                            <input type="text" className="form-control mb-4" onChange={(e) => {setFirst(e.target.value)}} placeholder="First Name"/>
                         </div>
                         <div className="mb-3">
-                            <input type="text"className="form-control mb-4" onChange={(e) => {setLast(e.target.value)}} placeholder="Last Name"/>
+                            <input type="text" className="form-control mb-4" onChange={(e) => {setLast(e.target.value)}} placeholder="Last Name"/>
                         </div>
                         <div className="mb-3">
-                            <input type="email"className="form-control mb-4" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
+                            <input type="email" className="form-control mb-4" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
                         </div>
                         <div className="mb-3">
                             <input type="password" className="form-control" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>

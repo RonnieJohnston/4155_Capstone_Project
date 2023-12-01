@@ -78,7 +78,10 @@ const ViewReview = () => {
         return (
             <div className="review-container">
                 <h3 className='review-text-title'>Review for {reviewDetails.subject} {reviewDetails.course}</h3>
-                <h5 className='review-text-title'>Posted by {reviewDetails.first} <i>{calculateTimeDifference(reviewDetails.date)}</i></h5>
+                <div className='review-posted-by'>
+                    <h5 className='review-text-title'>Posted by {reviewDetails.first}</h5>
+                    <p><i>{calculateTimeDifference(reviewDetails.date)}</i></p>
+                </div>
 
                 <hr/>
 

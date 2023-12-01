@@ -50,3 +50,22 @@ hr {
 button {
     margin-right: 10px !important;
 }
+
+.review-posted-by {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; /* Adjust as needed for spacing between review-info divs */
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+    font-weight: lighter;
+}
+
+.review-posted-by h6 {
+    margin-right: 8px; /* Adjust as needed for spacing between h6 and p elements */
+}
+
+.review-posted-by p {
+    margin: 0; /* Remove default margin to avoid extra space */
+    font-size: large;
+    padding-left: 5px;
+}

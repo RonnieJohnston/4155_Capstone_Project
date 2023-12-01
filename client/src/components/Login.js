@@ -40,7 +40,7 @@ function Login() {
         <div className='welcome-page'>
             <div className='welcome-page-contents'>
                 <div className='welcome-page-icon'>
-                    <img className='DC-icon' src='images/DC-icon.png' alt='declassified icon' />
+                    <img className='DC-icon' src='/images/DC-icon.png' alt='declassified icon' />
                 </div>
                 <div className='welcome-page-text-container'>
                     <h1 className="mt-3"> Login </h1>
