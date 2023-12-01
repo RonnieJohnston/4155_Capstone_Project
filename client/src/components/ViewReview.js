@@ -10,6 +10,25 @@ const ViewReview = () => {
     const email = sessionStorage.getItem('email');
     const history = useNavigate()
 
+    const calculateTimeDifference = (postDate) => {
+        const currentDate = new Date();
+        const postDateObj = new Date(postDate);
+        const timeDifference = currentDate - postDateObj;
+
+        // Calculate time in minutes, hours, days, etc.
+        const minutes = Math.floor(timeDifference / (1000 * 60));
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        if (minutes < 60) {
+            return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+        } else if (hours < 24) {
+            return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+        } else {
+            return `${days} day${days !== 1 ? 's' : ''} ago`;
+        }
+    };
+
     useEffect(() => {
         axios.get(`http://localhost:8000/course/review/${id}`)
           .then((response) => {
@@ -57,42 +76,92 @@ const ViewReview = () => {
 
     if(email !== '' || email !== null) {
         return (
-            <div className="container border mt-5">
+            <div className="review-container">
                 <h3 className='review-text-title'>Review for {reviewDetails.subject} {reviewDetails.course}</h3>
-                <h5 className='review-text-title'>By: {reviewDetails.username}</h5>
+                <h5 className='review-text-title'>Posted by {reviewDetails.first} <i>{calculateTimeDifference(reviewDetails.date)}</i></h5>
+
+                <hr/>
+
                 <div className='review-text'>
-                    <h6>Rating: {reviewDetails.rating} out of 5</h6>
-                    <h6>Interest: {reviewDetails.interest} out of 5 (best)</h6>
-                    <h6>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h6>
-                    <h6>Professor: {reviewDetails.professor}</h6>
-                    <h6>Textbook: {reviewDetails.textbook}</h6>
-                    <h6>Comments:</h6>
-                    <p>{reviewDetails.review}</p>
+                    <div className='review-info'>
+                        <h6>Rating: </h6>
+                        <p>{reviewDetails.rating} out of 5 (best)</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Interest: </h6>
+                        <p>{reviewDetails.interest} out of 5 (best)</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Difficulty: </h6>
+                        <p>{reviewDetails.difficulty} out of 10 (hardest)</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Professor: </h6>
+                        <p>{reviewDetails.professor}</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Textbook: </h6>
+                        <p>{reviewDetails.textbook}</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Comments: </h6>
+                        <p>{reviewDetails.review}</p>
+                    </div>
+
                     <br></br>
-                    <p>Posted at {getFormattedDate( reviewDetails.date )}</p>
-                    <br></br>
-                    
-                    <button  className='btn btn-outline-light btn-lg'  onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
-                    <button  className='btn btn-outline-light btn-lg' onClick={() => updateLikeCount('dislike')}>{reviewDetails.dislikes} dislikes</button>
+
+                    <button  className='btn btn-outline-light btn-sm'  onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
+                    <button  className='btn btn-outline-light btn-sm' onClick={() => updateLikeCount('dislike')}>{reviewDetails.dislikes} dislikes</button>
                 </div>
+
             </div>
         )
     } else {
         return (
-            <div className="container border mt-5">
+            <div className="review-container">
                 <h3 className='review-text-title'>Review for {reviewDetails.subject} {reviewDetails.course}</h3>
-                <h5 className='review-text-title'>By: {reviewDetails.username}</h5>
+                <h5 className='review-text-title'>Posted by {reviewDetails.first} <i>{calculateTimeDifference(reviewDetails.date)}</i></h5>
+
+                <hr/>
+
                 <div className='review-text'>
-                    <h6>Rating: {reviewDetails.rating} out of 5</h6>
-                    <h6>Interest: {reviewDetails.interest} out of 5 (best)</h6>
-                    <h6>Difficulty: {reviewDetails.difficulty} out of 10 (hardest)</h6>
-                    <h6>Professor: {reviewDetails.professor}</h6>
-                    <h6>Textbook: {reviewDetails.textbook}</h6>
-                    <h6>Comments:</h6>
-                    <p>{reviewDetails.review}</p>
-                    <br></br>
-                    <p>Posted at { reviewDetails.date }</p>
+                    <div className='review-info'>
+                        <h6>Rating: </h6>
+                        <p>{reviewDetails.rating} out of 5 (best)</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Interest: </h6>
+                        <p>{reviewDetails.interest} out of 5 (best)</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Difficulty: </h6>
+                        <p>{reviewDetails.difficulty} out of 10 (hardest)</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Professor: </h6>
+                        <p>{reviewDetails.professor}</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Textbook: </h6>
+                        <p>{reviewDetails.textbook}</p>
+                    </div>
+
+                    <div className='review-info'>
+                        <h6>Comments: </h6>
+                        <p>{reviewDetails.review}</p>
+                    </div>
+
                 </div>
+
             </div>
         )
     }

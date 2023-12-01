@@ -10,11 +10,7 @@ const Navbar = () => {
     return (
         <nav className='navbar'>
             <a className ='logo-image' href='/home'>
-                <img
-                    className='DC-logo'
-                    src='images/declassified-logo.png'
-                    alt='declassified logo'
-                />
+                <img src={process.env.PUBLIC_URL + '/images/declassified-logo.png'} alt="Navbar Logo" className='DC-logo'/>
             </a>
             <ul className='navbar-links'>
 
