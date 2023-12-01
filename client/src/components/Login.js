@@ -47,7 +47,7 @@ function Login() {
                     <form action="POST">
                         <input className="form-control mb-4" type="email" onChange={(e) => {setEmail(e.target.value)}} placeholder="Email"/>
                         <input className="form-control mb-4" type="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Password"/>
-                        <button type="submit" className="btn btn-dark" onClick={Authorization}>Submit</button>
+                        <button type="submit" className="btn btn-outline-light" onClick={Authorization}>Submit</button>
                     </form>
                 </div>
             </div>
