@@ -50,7 +50,7 @@ const CoursePage = () => {
                                 <div className='review'>
 
                                     <div className='user-info'>
-                                        <h4 className='user-info-name'>TESTUSER</h4>
+                                        <h4 className='user-info-name'>{review.first}</h4>
                                         <h6 className='user-info-date'><i>Posted 3 min ago</i></h6>
                                     </div>
 

@@ -25,6 +25,11 @@ const UserPostsSchema = new mongoose.Schema
         required: true,
         ref: 'UserCredentialSchema'
     },
+    first:
+    {
+        type: String,
+        required: true,
+    },
     date:
     {
         type: String,

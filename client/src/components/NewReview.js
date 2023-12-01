@@ -18,7 +18,16 @@ const NewReview = () => {
     async function submitReview(e) {
         e.preventDefault()
 
-        const email = sessionStorage.getItem('email');
+
+        var first = ''
+        const email = sessionStorage.getItem("email");
+        const response = await axios.get(`http://localhost:8000/users/${email}`);
+        if (response.data.email) {
+            first = response.data.first;
+        } else {
+            console.error("User does not exist");
+        }
+
         var date = new Date()
         var likes = 0
         var dislikes = 0
@@ -26,7 +35,7 @@ const NewReview = () => {
         try {
             await axios.post("http://localhost:8000/newReview",
                 {
-                    subject, course, professor, email, date, likes, dislikes, rating, interest, difficulty, review, textbook
+                    subject, course, professor, email, first, date, likes, dislikes, rating, interest, difficulty, review, textbook
                 })
                 .then( res=> {
                     if(res.data == 'Exist') {

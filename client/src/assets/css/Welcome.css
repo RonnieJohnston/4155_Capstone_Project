@@ -12,51 +12,38 @@
     justify-content: center;
 }
 
-.welcome-page-contents {
-    display: flex;
-    align-items: center;
-}
-
-.welcome-page-text-1 {
-    color: #FFFFFF;
-    font-family: "Lantinghei SC", serif;
-    font-size: 45px;
-    margin: 0;
-    position: absolute;
-}
-
-.welcome-page-text-2 {
-    color: #FFFFFF;
-    font-family: "Lantinghei SC", serif;
-    font-size: 45px;
-    margin: 0;
-    position: absolute;
-}
-
-.welcome-page-text-3 {
-    color: #FFFFFF;
-    font-family: "Lantinghei SC", serif;
-    font-size: 45px;
-    margin: 0;
-    position: absolute;
-}
-
-.welcome-page-text-4 {
-    color: #FFFFFF;
-    font-family: "Lantinghei SC", serif;
-    font-size: 25px;
-    margin: 0;
-    position: absolute;
-}
-
-.welcome-page-text-5 {
-    margin: 0;
-    position: absolute;
-    padding-left: 5px;
-    width: 40px;
-    top: 0;
-}
-
 .DC-icon {
     padding-right: 15px;
+}
+
+.welcome-page-contents {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    position: absolute;
+    top: 35%;
+}
+
+.welcome-page-icon {
+    grid-column: 2;
+    width: 500px;
+}
+
+.welcome-page-text-container {
+    grid-column: 3;
+    width: 200px;
+    color: #FFFFFF;
+    font-family: "Lantinghei SC", serif;
+}
+
+.welcome-page-text {
+    padding-top: 35px;
+}
+
+.text-spacer {
+    padding-left: 1px;
+    width: 30px;
+}
+
+.home-page-link {
+    padding-top: 9px;
 }
