@@ -30,13 +30,13 @@ const ViewReview = () => {
 
     useEffect(() => {
         axios.get(`http://localhost:8000/course/review/${id}`)
-          .then((response) => {
-            setReviewDetails(response.data.reviewDetails);
-          })
-          .catch((err) => {
-            alert("Error fetching review data.");
-            console.log(err);
-          });
+            .then((response) => {
+                setReviewDetails(response.data.reviewDetails);
+            })
+            .catch((err) => {
+                alert("Error fetching review data.");
+                console.log(err);
+            });
     }, []);
 
     async function updateLikeCount(e) {
@@ -47,17 +47,17 @@ const ViewReview = () => {
         var disliked = reviewDetails.disliked;
         var state = '';
 
-        if(e === 'like') {
+        if (e === 'like') {
             state = 'like';
         } else if (e === 'dislike') {
             state = 'dislike';
         }
-            try {
-                await axios.post(`http://localhost:8000/course/review/${id}`, {
-                    likes, dislikes, liked, disliked, state, email
-                })
+        try {
+            await axios.post(`http://localhost:8000/course/review/${id}`, {
+                likes, dislikes, liked, disliked, state, email
+            })
                 .then(res => {
-                    if(res.data == 'Successfully added like' || 'Successfully removed like' || 'Successfully added dislike' || 'Successfully removed dislike') {
+                    if (res.data == 'Successfully added like' || 'Successfully removed like' || 'Successfully added dislike' || 'Successfully removed dislike') {
                         window.location.reload(false);
                         alert(res.data);
                     } else {
@@ -68,21 +68,28 @@ const ViewReview = () => {
                     alert("Wrong Details");
                     console.log(err);
                 })
-            } catch (e) {
-                console.log(e);
-            }
+        } catch (e) {
+            console.log(e);
+        }
     }
 
-    if(email !== '' || email !== null) {
+    if (email !== '' || email !== null) {
         return (
             <div className="review-container">
                 <h3 className='review-text-title'>Review for {reviewDetails.subject} {reviewDetails.course}</h3>
                 <div className='review-posted-by'>
-                    <h5 className='review-text-title'>Posted by {reviewDetails.first}</h5>
+                    <h5 className="review-text-title">
+                        Posted by{' '}
+                        {reviewDetails.isAnonymous
+                            ? 'Anonymous'
+                            : `${reviewDetails.first} ${calculateTimeDifference(
+                                reviewDetails.date
+                            )}`}
+                    </h5>
                     <p><i>{calculateTimeDifference(reviewDetails.date)}</i></p>
                 </div>
 
-                <hr/>
+                <hr />
 
                 <div className='review-text'>
                     <div className='review-info'>
@@ -117,8 +124,8 @@ const ViewReview = () => {
 
                     <br></br>
 
-                    <button  className='btn btn-outline-light btn-sm'  onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
-                    <button  className='btn btn-outline-light btn-sm' onClick={() => updateLikeCount('dislike')}>{reviewDetails.dislikes} dislikes</button>
+                    <button className='btn btn-outline-light btn-sm' onClick={() => updateLikeCount('like')}>{reviewDetails.likes} likes</button>
+                    <button className='btn btn-outline-light btn-sm' onClick={() => updateLikeCount('dislike')}>{reviewDetails.dislikes} dislikes</button>
                 </div>
 
             </div>
@@ -129,7 +136,7 @@ const ViewReview = () => {
                 <h3 className='review-text-title'>Review for {reviewDetails.subject} {reviewDetails.course}</h3>
                 <h5 className='review-text-title'>Posted by {reviewDetails.first} <i>{calculateTimeDifference(reviewDetails.date)}</i></h5>
 
-                <hr/>
+                <hr />
 
                 <div className='review-text'>
                     <div className='review-info'>

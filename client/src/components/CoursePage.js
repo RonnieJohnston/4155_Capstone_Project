@@ -52,7 +52,7 @@ const CoursePage = () => {
                 <h2>{courseDetails.courseName}</h2>
             </div>
 
-            <hr/>
+            <hr />
 
             <div className='course-page-rating'>
                 <h4>Average Overall Rating: {typeof averageOverallRating === 'number' ? averageOverallRating.toFixed(2) : 'N/A'}</h4>
@@ -70,7 +70,12 @@ const CoursePage = () => {
                                 <Link to={`/course/review/${review._id}`} key={review._id} className='review-link'>
                                     <div className='review'>
                                         <div className='user-info'>
-                                            <h4 className='user-info-name'>{review.first}</h4>
+                                            <h4 className='user-info-name'>
+                                                {review.isAnonymous
+                                                    ? 'Anonymous'
+                                                    : review.first
+                                                }
+                                            </h4>
                                             <h6 className='user-info-date'><i>Posted {calculateTimeDifference(review.date)}</i></h6>
                                         </div>
 

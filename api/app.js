@@ -8,7 +8,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const reviewRoutes  = require('./routes/reviewRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 const UserCredentialModel = require('./models/UserCredentialModel')
 const UserPostsModel = require('./models/UserPostsModel')
 const UserClassesModel = require('./models/UserClassesModel')
@@ -20,12 +20,12 @@ require('dotenv').config()
 const uri = process.env.DB_URI
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-      console.log('MongoDB connected');
-    })
-    .catch((e) => {
-      console.log('Failed to connect', e);
-    });
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch((e) => {
+    console.log('Failed to connect', e);
+  });
 
 const app = express();
 
@@ -91,7 +91,7 @@ app.get('/course/:id', async (req, res) => {
 
 app.get('/course/review/:id', async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
 
     const reviewDetails = await UserPostsModel.findById(id);
 
@@ -123,7 +123,7 @@ app.get('/home', async (req, res) => {
     res.json(classes);
   } catch (error) {
     console.error(error);
-    res.status(500).json({error: 'Internal server error'});
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -155,28 +155,28 @@ app.post('/register', async (req, res) => {
   // /^[^\s@]+@[^\s@]+.[^\s@]+$/
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]+(.com)$/i;
 
-  if(emailRegex.test(email)) {
-      try {
-        const check = await UserCredentialModel.findOne({ email: email });
-    
-        if (check) {
-          res.json('Exist');
-        } else {
-          res.json('Not exist');
-    
-          await UserCredentialModel.insertMany([data]);
-        }
-      } catch (e) {
-        res.json('Fail');
+  if (emailRegex.test(email)) {
+    try {
+      const check = await UserCredentialModel.findOne({ email: email });
+
+      if (check) {
+        res.json('Exist');
+      } else {
+        res.json('Not exist');
+
+        await UserCredentialModel.insertMany([data]);
       }
+    } catch (e) {
+      res.json('Fail');
+    }
   } else {
-      res.json('Invalid');
+    res.json('Invalid');
   }
-  
+
 });
 
 app.post('/newReview', async (req, res) => {
-  const { subject, course, professor, email, first, date, likes, dislikes, rating, interest, difficulty, review, textbook} = req.body;
+  const { subject, course, professor, email, first, date, likes, dislikes, rating, interest, difficulty, review, textbook, isAnonymous } = req.body;
   const data = {
     subject: subject,
     course: course,
@@ -191,6 +191,7 @@ app.post('/newReview', async (req, res) => {
     difficulty: difficulty,
     review: review,
     textbook: textbook,
+    isAnonymous: isAnonymous,
   };
   try {
     const check = await UserClassesModel.findOne({ subject: subject, course: course });
@@ -305,32 +306,33 @@ app.post('/course/review/:id', async (req, res) => {
     liked: liked,
     disliked: disliked,
     state: state,
-    email: email
+    email: email,
+    isAnonymous: isAnonymous
   };
 
-  if(email) {
+  if (email) {
     reviewid = new mongoose.Types.ObjectId(id);
 
     // User hit like button
-    if(data.state == 'like') {
+    if (data.state == 'like') {
       // See if user isn't in liked array
-      if(!data.liked.find((element) => element == data.email)) {
+      if (!data.liked.find((element) => element == data.email)) {
         // If user is in disliked array, automatically undo their dislike before adding the like
-        if(data.disliked.find((element) => element == data.email)) {
+        if (data.disliked.find((element) => element == data.email)) {
           data.dislikes--;
           try {
             var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
-            if(check) {
+            if (check) {
               try {
                 check = await UserPostsModel.updateOne(
                   { _id: reviewid },
                   { $pull: { disliked: email } }
                 )
-              } catch(e) {
+              } catch (e) {
                 console.log(e);
               }
             }
-          } catch(e) {
+          } catch (e) {
             console.log(e);
           }
         }
@@ -338,72 +340,72 @@ app.post('/course/review/:id', async (req, res) => {
         data.likes++;
         try {
           var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
-          if(check) {
+          if (check) {
             try {
               check = await UserPostsModel.updateOne(
                 { _id: reviewid },
                 { $push: { liked: email } }
               )
-              if(check) {
+              if (check) {
                 res.json('Successfully added like');
               }
-            } catch(e) {
+            } catch (e) {
               console.log(e);
               res.json('Fail to update liked array');
             }
           } else {
             res.json('Failure to add like');
           }
-        } catch(e) {
+        } catch (e) {
           console.log(e);
           res.json('Fail to update likes');
         }
         // Else user is trying to unlike
-      } else if(data.liked.find((element) => element == data.email)) {
+      } else if (data.liked.find((element) => element == data.email)) {
         data.likes--;
         try {
           var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
-          if(check) {
+          if (check) {
             try {
               check = await UserPostsModel.updateOne(
                 { _id: reviewid },
                 { $pull: { liked: email } }
               )
-              if(check) {
+              if (check) {
                 res.json('Successfully removed like');
               }
-            } catch(e) {
+            } catch (e) {
               console.log(e);
               res.json('Fail to update liked array');
             }
           } else {
-            res.json('Failure to remove like'); 
+            res.json('Failure to remove like');
           }
-        } catch(e) {
+        } catch (e) {
           console.log(e);
           res.json('Fail to update likes');
         }
       }
       // User hit dislike button
-    } else if(data.state == 'dislike') {
+    } else if (data.state == 'dislike') {
       // Check for user in disliked array
-      if(!data.disliked.find((element) => element == data.email)) {
+      if (!data.disliked.find((element) => element == data.email)) {
         // If user is in liked array, automatically unlike
-        if(data.liked.find((element) => element == data.email)) {
+        if (data.liked.find((element) => element == data.email)) {
           data.likes--;
           try {
             var check = await UserPostsModel.findByIdAndUpdate(reviewid, { likes: data.likes });
-            if(check) {
+            if (check) {
               try {
                 check = await UserPostsModel.updateOne(
                   { _id: reviewid },
                   { $pull: { liked: email } }
                 )
-              } catch(e) {
+              } catch (e) {
                 console.log(e);
               }
             }
-          } catch(e) {
+          } catch (e) {
             console.log(e);
           }
         }
@@ -411,67 +413,71 @@ app.post('/course/review/:id', async (req, res) => {
         data.dislikes++;
         try {
           var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
-          if(check) {
+          if (check) {
             try {
               check = await UserPostsModel.updateOne(
                 { _id: reviewid },
                 { $push: { disliked: email } }
               )
-              if(check) {
+              if (check) {
                 res.json('Successfully added dislike');
               }
-            } catch(e) {
+            } catch (e) {
               console.log(e);
               res.json('Fail to update disliked array');
             }
           } else {
             res.json('Failure to remove dislike');
           }
-        } catch(e) {
+        } catch (e) {
           console.log(e);
           res.json('Fail to update dislikes');
         }
         // User is trying to undo a dislike
-      } else if(data.disliked.find((element) => element == data.email)) {
+      } else if (data.disliked.find((element) => element == data.email)) {
         data.dislikes--;
         try {
           var check = await UserPostsModel.findByIdAndUpdate(reviewid, { dislikes: data.dislikes });
-          if(check) {
+          if (check) {
             try {
               check = await UserPostsModel.updateOne(
                 { _id: reviewid },
                 { $pull: { disliked: email } }
               )
-              if(check) {
+              if (check) {
                 res.json('Successfully removed dislike');
               }
-            } catch(e) {
+            } catch (e) {
               console.log(e);
               res.json('Fail to update disliked array');
             }
           } else {
             res.json('Failure to remove dislike');
           }
-        } catch(e) {
+        } catch (e) {
           console.log(e);
           res.json('Fail to update dislikes');
         }
       }
     }
     // User isn't logged in (null email)
+    // User isn't logged in (null email)
   } else {
+    if (isAnonymous) {
+      data.email = 'Anonymous';
+    }
     res.json('Please Login First');
   }
 })
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
